@@ -3,103 +3,64 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/09/04 09:57:07 by al7aro-g         ###   ########.fr        #
+#    Updated: 2022/09/04 16:08:52 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-RED				= \033[0;31m
-CYAN			= \033[0;36m
-GREEN 			= \033[1;32m
-YELLOW 			= \033[1;33m
-NC 				= \033[0m
+include makefile_util.mk
 
-DIR 			= .
 NAME 			= minishell
 
-#---------- LIBS ---------------------------------------------------------------
-	#---------- FTPF -----------------------------------------------------------
-M_FTPF 			= $(FTPF_DIR)/Makefile
-
-FTPF_LIB		= ftprintf
-FTPF_DIR 		= $(DIR)/src/ft_printf
-FTPF_SRC_DIR 	= $(DIR)/src/ft_printf/srcs
-FTPF_SRC 		= $(wildcard $(FTPF_SRC_DIR)/*.c)
-FTPF_A 			= $(FTPF_DIR)/lib$(FTPF_LIB).a
-
-I_FTPF 			= $(FTPF_DIR)/includes
-I_FTPF_H 		= $(I_FTPF)ftpritf.h
-
-	#---------- LIBFT ----------------------------------------------------------
-M_LIBFT 		= $(LIBFT_DIR)/Makefile
-
-LIBFT_DIR 		= $(FTPF_DIR)/srcs/Libft
-LIBFT_SRC_DIR 	= $(DIR)/src/ft_printf/srcs/Libft/srcs
-LIBFT_SRC 		= $(wildcard $(LIBFT_SRC_DIR)/*.c)
-
-I_LIBFT 		= $(LIBFT_DIR)/includes
-I_LIBFT_H	 	= $(I_LIBT)/libft.h
-
-#---------- PUSH SWAP ----------------------------------------------------------
-#---------- INCLUDES ----------
-I_DIR 			= $(DIR)/includes
-I_H 			= minishell.h
-I 				= $(patsubst %.h, $(I_DIR)/%.h, $(I_H))
+#---------- HEAD ----------
+HEAD_DIR 		= include
+HEAD_NAME 		= $(notdir $(wildcard $(HEAD_DIR)/*.h))
+HEAD 			= $(addprefix $(HEAD_DIR)/, $(HEAD_NAME))
 
 #---------- SRC ----------
-SRC_DIR 		= $(DIR)/src
-#SRC_COLOR 		= $(SRC_DIR)/colors
-#SRC_INSTR 		= $(SRC_DIR)/instr
-#SRC_COLOR_C 	= color.c
-#SRC_INSTR_C 	= exec.c s.c p.c r.c rr.c 
-SRC_MS_C 		= main.c
-SRC 			= $(patsubst %.c, $(SRC_DIR)/%.c, $(SRC_MS_C)) \
-#					$(patsubst %.c, $(SRC_COLOR)/%.c, $(SRC_COLOR_C)) \
-#					$(patsubst %.c, $(SRC_INSTR)/%.c, $(SRC_INSTR_C)) 
-#---------- OBJ ----------
-BUILD_DIR 		= $(SRC_DIR)/build
+SRC_DIR 		= src
+SRC 			= $(wildcard $(SRC_DIR)/**/*.c)
+# SRC 			= $(patsubst %.c, $(SRC_DIR)/%.c)
 
-OBJ_MS 			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, \
-		 			$(patsubst %.c, $(SRC_DIR)/%.c, $(SRC_MS_C)))
-#OBJ_INSTR 		= $(patsubst $(SRC_INSTR)/%.c, $(BUILD_DIR)/%.o, \
-#					$(patsubst %.c, $(SRC_INSTR)/%.c, $(SRC_INSTR_C)))
-#OBJ_COLOR 		= $(patsubst $(SRC_COLOR)/%.c, $(BUILD_DIR)/%.o, \
-					$(patsubst %.c, $(SRC_COLOR)/%.c, $(SRC_COLOR_C)))
-OBJ 			= $(OBJ_MS) #$(OBJ_INSTR) $(OBJ_COLOR)
+#---------- OBJ ----------
+OBJ_DIR 		= obj
+OBJ				= $(subst $(SRC_DIR),$(OBJ_DIR), $(SRC:.c=.o))
 
 #---------- FLAGS ----------
-CC 				= gcc
-FLAGS 			= -Wall -Wextra -Werror
-I_FLAG 			= -I $(I_DIR)/ -I $(I_FTPF)/ -I $(I_LIBFT)/
+CC 				= cc
+I_FLAG 			= -I $(HEAD_DIR)
+CFLAGS 			= -c -Wall -Wextra -Werror $(I_FLAG)
+LDFLAGS 		= 
+LDLIBS 			= -lpthread
 
-$(BUILD_DIR)/%.o : $(SRC_DIR)/%.c
-				@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
-#$(BUILD_DIR)/%.o : $(SRC_INSTR)/%.c
-#				@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
-#$(BUILD_DIR)/%.o : $(SRC_COLOR)/%.c
-#				@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
-#-------------------------------------------------------------------------------
+#---------- IMPLICT RULES ----------
+$(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
+	@mkdir -p  $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $< -o $(@)
 
-all: $(NAME)
-$(NAME): $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
-				@echo "${RED}Compiling LIBFTPRINTF${NC}\c"
-				@make -s -C $(FTPF_DIR)
-				@echo " ---> ${CYAN}Success${NC}"
-				@$(CC) $(FLAGS) $(OBJ) -L$(FTPF_DIR) -l$(FTPF_LIB) -o minishell
-				@echo "${GREEN}${NAME} READY!${NC}"
+#---------- RULES ----------
+.PHONY: clean fclean re all
+
+all: $(OBJ_DIR) $(NAME)
+
+$(OBJ_DIR):
+	@cp -a $(SRC_DIR) $(OBJ_DIR)
+	@$(RM) $(OBJ:.o=.c)
+
+$(NAME): $(OBJ)
+	@echo "$(GREEN)Compilation was Successful!$(NC)"
+	@echo "$(YELLOW)Linking... $(NC)"
+	@$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
+	@echo "$(GREEN)$(NAME) READY!$(NC)"
+
 clean:
-				@make -s -C $(FTPF_DIR) clean
-				@rm -rf $(BUILD_DIR)/*
-				@echo "${YELLOW}OBJS Removed!${NC}"
+	@$(RM) $(OBJ)
+	@echo "$(RED)Objects Removed!$(NC)"
+
 fclean: clean
-				@make -s -C $(FTPF_DIR) fclean
-				@rm -rf $(NAME)
-				@echo "${YELLOW}$(NAME) Removed!${NC}"
+	@$(RM) $(NAME)
+	@echo "$(RED)$(NAME) Removed!$(NC)"
+
 re: fclean $(NAME)
-
-debug: FLAGS = -g -D DEBUG
-debug: re
-
-.PHONY: clean fclean re
