@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dll_swap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/09/06 13:21:37 by yoav             ###   ########.fr       */
+/*   Created: 2022/07/26 12:35:03 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/06 13:31:11 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "dll.h"
 
-int	main(int argc, char **argv)
+void	dll_swap_value(t_dll *a, t_dll *b)
 {
-	(void)argc;
-	(void)argv;
+	void	*tmp;
 
-	printer_print("~Minishell~");
-	return (0);
+	tmp = a->value;
+	a->value = b->value;
+	b->value = tmp;
 }

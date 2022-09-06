@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/09/06 13:21:37 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/06 13:32:16 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef MACROS_H
+# define MACROS_H
 
-int	main(int argc, char **argv)
+typedef enum e_error_code
 {
-	(void)argc;
-	(void)argv;
+	ERROR = -1,
+	SUCCESS = 0,
+}	t_error_code;
 
-	printer_print("~Minishell~");
-	return (0);
-}
+#endif

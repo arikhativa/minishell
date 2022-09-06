@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   unit_test.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/09/06 13:21:37 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/06 14:41:00 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#ifndef UNIT_TEST_H
+# define UNIT_TEST_H
 
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	(void)argv;
+# ifndef TEST_RES
+#  define TEST_RES "unit_test_result.txt"
+# endif
 
-	printer_print("~Minishell~");
-	return (0);
-}
+# define DEFAULT_SUITE	"SUITE"
+
+static FILE* temp_file = NULL;
+
+#endif

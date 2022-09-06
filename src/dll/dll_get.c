@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dll_get.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/09/06 13:21:37 by yoav             ###   ########.fr       */
+/*   Created: 2022/07/27 13:54:54 by yrabby            #+#    #+#             */
+/*   Updated: 2022/08/05 14:05:34 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "dll.h"
 
-int	main(int argc, char **argv)
+t_dll	*dll_get_last_elem(t_dll *lst)
 {
-	(void)argc;
-	(void)argv;
+	register t_dll	*next;
 
-	printer_print("~Minishell~");
-	return (0);
+	if (!lst)
+		return (NULL);
+	next = lst->next;
+	while (next)
+	{
+		lst = next;
+		next = lst->next;
+	}
+	return (lst);
 }
