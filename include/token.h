@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_swap.t.c                                       :+:      :+:    :+:   */
+/*   token.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/13 10:54:12 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/13 09:35:29 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/13 11:01:10 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dll.h"
-#include "unit_test.h"
+#ifndef TOKEN_H
+# define TOKEN_H
 
-void	test_dll_swap_value(void)
+# include <stdlib.h>
+
+# include "error_code.h"
+# include "libft.h"
+
+typedef enum e_token_type
 {
-	int		a;
-	int		b;
-	t_dll	e1;
-	t_dll	e2;
+	WORD,
+	OPERATOR,	
+}	t_token_type;
 
-	a = 2;
-	b = 55;
-	e1.value = &a;
-	e2.value = &b;
-	dll_swap_value(&e1, &e2);
-	CU_ASSERT(*(int *)(e1.value) == 55);
-	CU_ASSERT(*(int *)(e2.value) == 2);
-}
+typedef struct s_token
+{
+	t_token_type	type;
+	char			*value;
+}	t_token;
+
+t_error_code	token_create(t_token **ret, char *ptr, t_token_type type);
+void			token_destroy(t_token **t);
+
+#endif

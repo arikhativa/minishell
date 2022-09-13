@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:35:23 by yoav              #+#    #+#             */
-/*   Updated: 2022/06/29 11:24:34 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/13 10:46:40 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*split_str(char **origin, size_t i)
 	ret = ft_strndup(*origin, i);
 	if (!ret)
 		return (NULL);
-	tmp = ft_strndup((*origin) + i, ft_strlen(*origin) - i);
+	tmp = ft_strndup((*origin) + i, gnl_strlen(*origin) - i);
 	if (!tmp)
 	{
 		free(ret);
@@ -82,7 +82,7 @@ static char	*handle_eof(ssize_t stt, char **buff, char *ret)
 {
 	if (END_OF_FILE == stt)
 	{
-		if (0 != ft_strlen(*buff))
+		if (0 != gnl_strlen(*buff))
 			ret = *buff;
 		else
 		{

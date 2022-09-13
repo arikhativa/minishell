@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_swap.t.c                                       :+:      :+:    :+:   */
+/*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/13 10:54:12 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/13 09:38:31 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/13 10:45:20 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dll.h"
-#include "unit_test.h"
+#include "token.h"
 
-void	test_dll_swap_value(void)
+t_error_code	token_create(t_token **ret, char *ptr, t_token_type type)
 {
-	int		a;
-	int		b;
-	t_dll	e1;
-	t_dll	e2;
+	*ret = ft_calloc(1, sizeof(t_token));
+	if (!*ret)
+		return (ALLOCATION_ERROR);
+	(*ret)->type = type;
+	(*ret)->value = ptr;
+	return (SUCCESS);
+}
 
-	a = 2;
-	b = 55;
-	e1.value = &a;
-	e2.value = &b;
-	dll_swap_value(&e1, &e2);
-	CU_ASSERT(*(int *)(e1.value) == 55);
-	CU_ASSERT(*(int *)(e2.value) == 2);
+void	token_destroy(t_token **t)
+{
+	ft_bzero(*t, sizeof(t_token));
+	free(*t);
+	*t = NULL;
 }

@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_swap.t.c                                       :+:      :+:    :+:   */
+/*   token_list.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/06 14:21:17 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/13 10:54:12 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/13 10:06:23 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/13 11:02:20 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dll.h"
-#include "unit_test.h"
+#ifndef TOKEN_LIST_H
+# define TOKEN_LIST_H
 
-void	test_dll_swap_value(void)
+# include "token.h"
+# include "error_code.h"
+# include "dll.h"
+
+typedef struct s_token_list
 {
-	int		a;
-	int		b;
-	t_dll	e1;
-	t_dll	e2;
+	t_dll	*tok_lst;
+}	t_token_list;
 
-	a = 2;
-	b = 55;
-	e1.value = &a;
-	e2.value = &b;
-	dll_swap_value(&e1, &e2);
-	CU_ASSERT(*(int *)(e1.value) == 55);
-	CU_ASSERT(*(int *)(e2.value) == 2);
-}
+t_error_code	token_list_create(t_token_list **ret);
+void			token_list_destroy(t_token_list	**lst);
+t_error_code	token_list_add_last(t_token_list *lst, t_token *node);
+
+#endif

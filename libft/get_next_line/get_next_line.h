@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:35:18 by yoav              #+#    #+#             */
-/*   Updated: 2022/07/18 10:53:20 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/13 10:46:57 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@
 
 # include <stddef.h>
 
-# ifndef LIBFT_H
-	size_t	ft_strlen(char *s);
-	void	ft_memcpy(char *d, char *s, size_t size);
-# endif
-
+size_t	gnl_strlen(char *s);
+void	gnl_memcpy(char *d, char *s, size_t size);
 char	*ft_strndup(char *s, size_t size);
 char	*ft_join_str(char *a, char *b);
 void	swap_ptr(char **a, char **b);

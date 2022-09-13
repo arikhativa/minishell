@@ -6,14 +6,14 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:35:25 by yoav              #+#    #+#             */
-/*   Updated: 2022/06/29 11:08:22 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/13 10:46:49 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stddef.h>
 
-size_t	ft_strlen(char *s)
+size_t	gnl_strlen(char *s)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-void	ft_memcpy(char *d, char *s, size_t size)
+void	gnl_memcpy(char *d, char *s, size_t size)
 {
 	size_t	i;
 
@@ -72,13 +72,13 @@ char	*ft_join_str(char *buff, char *str)
 	size_t	j;
 	char	*ret;
 
-	i = ft_strlen(buff);
-	j = ft_strlen(str);
+	i = gnl_strlen(buff);
+	j = gnl_strlen(str);
 	ret = (char *)malloc(sizeof(char) * (i + j + 1));
 	if (!ret)
 		return (NULL);
-	ft_memcpy(ret, buff, i);
-	ft_memcpy((ret + i), str, j);
+	gnl_memcpy(ret, buff, i);
+	gnl_memcpy((ret + i), str, j);
 	ret[i + j] = '\0';
 	if (NULL != buff)
 		free(buff);
