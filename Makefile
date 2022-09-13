@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/09/06 14:31:17 by yoav             ###   ########.fr        #
+#    Updated: 2022/09/12 14:51:50 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,11 @@ SRC 			= $(wildcard $(SRC_DIR)/**/*.c)
 OBJ_DIR 		= obj
 OBJ				= $(subst $(SRC_DIR),$(OBJ_DIR), $(SRC:.c=.o))
 
+#---------- LIBFT ----------
+LIBFT_NAME		= libft.a
+LIBFT_DIR		= libft
+LIBFT_HEAD_DIR	= $(addprefix $(LIBFT_DIR)/, libft)
+LIBFT			= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
 #---------- TEST ----------
 TEST_DIR		= unit_test
@@ -40,10 +45,10 @@ TEST_OUT 		= $(TEST_SRC:.t.c=.t.out)
 
 #---------- FLAGS ----------
 CC 				= cc
-I_FLAG 			= -I $(HEAD_DIR)
+I_FLAG 			= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR)
 CFLAGS 			= -c -Wall -Wextra -Werror $(I_FLAG)
-LDFLAGS 		= 
-LDLIBS 			= -lpthread
+LDFLAGS 		= -L$(LIBFT_DIR)
+LDLIBS 			= -lpthread -lft
 
 #---------- IMPLICT RULES ----------
 $(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
@@ -55,21 +60,26 @@ $(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
 
 all: $(OBJ_DIR) $(NAME)
 
+$(LIBFT):
+	@$(MAKE) -sC $(LIBFT_DIR)
+
 $(OBJ_DIR):
 	@cp -a $(SRC_DIR) $(OBJ_DIR)
 	@$(RM) $(OBJ:.o=.c)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
 	@echo "$(GREEN)Compilation was Successful!$(NC)"
 	@echo "$(YELLOW)Linking... $(NC)"
-	@$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
+	@$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $@
 	@echo "$(GREEN)$(NAME) READY!$(NC)"
 
 clean:
+	@$(MAKE) clean -sC $(LIBFT_DIR)
 	@$(RM) $(OBJ)
 	@echo "$(RED)Objects Removed!$(NC)"
 
 fclean: clean
+	@$(MAKE) fclean -sC $(LIBFT_DIR)
 	@$(RM) $(NAME)
 	@echo "$(RED)$(NAME) Removed!$(NC)"
 
