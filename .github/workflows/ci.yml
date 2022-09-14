@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-22.04	
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: install dep
+      run: sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev
+
+    - name: compile tests
+      run: make tester
+
+    - name: run tests
+      run: make check

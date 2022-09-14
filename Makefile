@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/09/13 09:57:28 by yoav             ###   ########.fr        #
+#    Updated: 2022/09/14 14:02:04 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIBFT			= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 TEST_DIR		= unit_test
 TEST_HEAD_DIR	= -I$(TEST_DIR) -I$(HEAD_DIR)
 TEST_LDLIBS		= -lcunit $(LDLIBS)
-TEST_EXEC		= test.out
+TEST_EXEC		= tester
 TEST_RES		= "unit_test_result.txt"
 TEST_SRC 		= $(wildcard $(TEST_DIR)/**/*.t.c)
 TEST_OBJ 		= $(TEST_SRC:.t.c=.t.o)
@@ -76,6 +76,13 @@ $(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $@
 	@echo "$(GREEN)$(NAME) READY!$(NC)"
 
+$(TEST_EXEC): $(OBJ_DIR) $(OBJ_NO_MAIN) $(TEST_OBJ) $(LIBFT)
+	@$(CC) $(LDFLAGS) $(OBJ_NO_MAIN) $(TEST_OBJ) $(TEST_LDLIBS) -o $(TEST_EXEC)
+
+check: $(TEST_EXEC)
+	@./$(TEST_EXEC)
+	@TEST_ERRORS="$(shell | grep asserts $(TEST_RES) | awk '{print $$5}')"; if [ "$$TEST_ERRORS" = "0" ]; then true; else false; fi;
+
 clean:
 	@$(MAKE) clean -sC $(LIBFT_DIR)
 	@$(RM) -rf $(OBJ_DIR)
@@ -90,7 +97,4 @@ fclean: clean
 
 re: fclean all
 
-test: $(OBJ_DIR) $(OBJ_NO_MAIN) $(TEST_OBJ) $(LIBFT)
-	@$(CC) $(LDFLAGS) $(OBJ_NO_MAIN) $(TEST_OBJ) $(TEST_LDLIBS) -o $(TEST_EXEC)
-	@./$(TEST_EXEC)
-	@$(RM) $(TEST_RES)
+
