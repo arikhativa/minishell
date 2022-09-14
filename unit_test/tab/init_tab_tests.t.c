@@ -1,49 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   init_tab_tests.t.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/14 09:24:34 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/14 09:09:07 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test.h"
 
-CU_SuiteInfo	g_suites[] = {
+CU_TestInfo	g_tab_tests[] = {
 {
-	"tab",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_tab_tests,
+	"test_dll_clear_list",
+	test_dll_clear_list,
 },
-{
-	"token_list",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_token_list_tests,
-},
-{
-	"token",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_token_tests,
-},
-{
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
-},
-	CU_SUITE_INFO_NULL,
+	CU_TEST_INFO_NULL,
 };

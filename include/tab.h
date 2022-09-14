@@ -1,49 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   tab.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/14 09:24:34 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/14 08:52:49 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/14 09:24:52 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unit_test.h"
+#ifndef TAB_H
+# define TAB_H
 
-CU_SuiteInfo	g_suites[] = {
-{
-	"tab",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_tab_tests,
-},
-{
-	"token_list",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_token_list_tests,
-},
-{
-	"token",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_token_tests,
-},
-{
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
-},
-	CU_SUITE_INFO_NULL,
-};
+# include <stddef.h>
+# include <stdlib.h>
+
+# include "error_code.h"
+# include "libft.h"
+
+t_error_code	tab_create(char	***ret, size_t size);
+void	tab_destroy(char ***t);
+
+#endif

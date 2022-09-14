@@ -1,49 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   tab.t.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/14 09:24:34 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/14 09:09:33 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/14 09:24:07 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test.h"
+#include "tab.h"
 
-CU_SuiteInfo	g_suites[] = {
+void	test_tab_create_destroy(void)
 {
-	"tab",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_tab_tests,
-},
-{
-	"token_list",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_token_list_tests,
-},
-{
-	"token",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_token_tests,
-},
-{
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
-},
-	CU_SUITE_INFO_NULL,
-};
+	char			*s1;
+	char			*s2;
+	char			**tab;
+	t_error_code	err;
+
+	s1 = ft_strdup("s1");
+	s2 = ft_strdup("s2");
+	err = tab_create(&tab, 2);
+	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
+	tab[0] = s1;
+	tab[1] = s2;
+	tab_destroy(&tab);
+	CU_ASSERT_PTR_NULL(tab);
+	CU_ASSERT_PTR_NULL(s1);
+	CU_ASSERT_PTR_NULL(s2);
+}
