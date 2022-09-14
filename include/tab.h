@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 08:52:49 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/14 09:24:52 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/14 10:07:44 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # include "libft.h"
 
 t_error_code	tab_create(char	***ret, size_t size);
-void	tab_destroy(char ***t);
+void			tab_destroy(char ***t);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/14 09:09:07 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/14 09:31:51 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 CU_TestInfo	g_tab_tests[] = {
 {
-	"test_dll_clear_list",
-	test_dll_clear_list,
+	"test_tab_create_destroy",
+	test_tab_create_destroy,
 },
 	CU_TEST_INFO_NULL,
 };

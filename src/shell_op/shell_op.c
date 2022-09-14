@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_list.h                                       :+:      :+:    :+:   */
+/*   shell_op.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 10:06:23 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/14 09:44:02 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/13 16:52:42 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/14 09:51:26 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_LIST_H
-# define TOKEN_LIST_H
+#include "shell_op.h"
 
-# include "token.h"
-# include "error_code.h"
-# include "dll.h"
-
-typedef struct s_token_list
+t_error_code	shell_op_create(t_shell_op **ret)
 {
-	t_dll	*tok_lst;
-}	t_token_list;
+	*ret = ft_calloc(1, sizeof(t_shell_op));
+	if (!(*ret))
+		return (ALLOCATION_ERROR);
+	return (SUCCESS);
+}
 
-t_error_code	token_list_create(t_token_list **ret);
-void			token_list_destroy(t_token_list	**lst);
-t_error_code	token_list_add_last(t_token_list *lst, t_token *tok);
-
-#endif
+void	shell_op_destroy(t_shell_op **sp)
+{
+	if ((*sp)->input)
+		tab_destroy(&((*sp)->input));
+	if ((*sp)->token_list)
+		token_list_destroy(&((*sp)->token_list));
+	ft_bzero(*sp, sizeof(t_shell_op));
+	free(*sp);
+	*sp = NULL;
+}

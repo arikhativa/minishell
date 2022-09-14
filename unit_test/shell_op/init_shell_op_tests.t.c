@@ -1,57 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_suites.t.c                                    :+:      :+:    :+:   */
+/*   init_shell_op_tests.t.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/14 10:00:20 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/14 09:52:32 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test.h"
 
-CU_SuiteInfo	g_suites[] = {
+CU_TestInfo	g_shell_op_tests[] = {
 {
-	"shell_op",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_shell_op_tests,
+	"test_shell_op_create_destroy_empty",
+	test_shell_op_create_destroy_empty,
 },
 {
-	"tab",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_tab_tests,
+	"test_shell_op_create_destroy_with_tab",
+	test_shell_op_create_destroy_with_tab,
 },
 {
-	"token_list",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_token_list_tests,
+	"test_shell_op_create_destroy_with_token_list",
+	test_shell_op_create_destroy_with_token_list,
 },
-{
-	"token",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_token_tests,
-},
-{
-	"dll",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_dll_tests,
-},
-	CU_SUITE_INFO_NULL,
+	CU_TEST_INFO_NULL,
 };
