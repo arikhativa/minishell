@@ -11,7 +11,7 @@ on:
       - unlabeled
 
 jobs:
-  check:
+  build:
     runs-on: ubuntu-22.04
     
     steps:
