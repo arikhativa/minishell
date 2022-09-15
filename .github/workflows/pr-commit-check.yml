@@ -1,0 +1,23 @@
+name: "PR Commit Checker"
+on:
+  pull_request:
+    branches: [ main ]
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - labeled
+      - unlabeled
+
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+      - name: Print
+      run: git log
+    
