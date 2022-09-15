@@ -1,0 +1,14 @@
+{
+	"LABEL": {
+	  "name": "Format title to CamelCase",
+	  "color": "EEEEEE"
+	},
+	"CHECKS": {
+	  "regexp": "[A-Z]([A-Z0-9]*[a-z][a-z0-9]*[A-Z]|[a-z0-9]*[A-Z][A-Z0-9]*[a-z])[A-Za-z0-9]*"
+	},
+	"MESSAGES": {
+	  "success": "Title is OK :)",
+	  "failure": "Title has an issue (Must be CamelCase)",
+	  "notice": ""
+	}
+  }
