@@ -18,4 +18,4 @@ jobs:
         with:
           fetch-depth: 0
       - name: Print
-        run: git log
+        run: git log --skip=1 -1 --oneline --format=%s | sed 's/^.*: //'
