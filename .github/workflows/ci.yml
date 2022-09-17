@@ -12,11 +12,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: install dep
-      run: sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev
+    - name: Install Dependencies
+      run: ./script/install_dependencies.sh
 
-    - name: compile tests
+    - name: Compile Unit Tests
       run: make test.out
 
-    - name: run tests
+    - name: Run Unit Tests
       run: make check
+
+    - name: Check For Leaks
+      run: make check/leaks

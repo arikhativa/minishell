@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/09/14 14:32:42 by yoav             ###   ########.fr        #
+#    Updated: 2022/09/15 17:34:01 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,10 @@ export TEST_EXEC	= test.out
 export TEST_RES		= unit_test_result.txt
 TEST_SRC 			= $(wildcard $(TEST_DIR)/**/*.t.c)
 TEST_OBJ 			= $(TEST_SRC:.t.c=.t.o)
-TEST_SCRIPT			= scripts/run_tester.sh
+
+#---------- SCRIPT ----------
+SCRIPT_DIR			= script
+TEST_SCRIPT			= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
 CC 					= cc
@@ -82,7 +85,10 @@ $(TEST_EXEC): $(OBJ_DIR) $(OBJ_NO_MAIN) $(TEST_OBJ) $(LIBFT)
 	@$(CC) $(LDFLAGS) $(OBJ_NO_MAIN) $(TEST_OBJ) $(TEST_LDLIBS) -o $(TEST_EXEC)
 
 check: $(TEST_EXEC)
-	@bash $(TEST_SCRIPT)
+	@bash $(TEST_SCRIPT) unit_test
+
+check/leaks: $(TEST_EXEC)
+	@bash $(TEST_SCRIPT) memory
 	
 clean:
 	@$(MAKE) clean -sC $(LIBFT_DIR)
