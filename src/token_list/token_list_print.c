@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_iterate.c                                      :+:      :+:    :+:   */
+/*   token_list_print.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/02 10:53:07 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/17 12:26:46 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/17 12:00:44 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/17 12:32:46 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dll.h"
+#include "token_list.h"
 
-t_error_code	dll_iterate(register t_dll *lst, t_dll_iter f, void *param)
+static int	inter_func(t_dll *node, void *param)
 {
-	register int	stt;
+	(void)param;
+	printf("{ ");
+	token_print(node->value);
+	printf(" }");
+	if (node->next)
+		printf(", ");
+	return (SUCCESS);
+}
 
-	stt = SUCCESS;
-	while (lst && SUCCESS == stt)
-	{
-		stt = f(lst, param);
-		lst = lst->next;
-	}
-	return (stt);
+void	token_list_print(t_token_list *lst)
+{
+	printf("[ ");
+	dll_iterate(lst->tok_lst, inter_func, NULL);
+	printf(" ]\n");
 }

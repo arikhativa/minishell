@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_iterate.c                                      :+:      :+:    :+:   */
+/*   token_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/02 10:53:07 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/17 12:26:46 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/17 12:04:27 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/17 12:19:16 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dll.h"
+#include "token.h"
 
-t_error_code	dll_iterate(register t_dll *lst, t_dll_iter f, void *param)
+void	token_print(t_token *t)
 {
-	register int	stt;
-
-	stt = SUCCESS;
-	while (lst && SUCCESS == stt)
-	{
-		stt = f(lst, param);
-		lst = lst->next;
-	}
-	return (stt);
+	printf("type: %d, value: %s", t->type, t->value);
 }

@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.h                                            :+:      :+:    :+:   */
+/*   redirect_util.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 09:35:29 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 10:42:38 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/18 11:01:33 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/18 15:39:03 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_H
-# define TOKEN_H
+#ifndef REDIRECT_UTIL_H
+# define REDIRECT_UTIL_H
 
-# include <stdio.h>
-# include <stdlib.h>
-
-# include "error_code.h"
 # include "libft.h"
+# include "macro.h"
 
-typedef enum e_token_type
-{
-	WORD,
-	SEMICOLON,
-	PIPE,
-	NEW_LINE,
-	REDIRECT,
-	SEMI_REDIRECT,
-}	t_token_type;
-
-typedef struct s_token
-{
-	t_token_type	type;
-	char			*value;
-}	t_token;
-
-t_error_code	token_create(t_token **ret, char *ptr, t_token_type type);
-void			token_destroy(t_token **t);
-
-// print
-void			token_print(t_token *t);
+t_bool	is_rr(char *s);
+t_bool	is_rl(char *s);
+t_bool	is_drr(char *s);
+t_bool	is_drl(char *s);
+t_bool	is_redirect_symbol(char *s);
+char	*skip_redirect_symbol(char *s);
+t_bool	is_redirect(char *s);
+t_bool	is_semi_redirect(char *s);
 
 #endif

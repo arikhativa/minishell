@@ -6,55 +6,56 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/09/15 17:34:01 by yoav             ###   ########.fr        #
+#    Updated: 2022/09/18 15:41:35 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 include makefile_util.mk
 
-NAME 				= minishell
-export ROOT_DIR		= $(CURDIR)
+NAME 					= minishell
+export ROOT_DIR			= $(CURDIR)
 
 #---------- HEAD ----------
-HEAD_DIR 			= include
-HEAD_NAME 			= $(notdir $(wildcard $(HEAD_DIR)/*.h))
-HEAD 				= $(addprefix $(HEAD_DIR)/, $(HEAD_NAME))
+HEAD_DIR 				= include
+HEAD_NAME 				= $(notdir $(wildcard $(HEAD_DIR)/*.h))
+HEAD 					= $(addprefix $(HEAD_DIR)/, $(HEAD_NAME))
 
 #---------- SRC ----------
-SRC_DIR 			= src
-SRC 				= $(wildcard $(SRC_DIR)/**/*.c)
+SRC_DIR 				= src
+SRC 					= $(wildcard $(SRC_DIR)/**/*.c)
 
 #---------- OBJ ----------
-OBJ_DIR 			= obj
-OBJ					= $(subst $(SRC_DIR),$(OBJ_DIR), $(SRC:.c=.o))
-OBJ_NO_MAIN	 		= $(filter-out obj/main/main.o,$(OBJ))
+OBJ_DIR 				= obj
+OBJ						= $(subst $(SRC_DIR),$(OBJ_DIR), $(SRC:.c=.o))
+OBJ_NO_MAIN	 			= $(filter-out obj/main/main.o,$(OBJ))
 
 #---------- LIBFT ----------
-LIBFT_NAME			= libft.a
-LIBFT_DIR			= libft
-LIBFT_HEAD_DIR		= $(addprefix $(LIBFT_DIR)/, libft)
-LIBFT				= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
+LIBFT_NAME				= libft.a
+LIBFT_DIR				= libft
+LIBFT_HEAD_DIR			= $(addprefix $(LIBFT_DIR)/, libft)
+LIBFT					= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
 #---------- TEST ----------
-TEST_DIR			= unit_test
-TEST_HEAD_DIR		= -I$(TEST_DIR) -I$(HEAD_DIR)
-TEST_LDLIBS			= -lcunit $(LDLIBS)
-export TEST_EXEC	= test.out
-export TEST_RES		= unit_test_result.txt
-TEST_SRC 			= $(wildcard $(TEST_DIR)/**/*.t.c)
-TEST_OBJ 			= $(TEST_SRC:.t.c=.t.o)
+TEST_DIR				= unit_test
+TEST_HEAD_DIR			= -I$(TEST_DIR) -I$(HEAD_DIR)
+TEST_LDLIBS				= -lcunit $(LDLIBS)
+export TEST_EXEC		= test.out
+export TEST_RES			= unit_test_result.txt
+export VALGRIND_OUTPUT 	= valgrind_out.txt
+TEST_SRC 				= $(wildcard $(TEST_DIR)/**/*.t.c)
+TEST_OBJ 				= $(TEST_SRC:.t.c=.t.o)
 
 #---------- SCRIPT ----------
-SCRIPT_DIR			= script
-TEST_SCRIPT			= $(addprefix $(SCRIPT_DIR)/, test.sh)
+SCRIPT_DIR				= script
+TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
-CC 					= cc
-I_FLAG 				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR)
-CFLAGS 				= -c -Wall -Wextra -Werror $(I_FLAG)
-LDFLAGS 			= -L$(LIBFT_DIR)
-LDLIBS 				= -lpthread -lft
+CC 						= cc
+I_FLAG 					= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR)
+CFLAGS 					= -c -Wall -Wextra -Werror $(I_FLAG)
+LDFLAGS 				= -L$(LIBFT_DIR)
+LDLIBS 					= -lpthread -lft
 
 #---------- IMPLICT RULES ----------
 $(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
@@ -93,6 +94,8 @@ check/leaks: $(TEST_EXEC)
 clean:
 	@$(MAKE) clean -sC $(LIBFT_DIR)
 	@$(RM) -rf $(OBJ_DIR)
+	@$(RM) $(VALGRIND_OUTPUT)
+	@$(RM) $(TEST_RES)
 	@$(RM) $(TEST_OBJ)
 	@echo "$(RED)Objects Removed!$(NC)"
 
