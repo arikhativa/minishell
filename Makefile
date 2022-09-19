@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/09/18 15:41:35 by yoav             ###   ########.fr        #
+#    Updated: 2022/09/21 13:07:22 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,10 @@ LIBFT					= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
 #---------- TEST ----------
 TEST_DIR				= unit_test
-TEST_HEAD_DIR			= -I$(TEST_DIR) -I$(HEAD_DIR)
+TEST_HEAD_DIR			= $(addprefix $(TEST_DIR)/, include)
+TEST_HEAD_NMAE			= $(notdir $(wildcard $(TEST_HEAD_DIR)/*.h))
+TEST_HEAD				= $(addprefix $(TEST_HEAD_DIR)/, $(TEST_HEAD_NMAE))
+TEST_HEAD_FLAG			= -I$(TEST_HEAD_DIR)
 TEST_LDLIBS				= -lcunit $(LDLIBS)
 export TEST_EXEC		= test.out
 export TEST_RES			= unit_test_result.txt
@@ -52,8 +55,8 @@ TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
 CC 						= cc
-I_FLAG 					= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR)
-CFLAGS 					= -c -Wall -Wextra -Werror $(I_FLAG)
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR)
+CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
 LDFLAGS 				= -L$(LIBFT_DIR)
 LDLIBS 					= -lpthread -lft
 
@@ -61,8 +64,8 @@ LDLIBS 					= -lpthread -lft
 $(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
 	@$(CC) $(CFLAGS) $< -o $(@)
 
-$(addprefix $(TEST_DIR)/, %.t.o): $(addprefix $(TEST_DIR)/, %.t.c)
-	@$(CC) $(CFLAGS) -c $^ $(TEST_HEAD_DIR) -o $@
+$(addprefix $(TEST_DIR)/, %.t.o): $(addprefix $(TEST_DIR)/, %.t.c) $(TEST_HEAD)
+	@$(CC) $(CFLAGS) $(TEST_HEAD_FLAG) $< -o $@
 
 #---------- RULES ----------
 .PHONY: clean fclean re all check

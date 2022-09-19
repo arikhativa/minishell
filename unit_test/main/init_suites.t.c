@@ -6,13 +6,21 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 16:29:00 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/19 16:22:26 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test.h"
 
 CU_SuiteInfo	g_suites[] = {
+{
+	"parser",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_parser_tests,
+},
 {
 	"cmd_list",
 	init_suite,

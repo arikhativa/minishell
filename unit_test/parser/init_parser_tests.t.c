@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_code.h                                       :+:      :+:    :+:   */
+/*   init_parser_tests.t.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/19 16:56:33 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/21 13:42:00 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_CODE_H
-# define ERROR_CODE_H
+#include "unit_test.h"
 
-# include <stdio.h>
-
-typedef enum s_error_code
+CU_TestInfo	g_parser_tests[] = {
 {
-	ERROR = -1,
-	SUCCESS = 0,
-	ALLOCATION_ERROR,
-	SYNTAX_ERROR,
-	SYNTAX_PIPE_STILL_OPEN,
-}	t_error_code;
-
-void	error_code_print(t_error_code err);
-
-#endif
+	"test_parser_semi_redirect_error",
+	test_parser_semi_redirect_error,
+},
+{
+	"test_parser_open_pipe",
+	test_parser_open_pipe,
+},
+{
+	"test_parser_token_check",
+	test_parser_token_check,
+},
+{
+	"test_parser_bad_first_tok",
+	test_parser_bad_first_tok,
+},
+	CU_TEST_INFO_NULL,
+};
