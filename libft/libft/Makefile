@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/13 11:26:43 by yoav              #+#    #+#              #
-#    Updated: 2022/09/12 09:55:59 by yoav             ###   ########.fr        #
+#    Updated: 2022/09/17 12:58:21 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = \
 	ft_strlen.c \
 	ft_strrchr.c \
 	ft_strncmp.c \
+	ft_strcmp.c \
 	ft_strlcpy.c \
 	ft_strlcat.c \
 	ft_strdup.c \

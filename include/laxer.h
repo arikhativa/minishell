@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.h                                            :+:      :+:    :+:   */
+/*   laxer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 09:35:29 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 10:42:38 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/17 11:20:48 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/18 15:39:10 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_H
-# define TOKEN_H
+#ifndef LAXER_H
+# define LAXER_H
 
-# include <stdio.h>
-# include <stdlib.h>
-
+# include "shell_op.h"
 # include "error_code.h"
-# include "libft.h"
+# include "token.h"
+# include "redirect_util.h"
+# include "macro.h"
+# include "token_list.h"
 
-typedef enum e_token_type
-{
-	WORD,
-	SEMICOLON,
-	PIPE,
-	NEW_LINE,
-	REDIRECT,
-	SEMI_REDIRECT,
-}	t_token_type;
-
-typedef struct s_token
-{
-	t_token_type	type;
-	char			*value;
-}	t_token;
-
-t_error_code	token_create(t_token **ret, char *ptr, t_token_type type);
-void			token_destroy(t_token **t);
-
-// print
-void			token_print(t_token *t);
+t_token_type	laxer_get_token_type(char *s);
+t_error_code	laxer_create_token(t_token_list *tok_lst, char *s);
+t_error_code	laxer_create_token_list(t_shell_op *sp);
 
 #endif

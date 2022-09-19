@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dll_iterate.c                                      :+:      :+:    :+:   */
+/*   macro.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/02 10:53:07 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/17 12:26:46 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/18 12:00:03 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dll.h"
+#ifndef MACRO_H
+# define MACRO_H
 
-t_error_code	dll_iterate(register t_dll *lst, t_dll_iter f, void *param)
+# define PIPE_CHAR			'|'
+# define RR_CHAR			'>'
+# define RL_CHAR			'<'
+# define SEMICOLON_CHAR		';'
+# define NEW_LINE_CHAR		'\n'
+# define SINGLE_QUOTE_CHAR	'\''
+# define DOUBLE_QUOTE_CHAR	'\"'
+
+typedef enum e_bool
 {
-	register int	stt;
+	FALSE = 0,
+	TRUE = 1,
+}	t_bool;
 
-	stt = SUCCESS;
-	while (lst && SUCCESS == stt)
-	{
-		stt = f(lst, param);
-		lst = lst->next;
-	}
-	return (stt);
-}
+#endif
