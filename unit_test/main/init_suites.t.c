@@ -6,13 +6,29 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/17 11:50:49 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/18 16:29:00 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test.h"
 
 CU_SuiteInfo	g_suites[] = {
+{
+	"cmd_list",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_cmd_list_tests,
+},
+{
+	"arg_list",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_arg_list_tests,
+},
 {
 	"laxer",
 	init_suite,
