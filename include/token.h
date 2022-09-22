@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:35:29 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 10:42:38 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/22 17:10:30 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+# include "macro.h"
 # include "error_code.h"
 # include "libft.h"
 
@@ -40,5 +41,15 @@ void			token_destroy(t_token **t);
 
 // print
 void			token_print(t_token *t);
+
+// is
+t_bool			token_is_word(t_token *t);
+t_bool			token_is_pipe(t_token *t);
+t_bool			token_is_redirect(t_token *t);
+t_bool			token_is_semi_redirect(t_token *t);
+t_bool			token_is_semicolon(t_token *t);
+t_bool			token_is_word_or_redirect(t_token *t);
+t_bool			token_is_new_line(t_token *t);
+t_bool			token_is_break(t_token *t);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 11:01:33 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 15:39:03 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/22 17:25:02 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ t_bool	is_redirect_symbol(char *s);
 char	*skip_redirect_symbol(char *s);
 t_bool	is_redirect(char *s);
 t_bool	is_semi_redirect(char *s);
+
+// redirect 3
+t_bool	redirect_util_is_input(char *s);
+t_bool	redirect_util_is_output(char *s);
 
 #endif

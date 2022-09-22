@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:54:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/21 13:06:38 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/22 17:00:53 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,4 @@ t_error_code	is_token_valid(t_dll *node, int *skip)
 			return (break_logic(node, skip));
 	}
 	return (err);
-}
-
-t_dll	*get_next_node(t_dll *node, int i)
-{
-	while (i)
-	{
-		node = node->next;
-		--i;
-	}
-	return (node);
 }

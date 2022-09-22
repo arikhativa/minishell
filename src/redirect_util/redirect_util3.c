@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   redirect_util3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 12:25:38 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/22 17:23:34 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/18 11:03:53 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/22 17:25:12 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "redirect_util.h"
 
-# include "macro.h"
-# include "error_code.h"
-# include "shell_op.h"
-# include "cmd_list.h"
-# include "redirect_util.h"
-# include "dll.h"
+t_bool	redirect_util_is_input(char *s)
+{
+	return (RL_CHAR == *s);
+}
 
-t_error_code	parser_check_tokens(t_shell_op *sp, char **bad_str);
-t_error_code	is_token_valid(t_dll *node, int *skip);
-
-#endif
+t_bool	redirect_util_is_output(char *s)
+{
+	return (RR_CHAR == *s);
+}

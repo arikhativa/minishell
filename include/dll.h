@@ -42,6 +42,7 @@ t_error_code	dll_iterate(t_dll *lst, t_dll_iter f, void *param);
 
 // get
 t_dll			*dll_get_last_elem(t_dll *lst);
+t_dll			*dll_get_n_node(t_dll *node, int i);
 
 // is
 int				dll_is_last_elem(t_dll *elem);
