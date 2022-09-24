@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/25 16:32:26 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:55:28 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ CU_SuiteInfo	g_suites[] = {
 	g_parser_tests,
 },
 {
+	"executer",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_executer_tests,
+},
+{
 	"cmd_list",
 	init_suite,
 	clean_suite,
 	NULL,
 	NULL,
 	g_cmd_list_tests,
-},
-{
-	"arg_list",
-	init_suite,
-	clean_suite,
-	NULL,
-	NULL,
-	g_arg_list_tests,
 },
 {
 	"laxer",

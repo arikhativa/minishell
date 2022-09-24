@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_code.h                                       :+:      :+:    :+:   */
+/*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/05 15:34:39 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/05 15:39:13 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_CODE_H
-# define ERROR_CODE_H
+#include "executer.h"
 
-# include <stdio.h>
-
-typedef enum s_error_code
+// TODO do something with stt = execve() on err
+t_error_code	executer_run_cmd(t_cmd *c)
 {
-	ERROR = -1,
-	SUCCESS = 0,
-	ALLOCATION_ERROR,
-	SYNTAX_ERROR,
-	SYNTAX_PIPE_STILL_OPEN,
-	NEW_PROC_ERROR,
-}	t_error_code;
+	int		stt;
+	pid_t	pid;
 
-void	error_code_print(t_error_code err);
-
-#endif
+	pid = fork();
+	if (NEW_PROC == pid)
+	{
+		stt = execve(c->argv[0], c->argv, c->env);
+		if (ERROR == stt)
+			printf("%s\n", strerror(errno));
+	}
+	else if (ERROR == pid)
+		return (NEW_PROC_ERROR);
+	wait(&pid);
+	return (SUCCESS);
+}
