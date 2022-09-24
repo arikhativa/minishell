@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 08:53:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/17 21:40:49 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/12 09:58:59 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_error_code	tab_create(char	***ret, size_t size)
 	return (SUCCESS);
 }
 
-void	tab_destroy(char ***t)
+void	tab_deep_destroy(char ***t)
 {
 	char	**tab;
 	size_t	i;
@@ -49,6 +49,22 @@ void	tab_destroy(char ***t)
 	{
 		ft_bzero(tab[i], ft_strlen(tab[i]));
 		free(tab[i]);
+		tab[i] = NULL;
+		++i;
+	}
+	free(*t);
+	*t = NULL;
+}
+
+void	tab_shallow_destroy(char ***t)
+{
+	char	**tab;
+	size_t	i;
+
+	tab = *t;
+	i = 0;
+	while (tab[i])
+	{
 		tab[i] = NULL;
 		++i;
 	}
