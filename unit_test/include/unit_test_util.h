@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_op.h                                         :+:      :+:    :+:   */
+/*   unit_test_util.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/19 12:28:53 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/20 10:20:37 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/21 13:03:23 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_OP_H
-# define SHELL_OP_H
+#ifndef UNIT_TEST_UTIL_H
+# define UNIT_TEST_UTIL_H
 
-# include "error_code.h"
+# include <stdarg.h>
+
 # include "libft.h"
 # include "tab.h"
-# include "token_list.h"
-# include "cmd_list.h"
+# include "error_code.h"
+# include "unit_test.h"
 
-typedef struct s_shell_op
-{
-	char			**input;
-	t_token_list	*token_list;
-	t_cmd_list		*cmd_list;
-}	t_shell_op;
-
-t_error_code	shell_op_create(t_shell_op **ret);
-void			shell_op_destroy(t_shell_op **sp);
-void			shell_op_set_token_list(t_shell_op *sp, t_token_list *tok_lst);
-void			shell_op_set_input(t_shell_op *sp, char **input);
+char	**util_create_tab(int size, ...);
 
 #endif

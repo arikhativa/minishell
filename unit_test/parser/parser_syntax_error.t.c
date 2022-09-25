@@ -1,73 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_op.t.c                                       :+:      :+:    :+:   */
+/*   parser_syntax_error.t.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/20 10:40:58 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/21 13:43:04 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "laxer.h"
 #include "unit_test_util.h"
-#include "shell_op.h"
 #include "unit_test.h"
+#include "parser.h"
 
-void	test_shell_op_create_destroy_empty(void)
+void	test_parser_bad_first_tok(void)
 {
 	t_error_code	err;
 	t_shell_op		*sp;
+	char			*bad_str;
 
+	bad_str = NULL;
 	err = shell_op_create(&sp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
+	sp->input = util_create_tab(1, "|");
+	err = laxer_create_token_list(sp);
+	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
+	err = parser_check_tokens(sp, &bad_str);
+	CU_ASSERT_EQUAL(err, SYNTAX_ERROR);
+	CU_ASSERT_STRING_EQUAL(bad_str, "|");
 	shell_op_destroy(&sp);
-	CU_ASSERT_PTR_NULL(sp);
 }
 
-void	test_shell_op_create_destroy_with_tab(void)
+void	test_parser_open_pipe(void)
 {
 	t_error_code	err;
 	t_shell_op		*sp;
-	char			**tab;
+	char			*bad_str;
 
+	bad_str = NULL;
 	err = shell_op_create(&sp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	tab = util_create_tab(2, "123", "abd");
-	shell_op_set_input(sp, tab);
+	sp->input = util_create_tab(3, "pwd", "|", "\n");
+	err = laxer_create_token_list(sp);
+	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
+	err = parser_check_tokens(sp, &bad_str);
+	CU_ASSERT_EQUAL(err, SYNTAX_PIPE_STILL_OPEN);
+	CU_ASSERT_PTR_NULL(bad_str);
 	shell_op_destroy(&sp);
-	CU_ASSERT_PTR_NULL(sp);
 }
 
-static void	add_tab(t_shell_op *sp)
-{
-	char	**tab;
-
-	tab = util_create_tab(2, "123", "abd");
-	shell_op_set_input(sp, tab);
-}
-
-void	test_shell_op_create_destroy_with_token_list(void)
+void	test_parser_semi_redirect_error(void)
 {
 	t_error_code	err;
 	t_shell_op		*sp;
-	t_token_list	*tok_lst;
-	t_token			*tok;
+	char			*bad_str;
 
+	bad_str = NULL;
 	err = shell_op_create(&sp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	add_tab(sp);
-	err = token_list_create(&tok_lst);
+	sp->input = util_create_tab(3, "cat", "<", "\n");
+	err = laxer_create_token_list(sp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	shell_op_set_token_list(sp, tok_lst);
-	err = token_create(&tok, sp->input[0], WORD);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	err = token_list_add_last(tok_lst, tok);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	err = token_create(&tok, sp->input[1], WORD);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	err = token_list_add_last(tok_lst, tok);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
+	err = parser_check_tokens(sp, &bad_str);
+	CU_ASSERT_EQUAL(err, SYNTAX_ERROR);
+	CU_ASSERT_PTR_NOT_NULL_FATAL(bad_str);
+	CU_ASSERT_STRING_EQUAL(bad_str, "<");
 	shell_op_destroy(&sp);
-	CU_ASSERT_PTR_NULL(sp);
 }

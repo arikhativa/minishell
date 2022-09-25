@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:56:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 16:44:37 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/21 13:07:09 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	internal_create_cmd_list(t_cmd_list **lst)
 	t_error_code	err;
 	t_cmd			*c1;
 	t_cmd			*c2;
-	static char *tab1[] = {"echo", "a", "b"};
-	static char *tab2[] = {"cat", "file", "-e"};
+	static char		*tab1[] = {"echo", "a", "b"};
+	static char		*tab2[] = {"cat", "file", "-e"};
 
 	err = cmd_list_create(lst);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);

@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   laxer.t.c                                          :+:      :+:    :+:   */
+/*   unit_test_util.t.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/20 10:41:51 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/20 09:57:29 by yoav              #+#    #+#             */
+/*   Updated: 2022/09/20 10:42:47 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test_util.h"
-#include "unit_test.h"
-#include "laxer.h"
 
-void	test_laxer_create_destroy(void)
+static char	*copy_str(char *s)
 {
-	t_error_code	err;
-	t_shell_op		*sp;
+	char	*ret;
 
-	err = shell_op_create(&sp);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	sp->input = util_create_tab(5, "cat", "file", "|", "echo", "1>file2");
-	err = laxer_create_token_list(sp);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	shell_op_destroy(&sp);
+	ret = ft_strdup(s);
+	CU_ASSERT_PTR_NOT_NULL_FATAL(ret);
+	return (ret);
+}
+
+char	**util_create_tab(int size, ...)
+{
+	va_list			list;
+	char			**tab;
+	char			*s;
+	int				i;
+
+	va_start(list, size);
+	if (SUCCESS != tab_create(&tab, size))
+		CU_ASSERT_FATAL(CU_FALSE);
+	i = 0;
+	while (i < size)
+	{
+		s = va_arg(list, char *);
+		tab[i] = copy_str(s);
+		++i;
+	}
+	va_end(list);
+	return (tab);
 }
