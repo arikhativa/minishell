@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:35:18 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/13 10:46:57 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/06 10:46:02 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #  define MAX_FD 1000
 # endif
 
-# ifndef ERROR
-#  define ERROR			-1
+# ifndef GNL_ERROR
+#  define GNL_ERROR			-1
 # endif
 
 # define NL_CHAR		'\n'

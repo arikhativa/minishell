@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/05 15:39:13 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/06 10:59:51 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,18 @@ t_error_code	executer_run_cmd(t_cmd *c)
 	wait(&pid);
 	return (SUCCESS);
 }
+
+// TODO make this better
+t_error_code	executer_run_cmd_list(t_shell_op *sp)
+{
+	t_dll	*node = sp->cmd_list->lst;
+
+	// cmd_list_get_next_cmd(shell_op_get_cmd_list(sp));
+	while (node)
+	{
+		executer_run_cmd((t_cmd *)node->value);
+		node = node->next;
+	}
+	return (SUCCESS);
+}
+

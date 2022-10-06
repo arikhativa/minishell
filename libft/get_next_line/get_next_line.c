@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:35:23 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/13 10:46:40 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/06 10:46:27 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ ssize_t	extened_buffer(int fd, char **buff)
 
 	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!tmp)
-		return (ERROR);
+		return (GNL_ERROR);
 	stt = read(fd, tmp, BUFFER_SIZE);
 	if (0 >= stt)
 	{
@@ -73,7 +73,7 @@ ssize_t	extened_buffer(int fd, char **buff)
 	tmp[stt] = '\0';
 	new_buff = ft_join_str(*buff, tmp);
 	if (!new_buff)
-		return (ERROR);
+		return (GNL_ERROR);
 	*buff = new_buff;
 	return (stt);
 }
@@ -100,12 +100,12 @@ char	*get_next_line(int fd)
 	char		*ret;
 	ssize_t		stt;
 
-	stt = ERROR;
+	stt = GNL_ERROR;
 	ret = create_line(&(buff[fd]));
 	while (!ret && END_OF_FILE != stt)
 	{
 		stt = extened_buffer(fd, &(buff[fd]));
-		if (ERROR == stt)
+		if (GNL_ERROR == stt)
 		{
 			if (NULL != (buff[fd]))
 				free((buff[fd]));

@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/09/21 13:07:22 by yoav             ###   ########.fr        #
+#    Updated: 2022/10/06 10:39:16 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ OBJ_NO_MAIN	 			= $(filter-out obj/main/main.o,$(OBJ))
 #---------- LIBFT ----------
 LIBFT_NAME				= libft.a
 LIBFT_DIR				= libft
+GNL_HEAD_DIR			= $(addprefix $(LIBFT_DIR)/, get_next_line)
 LIBFT_HEAD_DIR			= $(addprefix $(LIBFT_DIR)/, libft)
 LIBFT					= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
@@ -55,7 +56,7 @@ TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
 CC 						= cc
-HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR)
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(GNL_HEAD_DIR)
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
 LDFLAGS 				= -L$(LIBFT_DIR)
 LDLIBS 					= -lpthread -lft
