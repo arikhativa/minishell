@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/10 14:55:23 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/10 14:55:46 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define TEST_RES "unit_test_tmp.txt"
 
+extern CU_TestInfo	g_commander_tests[];
 extern CU_TestInfo	g_executer_tests[];
 extern CU_TestInfo	g_parser_tests[];
 extern CU_TestInfo	g_cmd_list_tests[];
@@ -42,6 +43,9 @@ void	test_parser_open_pipe(void);
 void	test_parser_semi_redirect_error(void);
 void	test_parser_token_check(void);
 void	test_parser_bad_first_tok(void);
+
+//
+void	test_commander(void);
 
 // cmd_list
 void	test_cmd_list_create_destroy(void);

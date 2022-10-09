@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:52:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/06 09:41:53 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/09 12:38:31 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	shell_op_destroy(t_shell_op **sp)
 		tab_deep_destroy(&((*sp)->input));
 	if ((*sp)->token_list)
 		token_list_destroy(&((*sp)->token_list));
+	if ((*sp)->cmd_list)
+		cmd_list_destroy(&((*sp)->cmd_list));
 	ft_bzero(*sp, sizeof(t_shell_op));
 	free(*sp);
 	*sp = NULL;
