@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/20 10:41:51 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/12 11:50:06 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	test_laxer_create_destroy(void)
 	t_error_code	err;
 	t_shell_op		*sp;
 
-	err = shell_op_create(&sp);
+	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
 	sp->input = util_create_tab(5, "cat", "file", "|", "echo", "1>file2");
 	err = laxer_create_token_list(sp);

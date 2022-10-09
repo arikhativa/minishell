@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.t.c                                         :+:      :+:    :+:   */
+/*   parser_valid_token.t.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/21 13:02:18 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/12 11:50:26 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	test_parser_token_check(void)
 	char			*bad_str;
 
 	bad_str = NULL;
-	err = shell_op_create(&sp);
+	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
 	sp->input = util_create_tab(7, "cat", "file", "|", "grep", "a", "1>file2", \
 		"\n");
