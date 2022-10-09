@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/20 10:37:39 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/12 11:50:00 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	test_laxer_check_all_tokens(void)
 	t_error_code	err;
 	t_shell_op		*sp;
 
-	err = shell_op_create(&sp);
+	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
 	sp->input = util_create_tab(15, "cat", "<<", ">>", "|", ">file", "<file", \
 		"1<", "2<", "a2<", "0<file", ";", "\n", "0<<str", "2>>file", "0<<");

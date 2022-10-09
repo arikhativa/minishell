@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 10:06:23 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/19 12:43:27 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/09 10:55:51 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_error_code	token_list_create(t_token_list **ret);
 void			token_list_destroy(t_token_list	**lst);
 t_error_code	token_list_add_last(t_token_list *lst, t_token *tok);
 t_dll			*token_list_get_node(t_token_list *lst);
+t_token			*token_list_get_token(t_dll *n);
 
 // print
 void			token_list_print(t_token_list *lst);

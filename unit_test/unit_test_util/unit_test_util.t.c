@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:57:29 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/20 10:42:47 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/12 12:24:04 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,15 @@ char	**util_create_tab(int size, ...)
 	}
 	va_end(list);
 	return (tab);
+}
+
+void	util_check_file_and_remove(char *filename)
+{
+	if (SUCCESS == access(filename, F_OK))
+	{
+		if (SUCCESS != remove(filename))
+			CU_FAIL("file was not deleted");
+	}
+	else
+		CU_FAIL("file was not created");
 }

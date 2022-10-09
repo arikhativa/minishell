@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   cmd_list_get.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 12:20:40 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/11 10:39:07 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/12 11:43:11 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#include "cmd_list.h"
 
-# include <string.h>
-# include <unistd.h>
-# include <errno.h>
-# include <sys/types.h>
-# include <sys/wait.h>
+t_dll	*cmd_list_get_list(t_cmd_list *lst)
+{
+	return (lst->lst);
+}
 
-# include "macro.h"
-# include "cmd.h"
-# include "shell_op.h"
-# include "error_code.h"
-
-t_error_code	executer_run_cmd(t_cmd *c);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
-
-#endif
+t_dll	*cmd_list_get_next_cmd(t_dll *node)
+{
+	return (node->next);
+}

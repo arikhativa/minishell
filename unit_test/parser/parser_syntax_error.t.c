@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/21 13:43:04 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/12 11:50:23 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	test_parser_bad_first_tok(void)
 	char			*bad_str;
 
 	bad_str = NULL;
-	err = shell_op_create(&sp);
+	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
 	sp->input = util_create_tab(1, "|");
 	err = laxer_create_token_list(sp);
@@ -40,7 +40,7 @@ void	test_parser_open_pipe(void)
 	char			*bad_str;
 
 	bad_str = NULL;
-	err = shell_op_create(&sp);
+	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
 	sp->input = util_create_tab(3, "pwd", "|", "\n");
 	err = laxer_create_token_list(sp);
@@ -58,7 +58,7 @@ void	test_parser_semi_redirect_error(void)
 	char			*bad_str;
 
 	bad_str = NULL;
-	err = shell_op_create(&sp);
+	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
 	sp->input = util_create_tab(3, "cat", "<", "\n");
 	err = laxer_create_token_list(sp);

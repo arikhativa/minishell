@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.t.c                                       :+:      :+:    :+:   */
+/*   commander.t.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 15:56:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 12:27:19 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/12 12:14:49 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test_util.h"
 #include "unit_test.h"
-#include "executer.h"
 #include "commander.h"
-#include "laxer.h"
-
-void	test_basic_executer(void)
-{
-	t_error_code		err;
-	t_cmd				*c;
-	char				**args;
-
-	err = cmd_create(&c);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	args = util_create_tab(2, "/usr/bin/touch", TEST_FILE);
-	cmd_add_arg(c, args[0]);
-	cmd_add_arg(c, args[1]);
-	executer_run_cmd(c);
-	util_check_file_and_remove(TEST_FILE);
-	cmd_destroy(&c);
-	tab_deep_destroy(&args);
-}
 
 static void	init_sp(t_shell_op **ret)
 {
@@ -41,25 +22,34 @@ static void	init_sp(t_shell_op **ret)
 
 	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	input = util_create_tab(5, "/usr/bin/touch", TEST_FILE, "|", \
-		"/usr/bin/touch", TEST_FILE2);
+	input = util_create_tab(8, "cat", "file", "|", "grep", "-v", "a", "\n", \
+		"pwd");
 	shell_op_set_input(sp, input);
 	err = laxer_create_token_list(sp);
-	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	err = commander_create_cmds(sp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	*ret = sp;
 }
 
-void	test_multi_cmd_exec(void)
+void	test_commander(void)
 {
 	t_error_code	err;
 	t_shell_op		*sp;
+	t_cmd			*cmd;
 
 	init_sp(&sp);
-	err = executer_run_all_cmds(sp);
+	err = commander_create_cmds(sp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	util_check_file_and_remove(TEST_FILE);
-	util_check_file_and_remove(TEST_FILE2);
+	cmd = sp->cmd_list->lst->value;
+	CU_ASSERT_STRING_EQUAL(cmd->argv[0], "cat");
+	CU_ASSERT_STRING_EQUAL(cmd->argv[1], "file");
+	CU_ASSERT_PTR_NULL(cmd->argv[2]);
+	cmd = sp->cmd_list->lst->next->value;
+	CU_ASSERT_STRING_EQUAL(cmd->argv[0], "grep");
+	CU_ASSERT_STRING_EQUAL(cmd->argv[1], "-v");
+	CU_ASSERT_STRING_EQUAL(cmd->argv[2], "a");
+	CU_ASSERT_PTR_NULL(cmd->argv[3]);
+	cmd = sp->cmd_list->lst->next->next->value;
+	CU_ASSERT_STRING_EQUAL(cmd->argv[0], "pwd");
+	CU_ASSERT_PTR_NULL(cmd->argv[1]);
 	shell_op_destroy(&sp);
 }

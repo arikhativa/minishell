@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   shell_op_get.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 12:20:40 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/11 10:40:13 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/12 11:52:41 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#include "shell_op.h"
 
-# include <string.h>
-# include <unistd.h>
-# include <errno.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-
-# include "macro.h"
-# include "cmd.h"
-# include "shell_op.h"
-# include "error_code.h"
-
-t_error_code	executer_run_cmd(t_cmd *c);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
-
-#endif
+t_cmd_list	*shell_op_get_cmd_list(t_shell_op *sp)
+{
+	return (sp->cmd_list);
+}
