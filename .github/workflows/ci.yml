@@ -16,6 +16,9 @@ jobs:
     - name: Install Dependencies
       run: ./script/install_dependencies.sh
 
+    - name: Check norm
+      run: make check/norm
+
     - name: Compile Unit Tests
       run: make test.out
 
