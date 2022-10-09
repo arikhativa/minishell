@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/10/09 14:28:22 by al7aro-g         ###   ########.fr        #
+#    Updated: 2022/10/10 14:50:19 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ CC 						= cc
 HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR)
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
 LDFLAGS 				= -L$(LIBFT_DIR)
-LDLIBS 					= -lpthread -lft
+LDLIBS 					= -lpthread -lft -lreadline
 
 #---------- IMPLICT RULES ----------
 $(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
