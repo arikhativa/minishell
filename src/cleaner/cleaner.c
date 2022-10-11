@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   cleaner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/11 13:09:00 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/11 14:04:03 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/11 14:13:30 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#include "cleaner.h"
 
-# include <string.h>
-# include <unistd.h>
-# include <errno.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-
-# include "libft.h"
-# include "macro.h"
-# include "cmd.h"
-# include "shell_op.h"
-# include "error_code.h"
-
-t_error_code	executer_run_cmd(t_cmd *c);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
-
-#endif
+void	cleaner_round_clean(t_shell_op *sp)
+{
+	if (sp->input)
+	{
+		printf("aa\n");
+		tab_deep_destroy(&(sp->input));
+		token_list_destroy(&(sp->token_list));
+		cmd_list_destroy(&(sp->cmd_list));
+	}
+}

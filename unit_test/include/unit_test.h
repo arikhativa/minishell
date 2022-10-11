@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/10 14:55:46 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/11 13:36:51 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	test_tab_add(void);
 void	test_tab_create_destroy(void);
 
 // reader
+void	test_reader_fake_stdin(void);
 void	test_reader(void);
 
 // token

@@ -2,7 +2,7 @@
 
 run_with_valgrind()
 {
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=$VALGRIND_OUTPUT $ROOT_DIR/$TEST_EXEC > $ROOT_DIR/$TEST_RES
+	valgrind --suppressions=$ROOT_DIR/resources/readline_suppression.supp --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=$VALGRIND_OUTPUT $ROOT_DIR/$TEST_EXEC > $ROOT_DIR/$TEST_RES
 }
 
 check_leaks()

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:19:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/10 14:11:21 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/11 10:50:51 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ t_error_code	commander_init_all_cmds(t_cmd_list *cmd_lst, \
 	return (err);
 }
 
+int	add_envp(t_dll *elem, void *param)
+{
+	t_cmd	*c;
+
+	c = elem->value;
+	c->env = param;
+	return (SUCCESS);
+}
+ 
 t_error_code	commander_create_cmds(t_shell_op *sp)
 {
 	t_error_code	err;
@@ -69,5 +78,6 @@ t_error_code	commander_create_cmds(t_shell_op *sp)
 		cmd_list_destroy(&(sp->cmd_list));
 		return (err);
 	}
+	err = dll_iterate(sp->cmd_list->lst, add_envp, sp->envp);
 	return (err);
 }

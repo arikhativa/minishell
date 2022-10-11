@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   cleaner.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/11 13:09:00 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/18 16:09:28 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/11 14:08:10 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#ifndef CLEANER_H
+# define CLEANER_H
 
-# include <string.h>
-# include <unistd.h>
-# include <errno.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-
-# include "libft.h"
-# include "macro.h"
-# include "cmd.h"
+# include "tab.h"
+# include "token_list.h"
+# include "cmd_list.h"
 # include "shell_op.h"
-# include "error_code.h"
 
-t_error_code	executer_run_cmd(t_cmd *c);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
+void	cleaner_round_clean(t_shell_op *sp);
 
 #endif

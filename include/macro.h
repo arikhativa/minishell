@@ -6,13 +6,15 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/10 14:55:08 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/11 13:57:38 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MACRO_H
 # define MACRO_H
 
+# define MINISHELL_NAME		"minishell"
+# define SYNTAX_ERROR_MSG	"syntax error near unexpected token"
 # define PIPE_CHAR			'|'
 # define RR_CHAR			'>'
 # define RL_CHAR			'<'
@@ -21,6 +23,7 @@
 # define SINGLE_QUOTE_CHAR	'\''
 # define DOUBLE_QUOTE_CHAR	'\"'
 # define SPACE_CHAR			' '
+# define IGNORE_PROMPT		"ignore_me> "
 # define MAIN_PROMPT		"prompt> "
 # define DQUOTE_PROMPT		"dquote> "
 # define EMPTY_STRING		""
