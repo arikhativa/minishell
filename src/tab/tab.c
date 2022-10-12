@@ -6,11 +6,26 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 08:53:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/14 09:58:11 by yoav             ###   ########.fr       */
+/*   Updated: 2022/09/17 21:40:49 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tab.h"
+
+void	tab_print(char **input_table)
+{
+	int	i;
+
+	i = 0;
+	if (input_table)
+	{
+		while (*(input_table + i))
+		{
+			printf("[%d]%s$\n", i, *(input_table + i));
+			i++;
+		}
+	}
+}
 
 t_error_code	tab_create(char	***ret, size_t size)
 {
