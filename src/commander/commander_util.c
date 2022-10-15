@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   commander_util.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 12:20:40 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/08 13:19:36 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/10 14:10:02 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#include "commander.h"
 
-# include <string.h>
-# include <unistd.h>
-# include <errno.h>
-# include <sys/types.h>
-# include <sys/wait.h>
+t_bool	is_cmd(t_dll *n)
+{
+	t_token	*t;
 
-# include "macro.h"
-# include "cmd.h"
-# include "shell_op.h"
-# include "error_code.h"
+	t = token_list_get_token(n);
+	return (WORD == t->type || REDIRECT == t->type);
+}
 
-t_error_code	executer_run_cmd(t_cmd *c);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
+t_dll	*commander_skip_to_next_cmd(t_dll *n)
+{
+	t_token	*t;
 
-#endif
+	t = token_list_get_token(n);
+	while (t && n && !is_cmd(n))
+	{
+		n = n->next;
+		t = token_list_get_token(n);
+	}
+	return (n);
+}

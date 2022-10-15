@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_list.h                                         :+:      :+:    :+:   */
+/*   commander.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 16:09:28 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 11:42:06 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/08 13:19:47 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/09 12:24:08 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CMD_LIST_H
-# define CMD_LIST_H
-
-# include <stdlib.h>
+#ifndef COMMANDER_H
+# define COMMANDER_H
 
 # include "error_code.h"
 # include "cmd.h"
-# include "dll.h"
+# include "shell_op.h"
+# include "cmd_list.h"
+# include "macro.h"
+# include "laxer.h"
 
-typedef struct s_cmd_list
-{
-	t_dll	*lst;
-}	t_cmd_list;
-
-t_error_code	cmd_list_create(t_cmd_list **ret);
-void			cmd_list_destroy(t_cmd_list **cmd_list);
-t_error_code	cmd_list_add_cmd(t_cmd_list *lst, t_cmd *c);
-
-// get
-t_dll			*cmd_list_get_list(t_cmd_list *lst);
-t_dll			*cmd_list_get_next_cmd(t_dll *node);
+t_error_code	commander_create_cmds(t_shell_op *sp);
+t_dll			*commander_skip_to_next_cmd(t_dll *n);
+t_bool			is_cmd(t_dll *n);
 
 #endif
