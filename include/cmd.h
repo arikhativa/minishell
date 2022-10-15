@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 16:07:22 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/06 09:52:18 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@
 # include <stdlib.h>
 
 # include "error_code.h"
-# include "arg_list.h"
+# include "tab.h"
+# include "macro.h"
 
+// t_cmd
+// argv:
+// A "shallow tab" -> the strings are not owned by t_cmd
+// meaning t_cmd does not alloc the strings mem or free it.
+// only the list of ptrs is handled
 typedef struct s_cmd
 {
-	t_arg_list	*args;
-	int			in;
-	int			out;
-	int			err;
+	char		**argv;
+	char		**env;
 	int			stt;
 }	t_cmd;
 

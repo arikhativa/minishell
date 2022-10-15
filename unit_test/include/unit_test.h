@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/25 16:32:22 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/12 09:59:03 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 # define TEST_RES "unit_test_tmp.txt"
 
+extern CU_TestInfo	g_executer_tests[];
 extern CU_TestInfo	g_parser_tests[];
 extern CU_TestInfo	g_cmd_list_tests[];
-extern CU_TestInfo	g_arg_list_tests[];
 extern CU_TestInfo	g_laxer_tests[];
 extern CU_TestInfo	g_shell_op_tests[];
 extern CU_TestInfo	g_tab_tests[];
@@ -53,12 +53,16 @@ void	test_arg_list_create_destroy(void);
 void	test_laxer_create_destroy(void);
 void	test_laxer_check_all_tokens(void);
 
+// executer
+void	test_basic_executer(void);
+
 // shell_op
 void	test_shell_op_create_destroy_empty(void);
 void	test_shell_op_create_destroy_with_tab(void);
 void	test_shell_op_create_destroy_with_token_list(void);
 
 // tab
+void	test_tab_add(void);
 void	test_tab_create_destroy(void);
 
 // reader

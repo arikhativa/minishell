@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_list.h                                         :+:      :+:    :+:   */
+/*   init_executer_tests.t.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 15:47:54 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 15:56:09 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/05 15:44:46 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARG_LIST_H
-# define ARG_LIST_H
+#include "unit_test.h"
 
-# include <stdlib.h>
-
-# include "libft.h"
-# include "error_code.h"
-# include "dll.h"
-
-typedef struct s_arg_list
+CU_TestInfo	g_executer_tests[] = {
 {
-	int		size;
-	t_dll	*lst;
-}	t_arg_list;
-
-t_error_code	arg_list_create(t_arg_list **ret);
-void			arg_list_destroy(t_arg_list **l);
-t_error_code	arg_list_add_last(t_arg_list *lst, char *arg);
-
-#endif
+	"test_basic_executer",
+	test_basic_executer,
+},
+	CU_TEST_INFO_NULL,
+};
