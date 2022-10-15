@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 11:52:51 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/12 14:56:14 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_shell_op
 	char			**envp;
 	t_token_list	*token_list;
 	t_cmd_list		*cmd_list;
+	t_bool			run;
+	t_bool			open_pipe;
 }	t_shell_op;
 
 t_error_code	shell_op_create(t_shell_op **ret, char **envp);
