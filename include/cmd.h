@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/06 09:52:18 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/18 14:27:51 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ typedef struct s_cmd
 t_error_code	cmd_create(t_cmd **ret);
 void			cmd_destroy(t_cmd **cmd);
 t_error_code	cmd_add_arg(t_cmd *c, char *arg);
+char			*cmd_get_cmd(t_cmd *c);
 
 #endif
