@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 14:44:15 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/15 21:49:32 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ extern CU_TestInfo	g_laxer_tests[];
 extern CU_TestInfo	g_shell_op_tests[];
 extern CU_TestInfo	g_tab_tests[];
 extern CU_TestInfo	g_reader_tests[];
+extern CU_TestInfo	g_env_tests[];
 extern CU_TestInfo	g_token_list_tests[];
 extern CU_TestInfo	g_token_tests[];
 extern CU_TestInfo	g_dll_tests[];
@@ -77,6 +78,9 @@ void	test_tab_create_destroy(void);
 // reader
 void	test_reader(void);
 void	test_reader_fake_stdin(void);
+
+//env
+void	test_env(void);
 
 // token
 void	test_token_create_destroy(void);

@@ -3,4 +3,5 @@ minishell
 .vscode
 *.a
 *.out
+*.out.*
 *.txt

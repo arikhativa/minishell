@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 14:56:14 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/16 01:15:45 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "error_code.h"
 # include "libft.h"
 # include "tab.h"
+# include "env.h"
 # include "token_list.h"
 # include "cmd_list.h"
 

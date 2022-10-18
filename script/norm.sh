@@ -3,7 +3,7 @@
 check_norm()
 {
 	set_is_norminette_installed
-	norminette $ROOT_DIR/src > $ROOT_DIR/$NORMINETTE_OUTPUT
+	norminette $ROOT_DIR > $ROOT_DIR/$NORMINETTE_OUTPUT
 	if [ $IS_NORMINETTE_INSTALLED -eq $TRUE ]; then
 		local STT=$(grep "Error" $NORMINETTE_OUTPUT | wc -l)
 

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:08:43 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 09:59:46 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/16 10:28:40 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ static void	tab_copy(char **dest, char **src)
 	dest[i] = src[i];
 }
 
-static size_t	tab_count(char **t)
+size_t	tab_count(char **t)
 {
 	size_t	i;
 
 	i = 0;
+	if (!t)
+		return (0);
 	while (t[i])
 		++i;
 	return (i);

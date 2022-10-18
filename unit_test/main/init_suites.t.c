@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 14:44:10 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/15 21:49:16 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,14 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	NULL,
 	g_reader_tests,
+},
+{
+	"env",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_env_tests,
 },
 {
 	"token_list",

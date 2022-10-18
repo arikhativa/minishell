@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tab.h                                              :+:      :+:    :+:   */
+/*   init_env_tests.t.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 08:52:49 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/16 10:30:05 by alopez-g         ###   ########.fr       */
+/*   Created: 2022/09/25 16:25:13 by alopez-g          #+#    #+#             */
+/*   Updated: 2022/10/15 20:28:06 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TAB_H
-# define TAB_H
+#include "unit_test.h"
 
-# include <stddef.h>
-# include <stdlib.h>
-
-# include "error_code.h"
-# include "libft.h"
-
-void			tab_print(char **input_table);
-t_error_code	tab_create(char	***ret, size_t size);
-void			tab_deep_destroy(char ***t);
-void			tab_shallow_destroy(char ***t);
-t_error_code	tab_add(char ***tab, char *s);
-size_t			tab_count(char **t);
-
-#endif
+CU_TestInfo	g_env_tests[] = {
+{
+	"test_env",
+	test_env,
+},
+	CU_TEST_INFO_NULL,
+};
