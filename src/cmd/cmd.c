@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:45:35 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/06 09:52:04 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/18 14:27:40 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,9 @@ t_error_code	cmd_add_arg(t_cmd *c, char *arg)
 	if (SUCCESS != err)
 		return (ALLOCATION_ERROR);
 	return (SUCCESS);
+}
+
+char	*cmd_get_cmd(t_cmd *c)
+{
+	return (c->argv[0]);
 }

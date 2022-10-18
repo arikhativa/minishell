@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 08:52:49 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/16 10:30:05 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:47:51 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 # include "error_code.h"
 # include "libft.h"

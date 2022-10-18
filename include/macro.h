@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 09:58:48 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/18 14:42:51 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define SQUOTE_PROMPT		"quote> "
 # define EMPTY_STRING		""
 # define NEW_PROC			0
+# define MINISHELL_STR		"minishell"
 
 typedef enum e_bool
 {
