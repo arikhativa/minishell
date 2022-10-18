@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:56:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 12:27:19 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/20 11:09:01 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,6 @@
 #include "executer.h"
 #include "commander.h"
 #include "laxer.h"
-
-void	test_basic_executer(void)
-{
-	t_error_code		err;
-	t_cmd				*c;
-	char				**args;
-
-	err = cmd_create(&c);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	args = util_create_tab(2, "/usr/bin/touch", TEST_FILE);
-	cmd_add_arg(c, args[0]);
-	cmd_add_arg(c, args[1]);
-	executer_run_cmd(c);
-	util_check_file_and_remove(TEST_FILE);
-	cmd_destroy(&c);
-	tab_deep_destroy(&args);
-}
 
 static void	init_sp(t_shell_op **ret)
 {

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/15 21:49:32 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/20 10:39:22 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h>
 # include "CUnit/Basic.h"
 
+# include "env.h"
 # include "error_code.h"
 
 # define TEST_RES "unit_test_tmp.txt"
@@ -49,8 +50,9 @@ void	test_parser_semi_redirect_error(void);
 void	test_parser_token_check(void);
 void	test_parser_bad_first_tok(void);
 
-//
+// commander
 void	test_commander(void);
+void	test_path_var_search(void);
 
 // cmd_list
 void	test_cmd_list_create_destroy(void);

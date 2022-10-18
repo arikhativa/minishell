@@ -6,28 +6,35 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/18 14:47:36 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/20 11:09:16 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
 // TODO do something with stt = execve() on err
+// TODO err print
 t_error_code	executer_run_cmd(t_cmd *c)
 {
 	int		stt;
 	pid_t	pid;
 
+	if (OK != c->stt)
+	{
+		printf("file not found / no acces\n");
+		return (SUCCESS);
+	}
 	pid = fork();
 	if (NEW_PROC == pid)
 	{
-		stt = execve(c->argv[0], c->argv, c->env);
+		stt = execve(c->exec_path, c->argv, c->env);
 		if (ERROR == stt)
-			printf("%s\n", strerror(errno));
+			printf("minishell child proc err: %s\n", strerror(errno));
+		return (stt);
 	}
 	else if (ERROR == pid)
 		return (NEW_PROC_ERROR);
-	wait(&pid);
+	wait(&stt);
 	return (SUCCESS);
 }
 
