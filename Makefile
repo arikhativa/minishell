@@ -6,7 +6,7 @@
 #    By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/10/10 09:35:44 by al7aro-g         ###   ########.fr        #
+#    Updated: 2022/10/19 13:56:51 by yoav             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJ_NO_MAIN	 			= $(filter-out obj/main/main.o,$(OBJ))
 #---------- LIBFT ----------
 LIBFT_NAME				= libft.a
 LIBFT_DIR				= libft
-LIBFT_HEAD_DIR			= $(addprefix $(LIBFT_DIR)/, libft)
+LIBFT_HEAD_DIR			= $(LIBFT_DIR)
 LIBFT					= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
 #---------- TEST ----------
