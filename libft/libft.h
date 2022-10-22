@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 11:25:30 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/17 12:55:56 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/19 13:51:38 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,17 @@
 
 # include <stddef.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4094
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 1000
+# endif
+
 # define BASE_DEC	10
+# define NL_CHAR		'\n'
+# define END_OF_FILE	0
 
 typedef struct s_list
 {
@@ -81,5 +91,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// gnl
+char	*ft_strndup(char *s, size_t size);
+char	*ft_join_str(char *a, char *b);
+void	swap_ptr(char **a, char **b);
+char	*get_next_line(int fd);
 
 #endif

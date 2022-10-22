@@ -6,14 +6,14 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:35:23 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/13 10:46:40 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/19 13:57:36 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*split_str(char **origin, size_t i)
 {
@@ -23,7 +23,7 @@ char	*split_str(char **origin, size_t i)
 	ret = ft_strndup(*origin, i);
 	if (!ret)
 		return (NULL);
-	tmp = ft_strndup((*origin) + i, gnl_strlen(*origin) - i);
+	tmp = ft_strndup((*origin) + i, ft_strlen(*origin) - i);
 	if (!tmp)
 	{
 		free(ret);
@@ -63,7 +63,7 @@ ssize_t	extened_buffer(int fd, char **buff)
 
 	tmp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!tmp)
-		return (ERROR);
+		return (-1);
 	stt = read(fd, tmp, BUFFER_SIZE);
 	if (0 >= stt)
 	{
@@ -73,7 +73,7 @@ ssize_t	extened_buffer(int fd, char **buff)
 	tmp[stt] = '\0';
 	new_buff = ft_join_str(*buff, tmp);
 	if (!new_buff)
-		return (ERROR);
+		return (-1);
 	*buff = new_buff;
 	return (stt);
 }
@@ -82,7 +82,7 @@ static char	*handle_eof(ssize_t stt, char **buff, char *ret)
 {
 	if (END_OF_FILE == stt)
 	{
-		if (0 != gnl_strlen(*buff))
+		if (0 != ft_strlen(*buff))
 			ret = *buff;
 		else
 		{
@@ -100,12 +100,12 @@ char	*get_next_line(int fd)
 	char		*ret;
 	ssize_t		stt;
 
-	stt = ERROR;
+	stt = -1;
 	ret = create_line(&(buff[fd]));
 	while (!ret && END_OF_FILE != stt)
 	{
 		stt = extened_buffer(fd, &(buff[fd]));
-		if (ERROR == stt)
+		if (-1 == stt)
 		{
 			if (NULL != (buff[fd]))
 				free((buff[fd]));
