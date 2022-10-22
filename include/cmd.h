@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/18 14:27:51 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/20 10:31:46 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include "tab.h"
 # include "macro.h"
 
+typedef enum e_cmd_stt
+{
+	OK = 0,
+	CMD_NOT_FOUND,
+	PREM_DENIED,
+}	t_cmd_stt;
+
 // t_cmd
 // argv:
 // A "shallow tab" -> the strings are not owned by t_cmd
@@ -26,9 +33,10 @@
 // only the list of ptrs is handled
 typedef struct s_cmd
 {
+	char		*exec_path;
 	char		**argv;
 	char		**env;
-	int			stt;
+	t_cmd_stt	stt;
 }	t_cmd;
 
 t_error_code	cmd_create(t_cmd **ret);

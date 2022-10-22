@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:45:35 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/18 14:27:40 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/20 10:31:55 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ void	cmd_destroy(t_cmd **cmd)
 	t_cmd	*c;
 
 	c = *cmd;
-	tab_shallow_destroy(&(c->argv));
+	if (c->argv)
+		tab_shallow_destroy(&(c->argv));
+	if (c->exec_path)
+	{
+		ft_bzero(c->exec_path, ft_strlen(c->exec_path));
+		free(c->exec_path);
+	}
 	ft_bzero(c, sizeof(t_cmd));
 	free(c);
 	*cmd = NULL;

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/18 14:42:51 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/20 10:31:52 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define SINGLE_QUOTE_CHAR	'\''
 # define DOUBLE_QUOTE_CHAR	'\"'
 # define SPACE_CHAR			' '
+# define COLON_CHAR			':'
+# define SLASH_CHAR			'/'
+# define SLASH_STR			"/"
 # define MAIN_PROMPT		"prompt> "
 # define DQUOTE_PROMPT		"dquote> "
 # define SQUOTE_PROMPT		"quote> "
