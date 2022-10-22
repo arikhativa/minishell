@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/22 05:11:01 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:08:40 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	test_laxer_check_all_tokens(void);
 
 // executer
 void	test_multi_cmd_exec(void);
-void	test_basic_executer(void);
+void	test_return_value(void);
 
 // shell_op
 void	test_shell_op_create_destroy_empty(void);
