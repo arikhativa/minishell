@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 16:10:19 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/23 13:37:58 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_error_code	executer_run_cmd(t_cmd *c)
 	pid = fork();
 	if (NEW_PROC == pid)
 	{
+		env_inc_shlvl(c->env);
 		stt = execve(c->exec_path, c->argv, c->env);
 		if (ERROR == stt)
 			printf("minishell child proc err: %s\n", strerror(errno));
