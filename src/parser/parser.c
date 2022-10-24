@@ -6,13 +6,13 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:25:24 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/21 13:05:28 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/24 11:45:59 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_error_code	parser_check_tokens(t_shell_op *sp, char **bad_str)
+t_error_code	parser_check_tokens(t_shell_op *sp)
 {
 	t_error_code	err;
 	t_dll			*node;
@@ -30,7 +30,7 @@ t_error_code	parser_check_tokens(t_shell_op *sp, char **bad_str)
 	if (SYNTAX_ERROR == err)
 	{
 		t = (t_token *)node->value;
-		*bad_str = t->value;
+		error_code_print(3, PARSE_ERROR_STR, t->value, QUOTE_STR);
 	}
 	return (err);
 }
