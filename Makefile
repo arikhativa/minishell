@@ -56,9 +56,9 @@ TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
 CC 						= cc
-HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR)
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I/opt/homebrew/Cellar/readline/8.2.1/include
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
-LDFLAGS 				= -L$(LIBFT_DIR)
+LDFLAGS 				= -L$(LIBFT_DIR) -L/opt/homebrew/Cellar/readline/8.2.1/lib
 LDLIBS 					= -lpthread -lft -lreadline
 
 #---------- IMPLICT RULES ----------

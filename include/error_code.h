@@ -6,14 +6,13 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/23 13:15:38 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 14:47:11 by al7aro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_CODE_H
 # define ERROR_CODE_H
 
-# include <readline/readline.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
