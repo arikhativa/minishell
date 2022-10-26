@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 12:51:06 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/10/16 10:56:34 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/23 15:35:33 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@
 # include "shell_op.h"
 # include "env_utils.h"
 
+# define SHLVL_KEY	"SHLVL"
+
 char			*env_getvar(char **env, char *key);
 void			env_unsetvar(char **env, char *key);
 t_error_code	env_initenv(char ***env, char **envp);
 t_error_code	env_setvar(char ***env, char *key, char *value);
 void			env_destroy(char ***env);
+t_error_code	env_inc_shlvl(char ***env);
 
 #endif

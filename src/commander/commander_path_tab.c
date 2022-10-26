@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 09:45:24 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 14:02:02 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/23 15:40:49 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static t_error_code	add_slash_if_needed(char **tab)
 	return (SUCCESS);
 }
 
+// TODO add test on a bad PATH var
 t_error_code	get_path_tab(char ***ret, char **env)
 {
 	t_error_code	err;
@@ -55,7 +56,11 @@ t_error_code	get_path_tab(char ***ret, char **env)
 	char			**path_tab;
 
 	path = env_getvar(env, PATH_KEY);
+	if (!path)
+		return (tab_create(ret, 1));
 	path_tab = ft_split(path, COLON_CHAR);
+	if (!path_tab)
+		return (ALLOCATION_ERROR);
 	err = add_slash_if_needed(path_tab);
 	if (SUCCESS != err)
 		tab_deep_destroy(&path_tab);

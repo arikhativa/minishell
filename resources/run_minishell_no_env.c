@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   run_minishell_no_env.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:17:59 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/04 15:30:59 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/23 15:11:20 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/23 15:39:27 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printer.h"
+#include <unistd.h>
 
-void	printer_print(const char *msg)
+int	main(void)
 {
-	printf("prompt: %s\n", msg);
+	static char	*args[2];
+
+	args[0] = "./minishell";
+	args[1] = 0;
+	execve(args[0], args, NULL);
 }

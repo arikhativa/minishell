@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:07:51 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/10/16 11:06:43 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/24 10:19:53 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	env_unsetvar(char **env, char *key)
 
 char	*env_getvar(char **env, char *key)
 {
+	if (!env)
+		return (NULL);
 	while (*env)
 	{
 		if (is_key(*env, key))
@@ -71,7 +73,7 @@ t_error_code	env_initenv(char ***env, char **envp)
 	int				i;
 
 	i = 0;
-	if (!envp)
+	if (!envp || !(*envp))
 		return (tab_create(env, 1));
 	else
 	{
