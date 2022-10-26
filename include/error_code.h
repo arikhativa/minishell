@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 14:47:11 by al7aro           ###   ########.fr       */
+/*   Updated: 2022/10/27 10:59:18 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef enum s_error_code
 	NEW_PROC_ERROR,
 	EOF_SUCCESS,
 	SIGNAL_ERROR,
+	OPEN_ERROR,
 }	t_error_code;
 
 t_error_code	error_code_print_internal_err(t_error_code err);

@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect_util.h                                    :+:      :+:    :+:   */
+/*   redirecter_child.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 11:01:33 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 20:02:53 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/27 11:47:09 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/27 11:47:27 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REDIRECT_UTIL_H
-# define REDIRECT_UTIL_H
+#include "redirecter.h"
 
-# include "libft.h"
-# include "macro.h"
+static int	iter_redirect(t_dll *n, void *param)
+{
+	t_redirect	*r;
 
-t_bool	is_rr(char *s);
-t_bool	is_rl(char *s);
-t_bool	is_drr(char *s);
-t_bool	is_drl(char *s);
-t_bool	is_redirect(char *s);
+	(void)param;
+	r = n->value;
+	if (IN == r->type)
+		dup2(r->fd, STDIN_FILENO);
+	if (OUT == r->type || APPEND == r->type)
+		dup2(r->fd, STDOUT_FILENO);
+	return (SUCCESS);
+}
 
-#endif
+void	redirecter_child_dup_if_needed(t_cmd *c)
+{
+	if (c->redirect)
+		dll_iterate(c->redirect->lst, iter_redirect, NULL);
+}

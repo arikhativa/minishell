@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   redirecter.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 18:55:32 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/26 12:30:20 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/27 11:33:54 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#ifndef REDIRECTER_H
+# define REDIRECTER_H
 
-# include <string.h>
-# include <unistd.h>
 # include <errno.h>
+# include <unistd.h>
 # include <sys/types.h>
-# include <sys/wait.h>
+# include <sys/stat.h>
+# include <string.h>
+# include <fcntl.h>
 
-# include "redirecter.h"
-# include "macro.h"
-# include "cmd.h"
+# include "open_wrapper.h"
 # include "shell_op.h"
-# include "builtin.h"
-# include "error_code.h"
+# include "redirect_util.h"
+# include "cmd.h"
 
-# define EXEC_CMD_NOT_FOUND_STR	"command not found: "
-# define EXEC_PREM_ERR_STR		"permission denied: "
-
-t_error_code	executer_run_cmd(t_cmd *c, char **env);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
+void			redirecter_init_redirect(t_cmd *c, char *symbol, char *path);
+t_error_code	redirecter_setup_files(t_shell_op *sp);
+void			redirecter_child_dup_if_needed(t_cmd *c);
 
 #endif

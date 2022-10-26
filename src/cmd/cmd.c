@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:45:35 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 10:31:55 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/27 11:39:16 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 
 t_error_code	cmd_create(t_cmd **ret)
 {
-	t_cmd	*c;
+	t_error_code	err;
+	t_cmd			*c;
 
 	c = ft_calloc(1, sizeof(t_cmd));
 	if (!c)
 		return (ALLOCATION_ERROR);
+	err = redirect_list_create(&(c->redirect));
+	if (SUCCESS != err)
+	{
+		free(c);
+		return (ALLOCATION_ERROR);
+	}
 	*ret = c;
 	return (SUCCESS);
 }
@@ -35,6 +42,8 @@ void	cmd_destroy(t_cmd **cmd)
 		ft_bzero(c->exec_path, ft_strlen(c->exec_path));
 		free(c->exec_path);
 	}
+	if (c->redirect)
+		redirect_list_destroy(&(c->redirect));
 	ft_bzero(c, sizeof(t_cmd));
 	free(c);
 	*cmd = NULL;

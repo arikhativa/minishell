@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:19:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 12:22:09 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 20:04:11 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ static t_error_code	commander_init_cmd(t_dll **node, t_cmd *c)
 	while (SUCCESS == err && t && n && is_cmd(n))
 	{
 		if (REDIRECT == t->type)
-			n = n->next->next;
-		else if (WORD == t->type)
 		{
-			err = cmd_add_arg(c, t->value);
+			redirecter_init_redirect(c, t->value, \
+				((t_token *)(n->next->value))->value);
 			n = n->next;
 		}
+		else if (WORD == t->type)
+			err = cmd_add_arg(c, t->value);
+		n = n->next;
 		t = token_list_get_token(n);
 	}
 	*node = n;
