@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/10/23 13:18:02 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 14:11:30 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static	t_error_code	internal_loop(t_shell_op *sp, t_read_input read_func)
 {
 	t_error_code	err;
 
+	err = SUCCESS;
 	while (sp->run && SUCCESS == err)
 	{
 		err = handle_input(sp, read_func);
