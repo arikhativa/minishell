@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/24 11:44:04 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/23 13:15:38 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef enum s_error_code
 	SYNTAX_PIPE_STILL_OPEN,
 	NEW_PROC_ERROR,
 	EOF_SUCCESS,
+	SIGNAL_ERROR,
 }	t_error_code;
 
 t_error_code	error_code_print_internal_err(t_error_code err);

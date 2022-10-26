@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   mini_signal.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/23 12:51:40 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/23 12:26:18 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/23 13:19:49 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef MINI_SIGNAL_H
+# define MINI_SIGNAL_H
 
 # include <stdio.h>
+# include <readline/readline.h>
+# include <signal.h>
 
-# include "error_code.h"
 # include "macro.h"
-# include "executer.h"
-# include "commander.h"
-# include "parser.h"
-# include "laxer.h"
-# include "shell_op.h"
-# include "mini_signal.h"
-# include "reader.h"
-# include "cleaner.h"
+# include "error_code.h"
 
-typedef t_error_code	(*t_read_input)(char ***tab);
+t_error_code	mini_signal_interactive_mode(void);
+t_error_code	mini_signal_disable(void);
 
 #endif
