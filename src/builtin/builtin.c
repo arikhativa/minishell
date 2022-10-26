@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:17:05 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 16:03:53 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/24 10:52:18 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,7 @@ t_builtin	builtin_get_func(char *word)
 {
 	if (!ft_strcmp(word, BUILTIN_EXIT_STR))
 		return (builtin_exit);
-	return (builtin_no_builtin);
-}
-
-t_error_code	builtin_no_builtin(t_shell_op *sp, t_cmd *c)
-{
-	(void)sp;
-	(void)c;
-	error_code_print_msg(NO_BUILTIN_ERROR);
-	return (ERROR);
+	return (NULL);
 }
 
 t_error_code	builtin_exit(t_shell_op *sp, t_cmd *c)
