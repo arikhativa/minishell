@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect_util.h                                    :+:      :+:    :+:   */
+/*   open_wrapper.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 11:01:33 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 20:02:53 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/26 19:15:25 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/27 10:22:32 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REDIRECT_UTIL_H
-# define REDIRECT_UTIL_H
+#ifndef OPEN_WRAPPER_H
+# define OPEN_WRAPPER_H
 
-# include "libft.h"
-# include "macro.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
-t_bool	is_rr(char *s);
-t_bool	is_rl(char *s);
-t_bool	is_drr(char *s);
-t_bool	is_drl(char *s);
-t_bool	is_redirect(char *s);
+# include "redirect.h"
+# include "error_code.h"
+
+# define FILE_PERM		(0000664)
+
+t_error_code	open_file(t_redirect *r);
 
 #endif

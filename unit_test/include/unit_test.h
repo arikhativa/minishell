@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 12:24:16 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/27 10:37:44 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ extern CU_TestInfo	g_cmd_list_tests[];
 extern CU_TestInfo	g_laxer_tests[];
 extern CU_TestInfo	g_shell_op_tests[];
 extern CU_TestInfo	g_tab_tests[];
+extern CU_TestInfo	g_redirecter_tests[];
 extern CU_TestInfo	g_reader_tests[];
 extern CU_TestInfo	g_env_tests[];
 extern CU_TestInfo	g_token_list_tests[];
@@ -65,6 +66,12 @@ void	test_arg_list_create_destroy(void);
 // laxer
 void	test_laxer_create_destroy(void);
 void	test_laxer_check_all_tokens(void);
+
+// test_redirecter
+void	test_redirecter_multi(void);
+void	test_redirecter_append(void);
+void	test_redirecter_out(void);
+void	test_redirecter_in(void);
 
 // executer
 void	test_multi_cmd_exec(void);
