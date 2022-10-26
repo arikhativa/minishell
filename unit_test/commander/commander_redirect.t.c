@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commander.t.c                                      :+:      :+:    :+:   */
+/*   commander_redirect.t.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 12:14:51 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 12:25:44 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ static void	init_sp(t_shell_op **ret)
 
 	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	input = util_create_tab(8, "cat", "file", "|", "grep", "-v", "a", "|", \
-		"pwd");
+	input = util_create_tab(5, "echo", "a", ">", "file", "b");
 	shell_op_set_input(sp, input);
 	err = laxer_create_token_list(sp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	*ret = sp;
 }
 
-void	test_commander(void)
+void	test_commander_redirect(void)
 {
 	t_error_code	err;
 	t_shell_op		*sp;
@@ -40,16 +39,8 @@ void	test_commander(void)
 	err = commander_create_cmds(sp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	cmd = sp->cmd_list->lst->value;
-	CU_ASSERT_STRING_EQUAL(cmd->argv[0], "cat");
-	CU_ASSERT_STRING_EQUAL(cmd->argv[1], "file");
-	CU_ASSERT_PTR_NULL(cmd->argv[2]);
-	cmd = sp->cmd_list->lst->next->value;
-	CU_ASSERT_STRING_EQUAL(cmd->argv[0], "grep");
-	CU_ASSERT_STRING_EQUAL(cmd->argv[1], "-v");
-	CU_ASSERT_STRING_EQUAL(cmd->argv[2], "a");
-	CU_ASSERT_PTR_NULL(cmd->argv[3]);
-	cmd = sp->cmd_list->lst->next->next->value;
-	CU_ASSERT_STRING_EQUAL(cmd->argv[0], "pwd");
-	CU_ASSERT_PTR_NULL(cmd->argv[1]);
+	CU_ASSERT_STRING_EQUAL(cmd->argv[0], "echo");
+	CU_ASSERT_STRING_EQUAL(cmd->argv[1], "a");
+	CU_ASSERT_STRING_EQUAL(cmd->argv[2], "b");
 	shell_op_destroy(&sp);
 }

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:35:29 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 10:42:38 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 12:05:52 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@
 typedef enum e_token_type
 {
 	WORD,
-	SEMICOLON,
 	PIPE,
-	NEW_LINE,
 	REDIRECT,
-	SEMI_REDIRECT,
 }	t_token_type;
 
 typedef struct s_token

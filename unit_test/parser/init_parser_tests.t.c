@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/21 13:42:00 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 12:13:36 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 CU_TestInfo	g_parser_tests[] = {
 {
-	"test_parser_semi_redirect_error",
-	test_parser_semi_redirect_error,
+	"test_parser_redirect_error",
+	test_parser_redirect_error,
 },
 {
 	"test_parser_open_pipe",

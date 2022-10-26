@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:31:06 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/24 16:47:16 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 14:02:13 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	test_parser_open_pipe(void)
 
 	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	sp->input = util_create_tab(3, "pwd", "|", "\n");
+	sp->input = util_create_tab(2, "pwd", "|");
 	err = laxer_create_token_list(sp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
 	err = parser_check_tokens(sp);
@@ -45,14 +45,14 @@ void	test_parser_open_pipe(void)
 	shell_op_destroy(&sp);
 }
 
-void	test_parser_semi_redirect_error(void)
+void	test_parser_redirect_error(void)
 {
 	t_error_code	err;
 	t_shell_op		*sp;
 
 	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
-	sp->input = util_create_tab(3, "cat", "<", "\n");
+	sp->input = util_create_tab(2, "cat", "<");
 	err = laxer_create_token_list(sp);
 	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
 	err = parser_check_tokens(sp);
