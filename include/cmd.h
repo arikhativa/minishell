@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 16:03:53 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/24 10:24:22 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_cmd
 {
 	char		*exec_path;
 	char		**argv;
-	char		**env;
 	t_cmd_stt	stt;
 	pid_t		pid;
 	int			builtin_ret_val;
