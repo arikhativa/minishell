@@ -6,7 +6,7 @@
 /*   By: al7aro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 11:32:13 by al7aro            #+#    #+#             */
-/*   Updated: 2022/09/25 14:50:22 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/10/22 23:29:19 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,14 @@ t_error_code	reader_split_by_token(char *str, char ***ret)
 	t_error_code	err;
 	size_t			words;
 
+	if (!*str)
+	{
+		err = tab_create(ret, 1);
+		if (SUCCESS != err)
+			return (err);
+		**ret = ft_strdup("");
+		return (err);
+	}
 	words = cnt_words(str);
 	err = tab_create(ret, words);
 	allocate_words(str, ret, words);

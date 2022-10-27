@@ -22,6 +22,8 @@ static	t_error_code	handle_input(t_shell_op *sp, t_read_input read_func)
 		return (err);
 	if (NULL == sp->input)
 		return (EOF_SUCCESS);
+	if (!(**(sp->input)))
+		return (NO_INPUT);
 	err = laxer_create_token_list(sp);
 	if (SUCCESS != err)
 		return (err);
@@ -58,7 +60,7 @@ static	t_error_code	internal_loop(t_shell_op *sp, t_read_input read_func)
 			sp->open_pipe = TRUE;
 			continue ;
 		}
-		if (SYNTAX_ERROR == err)
+		if (SYNTAX_ERROR == err || NO_INPUT == err)
 		{
 			err = SUCCESS;
 			continue ;
@@ -88,22 +90,25 @@ static t_error_code	internal_flow(char **envp, t_read_input read_func)
 int	main(int argc, char **argv, char **envp)
 {
 	t_error_code	err;
+	int				fd;
 
-	(void)argv;
 	err = mini_signal_disable();
 	if (SUCCESS != err)
 		return (err);
-	if (1 > argc)
+	if (1 < argc)
 	{
-		printf("Can't Handle files\n");
-		return (ERROR);
+		fd = open(*(argv + 1), O_RDONLY);
+		if (fd < 0)
+			return (fd);
+		dup2(fd, STDIN_FILENO);
+		err = internal_flow(envp, reader_get_tab_from_file);
+		close(fd);
+		return (err);
 	}
-	else
-	{
-		err = mini_signal_interactive_mode();
-		if (SUCCESS != err)
-			return (err);
-		err = internal_flow(envp, reader_get_tab);
-	}
-	return (err);
+	if (!isatty(STDIN_FILENO))
+		return (internal_flow(envp, reader_get_tab_from_file));
+	err = mini_signal_interactive_mode();
+	if (SUCCESS != err)
+		return (err);
+	return (internal_flow(envp, reader_get_tab));
 }

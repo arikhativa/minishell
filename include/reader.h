@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:21:18 by al7aro            #+#    #+#             */
-/*   Updated: 2022/10/12 10:00:58 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/22 23:28:15 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 t_error_code	reader_split_by_token(char *str, char ***ret);
 t_error_code	reader_get_tab(char ***ret);
+t_error_code	reader_get_tab_from_file(char ***ret);
 t_bool			reader_is_special(char *str);
 t_bool			reader_is_dquote(char c);
 t_bool			reader_is_squote(char c);

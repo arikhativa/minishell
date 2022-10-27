@@ -30,6 +30,7 @@ typedef enum s_error_code
 	SYNTAX_PIPE_STILL_OPEN,
 	NEW_PROC_ERROR,
 	EOF_SUCCESS,
+	NO_INPUT,
 	SIGNAL_ERROR,
 }	t_error_code;
 

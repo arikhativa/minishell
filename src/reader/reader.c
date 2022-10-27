@@ -63,7 +63,9 @@ t_error_code	reader_get_tab(char ***ret)
 	line = readline(MAIN_PROMPT);
 	if (!line)
 		return (ERROR);
-	close_opened_quote(&line);
+	err = close_opened_quote(&line);
+	if (SUCCESS != err)
+		return (err);
 	if (!line)
 		return (ERROR);
 	add_history(line);
