@@ -6,3 +6,4 @@ minishell
 *.out.*
 *.txt
 *.json
+.cache/
