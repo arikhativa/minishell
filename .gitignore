@@ -5,3 +5,4 @@ minishell
 *.out
 *.out.*
 *.txt
+*.json
