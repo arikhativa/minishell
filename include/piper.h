@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   piper.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 16:03:02 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/30 15:32:26 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/31 16:00:31 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef PIPER_H
+# define PIPER_H
 
-# include <stdio.h>
-# include <fcntl.h>
+# include <unistd.h>
 
+# include "dup_wrapper.h"
+# include "pipe_pair.h"
+# include "shell_op.h"
+# include "cmd_list.h"
+# include "cmd.h"
 # include "error_code.h"
 # include "macro.h"
-# include "executer.h"
-# include "commander.h"
-# include "parser.h"
-# include "laxer.h"
-# include "shell_op.h"
-# include "mini_signal.h"
-# include "reader.h"
-# include "piper.h"
-# include "cleaner.h"
 
-typedef t_error_code	(*t_read_input)(char ***tab);
+t_error_code	piper_init_pipes(t_shell_op *sp);
+t_error_code	piper_close_pipes(t_shell_op *sp);
+t_error_code	piper_child_dup_if_needed(t_cmd *c);
+
+// is
+t_bool			is_one_cmd(t_dll *n);
+t_bool			is_first_cmd(t_dll *n);
 
 #endif

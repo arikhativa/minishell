@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   pipe_pair.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 16:03:02 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/30 14:57:44 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/31 16:39:17 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
-
-# include <stdio.h>
-# include <fcntl.h>
+#ifndef PIPE_PAIR_H
+# define PIPE_PAIR_H
 
 # include "error_code.h"
+# include "pipe.h"
 # include "macro.h"
-# include "executer.h"
-# include "commander.h"
-# include "parser.h"
-# include "laxer.h"
-# include "shell_op.h"
-# include "mini_signal.h"
-# include "reader.h"
-# include "piper.h"
-# include "cleaner.h"
 
-typedef t_error_code	(*t_read_input)(char ***tab);
+typedef struct s_piper_pair
+{
+	t_pipe	*in;
+	t_pipe	*out;
+}	t_pipe_pair;
+
+t_error_code	pipe_pair_create(t_pipe_pair **ret);
+void			pipe_pair_destroy(t_pipe_pair **obj);
+t_error_code	pipe_pair_close(t_pipe_pair *pp);
+void			pipe_pair_init_in(t_pipe_pair *pp, int fd, int fd_close);
+void			pipe_pair_init_out(t_pipe_pair *pp, int fd, int fd_close);
 
 #endif

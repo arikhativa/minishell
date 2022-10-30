@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirecter_child.c                                 :+:      :+:    :+:   */
+/*   executer_child.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 11:47:09 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/31 16:01:10 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/31 16:48:18 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirecter.h"
+#include "executer.h"
 
-static int	iter_redirect(t_dll *n, void *param)
+// TODO do something with stt = execve() on err
+// TODO err print
+t_error_code	executer_child_logic(t_cmd *c, char **env)
 {
 	t_error_code	err;
-	t_redirect		*r;
+	int				stt;
 
-	(void)param;
-	r = n->value;
-	if (IN == r->type)
-		err = dup_wrapper(r->fd, STDIN_FILENO);
+	err = piper_child_dup_if_needed(c);
 	if (SUCCESS != err)
 		return (err);
-	if (OUT == r->type || APPEND == r->type)
-		err = dup_wrapper(r->fd, STDOUT_FILENO);
-	return (err);
-}
-
-t_error_code	redirecter_child_dup_if_needed(t_cmd *c)
-{
-	if (c->redirect)
-		return (dll_iterate(c->redirect->lst, iter_redirect, NULL));
+	err = redirecter_child_dup_if_needed(c);
+	if (SUCCESS != err)
+		return (err);
+	stt = execve(c->exec_path, c->argv, env);
+	if (ERROR == stt)
+		error_code_print(3, strerror(errno), ": ", cmd_get_cmd(c));
 	return (SUCCESS);
 }

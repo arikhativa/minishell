@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 12:26:52 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/31 16:46:57 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,13 @@
 // TODO err print
 t_error_code	executer_run_cmd(t_cmd *c, char **env)
 {
-	int		stt;
 	pid_t	pid;
 
 	if (OK != c->stt)
 		return (SUCCESS);
 	pid = fork();
 	if (NEW_PROC == pid)
-	{
-		redirecter_child_dup_if_needed(c);
-		stt = execve(c->exec_path, c->argv, env);
-		if (ERROR == stt)
-			error_code_print(3, strerror(errno), ": ", cmd_get_cmd(c));
-		return (SUCCESS);
-	}
+		return (executer_child_logic(c, env));
 	else if (ERROR == pid)
 		return (NEW_PROC_ERROR);
 	c->pid = pid;
@@ -84,6 +77,7 @@ t_error_code	executer_run_all_cmds(t_shell_op *sp)
 			err = executer_run_cmd(n->value, sp->envp);
 		n = cmd_list_get_next_cmd(n);
 	}
+	piper_close_pipes(sp);
 	wait_all_cmds(sp);
 	return (err);
 }

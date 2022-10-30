@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/10/27 10:11:53 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/31 15:59:55 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ static	t_error_code	handle_valid_input(t_shell_op *sp)
 	if (SUCCESS != err)
 		return (err);
 	err = redirecter_setup_files(sp);
+	if (SUCCESS != err)
+		return (err);
+	err = piper_init_pipes(sp);
 	if (SUCCESS != err)
 		return (err);
 	err = executer_run_all_cmds(sp);
@@ -103,7 +106,9 @@ int	main(int argc, char **argv, char **envp)
 		fd = open(*(argv + 1), O_RDONLY);
 		if (fd < 0)
 			return (fd);
-		dup2(fd, STDIN_FILENO);
+		err = dup_wrapper(fd, STDIN_FILENO);
+		if (SUCCESS != err)
+			return (err);
 		err = internal_flow(envp, reader_get_tab_from_file);
 		close(fd);
 		return (err);

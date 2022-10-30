@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 12:36:27 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/31 10:18:15 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 extern char			**g_envp;
 
+extern CU_TestInfo	g_pipe_pair_tests[];
+extern CU_TestInfo	g_pipe_tests[];
 extern CU_TestInfo	g_gnl_tests[];
 extern CU_TestInfo	g_commander_tests[];
 extern CU_TestInfo	g_executer_tests[];
@@ -62,6 +64,14 @@ void	test_cmd_list_create_destroy(void);
 
 // arg_list
 void	test_arg_list_create_destroy(void);
+
+// pipe_pair
+void	test_pipe_pair_create_destroy(void);
+void	test_pipe_pair_open_close(void);
+
+// pipe
+void	test_pipe_create_destroy(void);
+void	test_pipe_open_close(void);
 
 // laxer
 void	test_laxer_create_destroy(void);

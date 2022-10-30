@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   init_pipe_tests.t.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 16:03:02 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/31 10:07:35 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "unit_test.h"
 
-# include <stdio.h>
-# include <fcntl.h>
-
-# include "error_code.h"
-# include "macro.h"
-# include "executer.h"
-# include "commander.h"
-# include "parser.h"
-# include "laxer.h"
-# include "shell_op.h"
-# include "mini_signal.h"
-# include "reader.h"
-# include "piper.h"
-# include "cleaner.h"
-
-typedef t_error_code	(*t_read_input)(char ***tab);
-
-#endif
+CU_TestInfo	g_pipe_tests[] = {
+{
+	"test_pipe_create_destroy",
+	test_pipe_create_destroy,
+},
+{
+	"test_pipe_open_close",
+	test_pipe_open_close,
+},
+	CU_TEST_INFO_NULL,
+};
