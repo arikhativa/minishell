@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/27 11:38:10 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/30 12:28:24 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef enum e_cmd_stt
 	OK = 0,
 	CMD_NOT_FOUND,
 	PREM_DENIED,
+	CMD_EMPTY,
+	REDIRECT_ERROR,
 }	t_cmd_stt;
 
 // t_cmd

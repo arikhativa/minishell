@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 18:55:32 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/30 12:04:21 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@
 # include "shell_op.h"
 # include "builtin.h"
 # include "error_code.h"
-
-# define EXEC_CMD_NOT_FOUND_STR	"command not found: "
-# define EXEC_PREM_ERR_STR		"permission denied: "
 
 t_error_code	executer_run_cmd(t_cmd *c, char **env);
 t_error_code	executer_run_all_cmds(t_shell_op *sp);

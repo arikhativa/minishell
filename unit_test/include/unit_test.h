@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/27 10:37:44 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/30 12:36:27 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	test_laxer_check_all_tokens(void);
 void	test_redirecter_multi(void);
 void	test_redirecter_append(void);
 void	test_redirecter_out(void);
+void	test_redirecter_no_cmd(void);
 void	test_redirecter_in(void);
 
 // executer

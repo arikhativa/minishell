@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:56:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/06 10:01:59 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/30 12:27:01 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	test_cmd_list_create_destroy(void)
 
 	internal_create_cmd_list(&lst);
 	c = (t_cmd *)lst->lst->value;
-	arg = c->argv[0];
+	arg = cmd_get_cmd(c);
 	CU_ASSERT_PTR_NOT_NULL_FATAL(arg);
 	CU_ASSERT_STRING_EQUAL(arg, "word1");
 	c = (t_cmd *)lst->lst->next->value;
-	arg = c->argv[0];
+	arg = cmd_get_cmd(c);
 	CU_ASSERT_PTR_NOT_NULL_FATAL(arg);
 	CU_ASSERT_STRING_EQUAL(arg, "word2");
 	cmd_list_destroy(&lst);
