@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:19:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/10 14:10:02 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/30 12:32:39 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,15 @@ t_dll	*commander_skip_to_next_cmd(t_dll *n)
 		t = token_list_get_token(n);
 	}
 	return (n);
+}
+
+void	print_error_if_needed(t_cmd *c)
+{
+	if (OK != c->stt)
+	{
+		if (CMD_NOT_FOUND == c->stt)
+			error_code_print(2, EXEC_CMD_NOT_FOUND_STR, cmd_get_cmd(c));
+		else if (PREM_DENIED == c->stt)
+			error_code_print(2, EXEC_PREM_ERR_STR, cmd_get_cmd(c));
+	}
 }

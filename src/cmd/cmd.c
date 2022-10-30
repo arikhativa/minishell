@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:45:35 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/27 11:39:16 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/30 12:23:09 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ t_error_code	cmd_add_arg(t_cmd *c, char *arg)
 
 char	*cmd_get_cmd(t_cmd *c)
 {
+	if (!c->argv)
+		return (NULL);
 	return (c->argv[0]);
 }

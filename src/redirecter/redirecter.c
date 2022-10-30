@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:29:37 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/27 11:46:53 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/30 12:07:30 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	handle_cmd(t_dll *elem, void *param)
 	if (OPEN_ERROR == err)
 	{
 		redirect_list_destroy(&(c->redirect));
+		c->stt = REDIRECT_ERROR;
 		err = SUCCESS;
 	}
 	return (err);
