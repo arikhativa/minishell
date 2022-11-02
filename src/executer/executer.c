@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/24 10:26:09 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 18:54:31 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_error_code	executer_run_cmd(t_cmd *c, char **env)
 	pid = fork();
 	if (NEW_PROC == pid)
 	{
+		redirecter_child_dup_if_needed(c);
 		stt = execve(c->exec_path, c->argv, env);
 		if (ERROR == stt)
 			error_code_print(3, strerror(errno), ": ", c->argv[0]);

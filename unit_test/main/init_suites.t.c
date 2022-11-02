@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/19 14:02:31 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/27 10:09:37 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ CU_SuiteInfo	g_suites[] = {
 	NULL,
 	NULL,
 	g_parser_tests,
+},
+{
+	"redirecter",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_redirecter_tests,
 },
 {
 	"gnl",

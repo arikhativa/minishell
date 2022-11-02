@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 09:55:18 by yoav             ###   ########.fr       */
+/*   Updated: 2022/10/26 14:19:35 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 
+# include "redirecter.h"
 # include "error_code.h"
 # include "cmd.h"
 # include "shell_op.h"

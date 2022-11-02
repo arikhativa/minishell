@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect_util.h                                    :+:      :+:    :+:   */
+/*   init_redirecter_tests.t.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/18 11:01:33 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 20:02:53 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/25 16:25:13 by alopez-g          #+#    #+#             */
+/*   Updated: 2022/10/27 10:37:48 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REDIRECT_UTIL_H
-# define REDIRECT_UTIL_H
+#include "unit_test.h"
 
-# include "libft.h"
-# include "macro.h"
-
-t_bool	is_rr(char *s);
-t_bool	is_rl(char *s);
-t_bool	is_drr(char *s);
-t_bool	is_drl(char *s);
-t_bool	is_redirect(char *s);
-
-#endif
+CU_TestInfo	g_redirecter_tests[] = {
+{
+	"test_redirecter_in",
+	test_redirecter_in,
+},
+{
+	"test_redirecter_append",
+	test_redirecter_append,
+},
+{
+	"test_redirecter_multi",
+	test_redirecter_multi,
+},
+{
+	"test_redirecter_out",
+	test_redirecter_out,
+},
+	CU_TEST_INFO_NULL,
+};
