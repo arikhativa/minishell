@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 14:19:35 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/03 10:34:30 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "cmd_list.h"
 # include "macro.h"
 # include "libft.h"
+# include "filer.h"
 # include "laxer.h"
 
 # define PATH_KEY	"PATH"
