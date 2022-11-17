@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 17:40:38 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/02 17:19:48 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "macro.h"
 # include "cmd.h"
 # include "shell_op.h"
+# include "piper.h"
 # include "builtin.h"
 # include "error_code.h"
 

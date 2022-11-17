@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/11/02 14:14:52 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/02 17:21:18 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ static	t_error_code	handle_valid_input(t_shell_op *sp)
 	if (SUCCESS != err)
 		return (err);
 	err = redirecter_setup_files(sp);
+	if (SUCCESS != err)
+		return (err);
+	err = piper_init_pipes(sp);
 	if (SUCCESS != err)
 		return (err);
 	err = executer_run_all_cmds(sp);

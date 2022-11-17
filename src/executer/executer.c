@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 17:41:07 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/02 17:21:14 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_error_code	executer_run_all_cmds(t_shell_op *sp)
 	}
 	if (SUCCESS != err)
 		return (err);
+	piper_close_pipes(sp);
 	wait_all_cmds(sp);
 	return (err);
 }
