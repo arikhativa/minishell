@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 15:35:02 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/01 11:28:03 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "tab.h"
 # include "env.h"
 # include "token_list.h"
+# include "pipe_list.h"
 # include "cmd_list.h"
 
 typedef struct s_shell_op
@@ -29,6 +30,7 @@ typedef struct s_shell_op
 	t_bool			run;
 	t_bool			open_pipe;
 	int				last_cmd_stt;
+	t_pipe_list		*pipe_list;
 }	t_shell_op;
 
 t_error_code	shell_op_create(t_shell_op **ret, char **envp);

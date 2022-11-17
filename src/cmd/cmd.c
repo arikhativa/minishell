@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:45:35 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 12:23:09 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/02 17:40:57 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ t_error_code	cmd_create(t_cmd **ret)
 	err = redirect_list_create(&(c->redirect));
 	if (SUCCESS != err)
 	{
+		free(c);
+		return (ALLOCATION_ERROR);
+	}
+	err = pipe_pair_create(&(c->pp));
+	if (SUCCESS != err)
+	{
+		redirect_list_destroy(&(c->redirect));
 		free(c);
 		return (ALLOCATION_ERROR);
 	}
@@ -44,6 +51,8 @@ void	cmd_destroy(t_cmd **cmd)
 	}
 	if (c->redirect)
 		redirect_list_destroy(&(c->redirect));
+	if (c->pp)
+		pipe_pair_destroy(&(c->pp));
 	ft_bzero(c, sizeof(t_cmd));
 	free(c);
 	*cmd = NULL;

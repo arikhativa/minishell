@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   cmd_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 14:14:24 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/18 15:45:35 by yoav              #+#    #+#             */
+/*   Updated: 2022/11/02 11:54:48 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "cmd.h"
 
-# include <stdio.h>
-# include <fcntl.h>
+void	cmd_set_pipe_in(t_cmd *c, int fd)
+{
+	pipe_pair_init_in(c->pp, fd);
+}
 
-# include "error_code.h"
-# include "macro.h"
-# include "executer.h"
-# include "commander.h"
-# include "parser.h"
-# include "laxer.h"
-# include "shell_op.h"
-# include "mini_signal.h"
-# include "reader.h"
-# include "cleaner.h"
-
-typedef t_error_code	(*t_read_input)(char ***tab);
-
-#endif
+void	cmd_set_pipe_out(t_cmd *c, int fd)
+{
+	pipe_pair_init_out(c->pp, fd);
+}

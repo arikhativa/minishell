@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 12:28:24 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/02 17:40:44 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include "redirect_list.h"
 # include "error_code.h"
+# include "pipe_pair.h"
 # include "tab.h"
 # include "macro.h"
 
@@ -43,11 +44,14 @@ typedef struct s_cmd
 	pid_t			pid;
 	int				builtin_ret_val;
 	t_redirect_list	*redirect;
+	t_pipe_pair		*pp;
 }	t_cmd;
 
 t_error_code	cmd_create(t_cmd **ret);
 void			cmd_destroy(t_cmd **cmd);
 t_error_code	cmd_add_arg(t_cmd *c, char *arg);
 char			*cmd_get_cmd(t_cmd *c);
+void			cmd_set_pipe_in(t_cmd *c, int fd);
+void			cmd_set_pipe_out(t_cmd *c, int fd);
 
 #endif

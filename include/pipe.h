@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   pipe.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 17:40:38 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/30 15:10:10 by yoav              #+#    #+#             */
+/*   Updated: 2022/11/02 11:54:10 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#ifndef PIPE_H
+# define PIPE_H
 
-# include <string.h>
-# include <unistd.h>
-# include <errno.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-
-# include "redirecter.h"
-# include "macro.h"
-# include "cmd.h"
-# include "shell_op.h"
-# include "builtin.h"
 # include "error_code.h"
+# include "macro.h"
 
-t_error_code	executer_run_cmd(t_shell_op *sp, t_cmd *c);
-t_error_code	executer_child_logic(t_shell_op *sp, t_cmd *c);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
+typedef enum e_pipe_type
+{
+	PIPE_ERROR = 0,
+	PIPE_IN = 1,
+	PIPE_OUT = 2,
+}	t_pipe_type;
+
+typedef struct s_pipe
+{
+	t_bool		on;
+	t_pipe_type	type;
+	int			fd;
+}	t_pipe;
+
+t_error_code	pipe_create(t_pipe **ret);
+void			pipe_destroy(t_pipe **obj);
+void			pipe_init(t_pipe *p, t_pipe_type t, int fd);
+t_error_code	pipe_close(t_pipe *p);
 
 #endif

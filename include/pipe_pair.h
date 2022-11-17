@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   pipe_pair.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 17:40:38 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/30 14:57:44 by yoav              #+#    #+#             */
+/*   Updated: 2022/11/02 14:14:39 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#ifndef PIPE_PAIR_H
+# define PIPE_PAIR_H
 
-# include <string.h>
-# include <unistd.h>
-# include <errno.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-
-# include "redirecter.h"
-# include "macro.h"
-# include "cmd.h"
-# include "shell_op.h"
-# include "builtin.h"
 # include "error_code.h"
+# include "pipe.h"
+# include "macro.h"
 
-t_error_code	executer_run_cmd(t_shell_op *sp, t_cmd *c);
-t_error_code	executer_child_logic(t_shell_op *sp, t_cmd *c);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
+typedef struct s_pipe_pair
+{
+	t_pipe	*in;
+	t_pipe	*out;
+}	t_pipe_pair;
+
+t_error_code	pipe_pair_create(t_pipe_pair **ret);
+void			pipe_pair_destroy(t_pipe_pair **obj);
+t_error_code	pipe_pair_close(t_pipe_pair *pp);
+void			pipe_pair_init_in(t_pipe_pair *pp, int fd);
+void			pipe_pair_init_out(t_pipe_pair *pp, int fd);
 
 #endif

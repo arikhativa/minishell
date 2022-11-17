@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirecter_child.c                                 :+:      :+:    :+:   */
+/*   pipe_list_close.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 11:47:09 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 14:26:45 by yoav             ###   ########.fr       */
+/*   Created: 2022/11/01 10:56:38 by yoav              #+#    #+#             */
+/*   Updated: 2022/11/02 12:20:48 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirecter.h"
+#include "pipe_list.h"
 
-static int	iter_redirect(t_dll *n, void *param)
+static int	iter_close(t_dll *n, void *param)
 {
 	t_error_code	err;
-	t_redirect		*r;
+	int				*p;
 
 	(void)param;
-	r = n->value;
-	err = SUCCESS;
-	if (IN == r->type)
-		err = dup_wrapper(r->fd, STDIN_FILENO);
+	if (!n)
+		return (SUCCESS);
+	p = n->value;
+	err = close(p[PIPE_WRITE]);
 	if (SUCCESS != err)
-		return (err);
-	if (OUT == r->type || APPEND == r->type)
-		err = dup_wrapper(r->fd, STDOUT_FILENO);
-	return (err);
+		return (CLOSE_ERROR);
+	err = close(p[PIPE_READ]);
+	if (SUCCESS != err)
+		return (CLOSE_ERROR);
+	return (SUCCESS);
 }
 
-t_error_code	redirecter_child_dup_if_needed(t_cmd *c)
+t_error_code	pipe_list_close(t_pipe_list *l)
 {
-	if (c->redirect)
-		return (dll_iterate(c->redirect->lst, iter_redirect, NULL));
-	return (SUCCESS);
+	if (!l || !l->lst)
+		return (SUCCESS);
+	return (dll_iterate(l->lst, iter_close, NULL));
 }

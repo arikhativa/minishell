@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   cmd_list_iter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 14:14:24 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/18 16:44:18 by yoav              #+#    #+#             */
+/*   Updated: 2022/10/31 10:23:09 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "cmd_list.h"
 
-# include <stdio.h>
-# include <fcntl.h>
-
-# include "error_code.h"
-# include "macro.h"
-# include "executer.h"
-# include "commander.h"
-# include "parser.h"
-# include "laxer.h"
-# include "shell_op.h"
-# include "mini_signal.h"
-# include "reader.h"
-# include "cleaner.h"
-
-typedef t_error_code	(*t_read_input)(char ***tab);
-
-#endif
+t_error_code	cmd_list_iter(t_cmd_list *l, t_dll_iter f, void *param)
+{
+	if (!l->lst)
+		return (SUCCESS);
+	return (dll_iterate(l->lst, f, param));
+}
