@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/10/22 05:09:49 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/11/17 01:15:44 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,9 +56,9 @@ TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
 CC 						= cc
-HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I/opt/homebrew/Cellar/readline/8.2.1/include
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) $(READLINE_HEADER)
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
-LDFLAGS 				= -L$(LIBFT_DIR) -L/opt/homebrew/Cellar/readline/8.2.1/lib
+LDFLAGS 				= -L$(LIBFT_DIR) $(READLINE_LIB)
 LDLIBS 					= -lpthread -lft -lreadline
 
 #---------- IMPLICT RULES ----------
