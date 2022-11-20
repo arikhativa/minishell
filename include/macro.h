@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/31 16:40:48 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/20 12:00:56 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define MINISHELL_STR			"minishell"
 # define EXEC_CMD_NOT_FOUND_STR	"command not found: "
 # define EXEC_PREM_ERR_STR		"permission denied: "
+# define EXEC_DIR_ERR_STR		": Is a directory"
 # define PIPE_READ				0
 # define PIPE_WRITE				1
 

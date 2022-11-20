@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:29:25 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/20 11:55:53 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/20 11:59:52 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,6 @@ int	commander_init_exec_path(t_dll *elem, void *ptr_path_var_tab)
 	if (is_builtin(cmd_get_cmd(c)))
 		return (SUCCESS);
 	err = set_exec_path(c, (char **)ptr_path_var_tab);
-	if (SUCCESS != err)
-		return (err);
-	if (OK == c->stt && !is_exec_prem(c->exec_path))
-		c->stt = PREM_DENIED;
 	print_error_if_needed(c);
-	return (SUCCESS);
+	return (err);
 }
