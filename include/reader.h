@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:21:18 by al7aro            #+#    #+#             */
-/*   Updated: 2022/10/22 23:28:15 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/11/20 16:35:48 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+# include "shell_op.h"
 # include "error_code.h"
 # include "libft.h"
 # include "tab.h"
 # include "macro.h"
 
+t_error_code	reader_get_tab(t_shell_op *sp);
+t_error_code	reader_get_tab_from_file(t_shell_op *sp);
+t_error_code	reader_get_tab_from_cli(t_shell_op *sp);
 t_error_code	reader_split_by_token(char *str, char ***ret);
-t_error_code	reader_get_tab(char ***ret);
-t_error_code	reader_get_tab_from_file(char ***ret);
 t_bool			reader_is_special(char *str);
 t_bool			reader_is_dquote(char c);
 t_bool			reader_is_squote(char c);

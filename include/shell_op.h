@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/01 11:28:03 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/20 16:44:40 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_shell_op
 	t_bool			open_pipe;
 	int				last_cmd_stt;
 	t_pipe_list		*pipe_list;
+	char			*cli_input;
 }	t_shell_op;
 
 t_error_code	shell_op_create(t_shell_op **ret, char **envp);
