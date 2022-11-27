@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:44:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 14:06:40 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/20 12:12:10 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static void	test2(void)
 	err = commander_create_cmds(sp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	cmd = sp->cmd_list->lst->value;
-	CU_ASSERT_PTR_NOT_NULL_FATAL(cmd->exec_path);
 	CU_ASSERT_EQUAL(cmd->stt, PREM_DENIED);
 	shell_op_destroy(&sp);
 }

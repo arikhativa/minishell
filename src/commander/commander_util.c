@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 13:19:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 12:32:39 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/20 12:01:03 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	print_error_if_needed(t_cmd *c)
 			error_code_print(2, EXEC_CMD_NOT_FOUND_STR, cmd_get_cmd(c));
 		else if (PREM_DENIED == c->stt)
 			error_code_print(2, EXEC_PREM_ERR_STR, cmd_get_cmd(c));
+		else if (CMD_IS_DIR == c->stt)
+			error_code_print(2, cmd_get_cmd(c), EXEC_DIR_ERR_STR);
 	}
 }
