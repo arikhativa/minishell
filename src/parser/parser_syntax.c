@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:54:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 12:19:06 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/21 11:39:15 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_error_code	is_token_valid(t_dll *node, int *skip)
 	t_token			*t;
 
 	t = (t_token *)node->value;
-	if (PIPE == t->type)
+	if (dll_is_first_elem(node) && PIPE == t->type)
 		return (SYNTAX_ERROR);
 	*skip = 0;
 	err = SUCCESS;
