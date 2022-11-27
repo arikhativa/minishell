@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/31 10:18:15 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/22 11:01:02 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 extern char			**g_envp;
 
+extern CU_TestInfo	g_builtin_stream_tests[];
 extern CU_TestInfo	g_pipe_pair_tests[];
 extern CU_TestInfo	g_pipe_tests[];
 extern CU_TestInfo	g_gnl_tests[];
@@ -47,6 +48,9 @@ extern CU_SuiteInfo	g_suites[];
 // main
 int		init_suite(void);
 int		clean_suite(void);
+
+// builtins_stream
+void	test_builtin_out_stream(void);
 
 // parser
 void	test_parser_open_pipe(void);

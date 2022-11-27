@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/20 11:55:11 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/22 10:37:54 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_cmd
 	int				builtin_ret_val;
 	t_redirect_list	*redirect;
 	t_pipe_pair		*pp;
+	int				in_stream;
+	int				out_stream;
 }	t_cmd;
 
 t_error_code	cmd_create(t_cmd **ret);
@@ -54,5 +56,6 @@ t_error_code	cmd_add_arg(t_cmd *c, char *arg);
 char			*cmd_get_cmd(t_cmd *c);
 void			cmd_set_pipe_in(t_cmd *c, int fd);
 void			cmd_set_pipe_out(t_cmd *c, int fd);
+void			cmd_set_stream(t_cmd *c, t_redirect *r);
 
 #endif

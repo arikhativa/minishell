@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:45:35 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/31 10:20:47 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/22 10:27:24 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ t_error_code	cmd_create(t_cmd **ret)
 		free(c);
 		return (ALLOCATION_ERROR);
 	}
+	c->in_stream = STDIN_FILENO;
+	c->out_stream = STDOUT_FILENO;
 	*ret = c;
 	return (SUCCESS);
 }

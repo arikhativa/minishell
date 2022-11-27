@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:30:20 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/31 16:01:28 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/22 10:41:14 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@
 void			redirecter_init_redirect(t_cmd *c, char *symbol, char *path);
 t_error_code	redirecter_setup_files(t_shell_op *sp);
 t_error_code	redirecter_child_dup_if_needed(t_cmd *c);
+t_error_code	redirecter_set_stream_if_needed(t_cmd *c);
 
 #endif

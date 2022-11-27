@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 17:21:14 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/22 10:47:42 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_error_code	executer_run_builtin(t_shell_op *sp, t_cmd *c)
 
 	if (OK != c->stt)
 		return (SUCCESS);
+	piper_set_stream_if_needed(c);
+	redirecter_set_stream_if_needed(c);
 	f = builtin_get_func(cmd_get_cmd(c));
 	if (!f)
 		return (NO_BUILTIN_ERROR);

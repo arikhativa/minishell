@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:57:29 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/12 12:24:04 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/22 11:06:06 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,23 @@ void	util_check_file_and_remove(char *filename)
 	}
 	else
 		CU_FAIL("file was not created");
+}
+
+void	util_read_msg_from_read(char *file, char *msg)
+{
+	char	b[20];
+	int		fd;
+	int		i;
+
+	if (SUCCESS == access(file, F_OK))
+	{
+		fd = open(file, O_RDONLY);
+		CU_ASSERT_NOT_EQUAL_FATAL(fd, ERROR);
+		i = read(fd, b, sizeof(b));
+		CU_ASSERT_NOT_EQUAL_FATAL(i, ERROR);
+		b[i] = 0;
+		CU_ASSERT_STRING_EQUAL(b, msg);
+		if (SUCCESS != remove(file))
+			CU_FAIL("file was not deleted");
+	}
 }

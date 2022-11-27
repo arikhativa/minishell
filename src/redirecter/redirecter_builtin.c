@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit_test_util.h                                   :+:      :+:    :+:   */
+/*   redirecter_builtin.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 10:20:37 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/22 11:06:12 by yoav             ###   ########.fr       */
+/*   Created: 2022/10/27 11:47:09 by yoav              #+#    #+#             */
+/*   Updated: 2022/11/22 10:47:19 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_TEST_UTIL_H
-# define UNIT_TEST_UTIL_H
+#include "redirecter.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
+static void	set_stream(t_cmd *c, t_redirect *r)
+{
+	t_redirect_type	t;
 
-# include "libft.h"
-# include "tab.h"
-# include "error_code.h"
-# include "unit_test.h"
+	t = r->type;
+	if (IN == t)
+		c->in_stream = r->fd;
+	else if (OUT == t || APPEND == t)
+		c->out_stream = r->fd;
+}
 
-char	**util_create_tab(int size, ...);
-void	util_check_file_and_remove(char *filename);
-void	util_read_msg_from_read(char *file, char *msg);
+t_error_code	redirecter_set_stream_if_needed(t_cmd *c)
+{
+	t_dll	*n;
 
-#endif
+	if (c->redirect)
+	{
+		n = dll_get_last_elem(c->redirect->lst);
+		if (n)
+			set_stream(c, n->value);
+	}
+	return (SUCCESS);
+}
