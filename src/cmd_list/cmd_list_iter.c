@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:44:18 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/29 12:44:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:08:11 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ t_error_code	cmd_list_iter(t_cmd_list *l, t_dll_iter f, void *param)
 
 int	cmd_list_size(t_cmd_list *l)
 {
-	return (dll_get_size(l));
+	if (!l || !l->lst)
+		return (ERROR);
+	return (dll_get_size(l->lst));
 }

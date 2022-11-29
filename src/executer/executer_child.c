@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/29 12:54:10 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:07:07 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,21 @@ t_error_code	executer_run_builtin(t_shell_op *sp, t_cmd *c)
 
 	if (OK != c->stt)
 		return (SUCCESS);
+	piper_set_stream_if_needed(c);
+	redirecter_set_stream_if_needed(c);
 	f = builtin_get_func(cmd_get_cmd(c));
 	if (!f)
 		return (NO_BUILTIN_ERROR);
 	return (f(sp, c));
+}
+
+t_error_code	run_single_builtin(t_shell_op *sp, t_cmd *c)
+{
+	t_error_code	err;
+
+	err = executer_run_builtin(sp, c);
+	sp->last_cmd_stt = c->builtin_ret_val;
+	return (err);
 }
 
 // TODO do something with stt = execve() on err

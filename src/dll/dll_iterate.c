@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 10:53:07 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/29 12:44:08 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:07:30 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	count(t_dll *elem, void *ret)
 	return (SUCCESS);
 }
 
-int	*dll_get_size(t_dll *l)
+int	dll_get_size(t_dll *l)
 {
 	int	size;
 
