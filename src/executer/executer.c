@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/22 10:47:42 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/29 12:58:22 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,14 @@ t_error_code	executer_run_cmd(t_shell_op *sp, t_cmd *c)
 	return (SUCCESS);
 }
 
-t_error_code	executer_run_builtin(t_shell_op *sp, t_cmd *c)
+static t_bool	is_forks_in_cmd(t_shell_op *sp)
 {
-	t_builtin	f;
+	t_cmd_list	*lst;
 
-	if (OK != c->stt)
-		return (SUCCESS);
-	piper_set_stream_if_needed(c);
-	redirecter_set_stream_if_needed(c);
-	f = builtin_get_func(cmd_get_cmd(c));
-	if (!f)
-		return (NO_BUILTIN_ERROR);
-	return (f(sp, c));
+	lst = shell_op_get_cmd_list(sp);
+	if (1 == cmd_list_size(lst))
+		return (is_builtin(cmd_get_cmd(lst->lst->value)));
+	return (TRUE);
 }
 
 void	wait_all_cmds(t_shell_op *sp)
@@ -53,9 +49,7 @@ void	wait_all_cmds(t_shell_op *sp)
 	while (n)
 	{
 		c = n->value;
-		if (is_builtin(cmd_get_cmd(c)))
-			stt = c->builtin_ret_val;
-		else if (OK != c->stt)
+		if (OK != c->stt)
 			stt = ERROR;
 		else
 			waitpid(c->pid, &stt, 0);
@@ -67,16 +61,21 @@ void	wait_all_cmds(t_shell_op *sp)
 t_error_code	executer_run_all_cmds(t_shell_op *sp)
 {
 	t_error_code	err;
+	t_cmd			*c;
 	t_dll			*n;
 
 	err = SUCCESS;
 	n = cmd_list_get_list(shell_op_get_cmd_list(sp));
+	if (!is_forks_in_cmd(sp))
+	{
+		c = n->value;
+		err = executer_run_builtin(sp, c);
+		sp->last_cmd_stt = c->builtin_ret_val;
+		return (err);
+	}
 	while (n && SUCCESS == err)
 	{
-		if (is_builtin(cmd_get_cmd(n->value)))
-			err = executer_run_builtin(sp, n->value);
-		else
-			err = executer_run_cmd(sp, n->value);
+		err = executer_run_cmd(sp, n->value);
 		n = cmd_list_get_next_cmd(n);
 	}
 	if (SUCCESS != err)
