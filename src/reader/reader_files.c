@@ -47,6 +47,7 @@ t_error_code	reader_get_tab_from_file(t_shell_op *sp)
 {
 	t_error_code	err;
 	char			*line;
+	char			*tmp;
 
 	line = readline(NULL);
 	if (!line)
@@ -56,6 +57,9 @@ t_error_code	reader_get_tab_from_file(t_shell_op *sp)
 		printf("Unexpected EOF while looking for matching quote");
 		return (ERROR);
 	}
+	tmp = line;
+	line = expander_expand_var(sp, line);
+	free(tmp);
 	err = reader_split_by_token(line, &(sp->input));
 	free(line);
 	return (err);

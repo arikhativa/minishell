@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:21:18 by al7aro            #+#    #+#             */
-/*   Updated: 2022/11/20 16:35:48 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/01 22:34:02 by r3dc4t-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include "libft.h"
 # include "tab.h"
 # include "macro.h"
+# include "expander.h"
 
 t_error_code	reader_get_tab(t_shell_op *sp);
 t_error_code	reader_get_tab_from_file(t_shell_op *sp);

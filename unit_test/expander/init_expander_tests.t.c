@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   laxer.h                                            :+:      :+:    :+:   */
+/*   init_expander_tests.t.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/17 11:20:48 by yoav              #+#    #+#             */
-/*   Updated: 2022/09/18 15:39:10 by yoav             ###   ########.fr       */
+/*   Created: 2022/09/25 16:25:13 by alopez-g          #+#    #+#             */
+/*   Updated: 2022/10/18 11:00:13 by al7aro-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LAXER_H
-# define LAXER_H
+#include "unit_test.h"
 
-# include "shell_op.h"
-# include "error_code.h"
-# include "token.h"
-# include "redirect_util.h"
-# include "macro.h"
-# include "token_list.h"
-
-t_token_type	laxer_get_token_type(char *s);
-t_error_code	laxer_create_token_list(t_shell_op *sp);
-
-#endif
+CU_TestInfo	g_expander_tests[] = {
+{
+	"test_expander",
+	test_expander,
+},
+	CU_TEST_INFO_NULL,
+};

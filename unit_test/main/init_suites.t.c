@@ -118,6 +118,14 @@ CU_SuiteInfo	g_suites[] = {
 	g_env_tests,
 },
 {
+	"expander",
+	init_suite,
+	clean_suite,
+	NULL,
+	NULL,
+	g_expander_tests,
+},
+{
 	"token_list",
 	init_suite,
 	clean_suite,

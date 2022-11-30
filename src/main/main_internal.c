@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "expander.h"
 #include "main.h"
+#include "token_list.h"
 
 // TODO SYNTAX_ERROR create error_code handler -- NO printf
 t_error_code	handle_input(t_shell_op *sp, t_read_input read_func)
@@ -25,6 +27,9 @@ t_error_code	handle_input(t_shell_op *sp, t_read_input read_func)
 	if (!(**(sp->input)))
 		return (NO_INPUT);
 	err = laxer_create_token_list(sp);
+	if (SUCCESS != err)
+		return (err);
+	err = expander_remove_all_quotes(sp);
 	if (SUCCESS != err)
 		return (err);
 	err = parser_check_tokens(sp);

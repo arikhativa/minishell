@@ -6,11 +6,12 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/11/20 17:14:25 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/17 01:43:44 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
+#include "token_list.h"
 
 static t_error_code	file_logic(char **argv, char **envp)
 {

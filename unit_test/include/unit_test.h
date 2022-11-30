@@ -40,6 +40,7 @@ extern CU_TestInfo	g_tab_tests[];
 extern CU_TestInfo	g_redirecter_tests[];
 extern CU_TestInfo	g_reader_tests[];
 extern CU_TestInfo	g_env_tests[];
+extern CU_TestInfo	g_expander_tests[];
 extern CU_TestInfo	g_token_list_tests[];
 extern CU_TestInfo	g_token_tests[];
 extern CU_TestInfo	g_dll_tests[];
@@ -104,6 +105,9 @@ void	test_tab_create_destroy(void);
 // reader
 void	test_reader(void);
 void	test_reader_fake_stdin(void);
+
+//expander
+void	test_expander(void);
 
 // env
 void	test_env(void);
