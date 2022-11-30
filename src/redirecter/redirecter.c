@@ -6,11 +6,12 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:29:37 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 12:07:30 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/21 17:46:53 by al7aro-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "redirecter.h"
+#include "heredoc.h"
 
 static int	handle_redirect(t_dll *elem, void *param)
 {
@@ -19,6 +20,8 @@ static int	handle_redirect(t_dll *elem, void *param)
 
 	(void)param;
 	r = elem->value;
+	if (HEREDOC == r->type)
+		r->path = heredoc_handle_heredoc(r->path);
 	err = open_file(r);
 	if (SUCCESS != err)
 		error_code_print(3, r->path, ": ", strerror(errno));
@@ -61,4 +64,6 @@ void	redirecter_init_redirect(t_cmd *c, char *symbol, char *path)
 		redirect_list_add(c->redirect, path, IN);
 	else if (is_drr(symbol))
 		redirect_list_add(c->redirect, path, APPEND);
+	else if (is_drl(symbol))
+		redirect_list_add(c->redirect, path, HEREDOC);
 }

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.h                                         :+:      :+:    :+:   */
+/*   heredoc.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/17 06:12:19 by alopez-g         ###   ########.fr       */
+/*   Created: 2022/11/14 12:23:44 by al7aro            #+#    #+#             */
+/*   Updated: 2022/11/21 18:01:47 by al7aro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTER_H
-# define EXECUTER_H
+#ifndef HEREDOC_H
+# define HEREDOC_H
 
-# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
-# include <errno.h>
-# include <sys/types.h>
-# include <sys/wait.h>
+# include <fcntl.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
-# include "redirecter.h"
-# include "macro.h"
-# include "cmd.h"
 # include "shell_op.h"
-# include "piper.h"
-# include "builtin.h"
-# include "error_code.h"
-# include "heredoc.h"
+# include "cmd.h"
+# include "dup_wrapper.h"
 
-t_error_code	executer_run_cmd(t_shell_op *sp, t_cmd *c);
-t_error_code	executer_child_logic(t_shell_op *sp, t_cmd *c);
-t_error_code	executer_run_all_cmds(t_shell_op *sp);
+char	*heredoc_handle_heredoc(char *eol);
 
 #endif

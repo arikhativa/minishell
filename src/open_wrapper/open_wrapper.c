@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 19:15:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/27 11:19:35 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/21 17:46:43 by al7aro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_error_code	open_wrapper(int *ret, char *path, int flags)
 
 int	get_flags(t_redirect_type t)
 {
-	if (IN == t)
+	if (IN == t || HEREDOC == t)
 		return (O_RDONLY);
 	if (OUT == t)
 		return (O_CREAT | O_WRONLY | O_TRUNC);

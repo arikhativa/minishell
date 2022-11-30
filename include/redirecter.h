@@ -25,6 +25,7 @@
 # include "shell_op.h"
 # include "redirect_util.h"
 # include "cmd.h"
+# include "heredoc.h"
 
 void			redirecter_init_redirect(t_cmd *c, char *symbol, char *path);
 t_error_code	redirecter_setup_files(t_shell_op *sp);

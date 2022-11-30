@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:47:09 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 17:21:23 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/21 18:00:26 by al7aro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	iter_redirect(t_dll *n, void *param)
 	(void)param;
 	r = n->value;
 	err = SUCCESS;
-	if (IN == r->type)
+	if (IN == r->type || HEREDOC == r->type)
 		err = dup_wrapper(r->fd, STDIN_FILENO);
 	if (SUCCESS != err)
 		return (err);

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:52:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/01 11:29:26 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/17 14:56:26 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,13 @@ void	shell_op_destroy(t_shell_op **sp)
 	ft_bzero(*sp, sizeof(t_shell_op));
 	free(*sp);
 	*sp = NULL;
+}
+
+t_shell_op	*shell_op_get_sp(t_shell_op *param)
+{
+	static t_shell_op	*sp;
+
+	if (param)
+		sp = param;
+	return (sp);
 }

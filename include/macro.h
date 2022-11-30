@@ -29,9 +29,10 @@
 # define SLASH_CHAR			'/'
 # define SLASH_STR			"/"
 # define QUOTE_STR			"'"
-# define MAIN_PROMPT		"\e[0mprompt> "
+# define MAIN_PROMPT		"\e[0mmsh$ "
 # define DQUOTE_PROMPT		"\e[0mdquote> "
 # define SQUOTE_PROMPT		"\e[0mquote> "
+# define HEREDOC_PROMPT		"\e[0m> "
 # define EMPTY_STRING		""
 # define NEW_PROC			0
 # define C_FLAG_STR				"-c"

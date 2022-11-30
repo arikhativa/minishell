@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:19:46 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/17 01:43:29 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/11/17 01:51:50 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "piper.h"
 # include "cleaner.h"
 # include "expander.h"
+# include "heredoc.h"
 # include "mode_mngr.h"
 
 typedef t_error_code	(*t_read_input)(t_shell_op *sp);

@@ -6,7 +6,7 @@
 /*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:46:44 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/27 10:27:54 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/17 03:19:14 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef enum e_redirect_type
 	NON = 0,
 	IN = 1,
 	OUT,
+	HEREDOC,
 	APPEND,
 }	t_redirect_type;
 
