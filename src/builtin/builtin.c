@@ -23,6 +23,12 @@ t_bool	is_builtin(char *word)
 	if (!word)
 		return (FALSE);
 	ret = TRUE;
+	ret *= ft_strcmp(word, BUILTIN_ECHO_STR);
+	ret *= ft_strcmp(word, BUILTIN_CD_STR);
+	ret *= ft_strcmp(word, BUILTIN_PWD_STR);
+	ret *= ft_strcmp(word, BUILTIN_EXPORT_STR);
+	ret *= ft_strcmp(word, BUILTIN_UNSET_STR);
+	ret *= ft_strcmp(word, BUILTIN_ENV_STR);
 	ret *= ft_strcmp(word, BUILTIN_EXIT_STR);
 	return (!ret);
 }
@@ -31,15 +37,19 @@ t_builtin	builtin_get_func(char *word)
 {
 	if (!word)
 		return (NULL);
+	if (!ft_strcmp(word, BUILTIN_ECHO_STR))
+		return (builtin_echo);
+	if (!ft_strcmp(word, BUILTIN_CD_STR))
+		return (builtin_cd);
+	if (!ft_strcmp(word, BUILTIN_PWD_STR))
+		return (builtin_pwd);
+	if (!ft_strcmp(word, BUILTIN_EXPORT_STR))
+		return (builtin_export);
+	if (!ft_strcmp(word, BUILTIN_UNSET_STR))
+		return (builtin_unset);
+	if (!ft_strcmp(word, BUILTIN_ENV_STR))
+		return (builtin_env);
 	if (!ft_strcmp(word, BUILTIN_EXIT_STR))
 		return (builtin_exit);
 	return (NULL);
-}
-
-t_error_code	builtin_exit(t_shell_op *sp, t_cmd *c)
-{
-	sp->run = FALSE;
-	c->builtin_ret_val = SUCCESS;
-	ft_putstr_fd("exit\n", c->out_stream);
-	return (SUCCESS);
 }

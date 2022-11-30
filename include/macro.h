@@ -29,9 +29,9 @@
 # define SLASH_CHAR			'/'
 # define SLASH_STR			"/"
 # define QUOTE_STR			"'"
-# define MAIN_PROMPT		"prompt> "
-# define DQUOTE_PROMPT		"dquote> "
-# define SQUOTE_PROMPT		"quote> "
+# define MAIN_PROMPT		"\e[0mprompt> "
+# define DQUOTE_PROMPT		"\e[0mdquote> "
+# define SQUOTE_PROMPT		"\e[0mquote> "
 # define EMPTY_STRING		""
 # define NEW_PROC			0
 # define C_FLAG_STR				"-c"
@@ -40,12 +40,15 @@
 # define QUESTION_MARK_CHAR	'?'
 # define R_BRACKET			')'
 # define L_BRACKET			'('
-# define MINISHELL_STR		"minishell"
+# define MINISHELL_STR		"\e[0mminishell"
 # define EXEC_CMD_NOT_FOUND_STR	"command not found: "
 # define EXEC_PREM_ERR_STR		"permission denied: "
 # define EXEC_DIR_ERR_STR		": Is a directory"
 # define PIPE_READ				0
 # define PIPE_WRITE				1
+# define PWD_VAR			"PWD"
+# define OLDPWD_VAR			"OLDPWD"
+# define HOME_VAR			"HOME"
 
 typedef enum e_bool
 {
