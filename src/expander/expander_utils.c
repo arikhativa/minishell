@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: al7aro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:26:56 by al7aro            #+#    #+#             */
-/*   Updated: 2022/11/14 13:09:15 by al7aro           ###   ########.fr       */
+/*   Updated: 2022/12/02 11:53:18 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_bool	is_end_of_var_name(char c)
 {
 	if (SPACE_CHAR == c
 		|| MINUS_CHAR == c
+		|| SLASH_CHAR == c
 		|| EQUAL_CHAR == c
 		|| SINGLE_QUOTE_CHAR == c
 		|| DOUBLE_QUOTE_CHAR == c

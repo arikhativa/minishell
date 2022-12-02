@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/01 10:59:28 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/01 11:35:30 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ t_error_code	handle_valid_input(t_shell_op *sp)
 t_error_code	internal_flow(char *cli_input, char **envp, \
 	t_read_input read_func)
 {
+	int				ret;
 	t_error_code	err;
 	t_shell_op		*sp;
 
+	ret = SUCCESS;
 	err = shell_op_create(&sp, envp);
 	if (SUCCESS != err)
 		return (err);
@@ -71,6 +73,8 @@ t_error_code	internal_flow(char *cli_input, char **envp, \
 	if (cli_input)
 		sp->cli_input = cli_input;
 	err = internal_loop(sp, read_func);
+	if (SUCCESS == err)
+		ret = sp->last_cmd_stt;
 	shell_op_destroy(&sp);
-	return (err);
+	return (ret);
 }
