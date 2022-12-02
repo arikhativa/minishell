@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer_return_val.t.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:56:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/20 16:31:08 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/29 15:33:41 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	test1(void)
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
 	err = executer_run_all_cmds(sp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	CU_ASSERT_EQUAL(sp->last_cmd_stt, ERROR);
+	CU_ASSERT_EQUAL(sp->last_cmd_stt, CMD_NOT_FOUND);
 	shell_op_destroy(&sp);
 }
 

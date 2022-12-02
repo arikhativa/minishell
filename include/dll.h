@@ -41,6 +41,7 @@ void			dll_swap_value(t_dll *a, t_dll *b);
 t_error_code	dll_iterate(t_dll *lst, t_dll_iter f, void *param);
 
 // get
+int				dll_get_size(t_dll *lst);
 t_dll			*dll_get_last_elem(t_dll *lst);
 int				dll_is_first_elem(t_dll *lst);
 

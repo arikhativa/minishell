@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   piper.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 15:32:26 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/22 10:46:43 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/29 14:51:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 t_error_code	piper_init_pipes(t_shell_op *sp);
 t_error_code	piper_close_pipes(t_shell_op *sp);
 t_error_code	piper_child_dup_if_needed(t_cmd *c);
-t_error_code	piper_set_stream_if_needed(t_cmd *c);
 
 // is
 t_bool			is_one_cmd(t_dll *n);

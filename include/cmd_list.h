@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_list.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:09:28 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 15:37:49 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/29 12:39:13 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_error_code	cmd_list_create(t_cmd_list **ret);
 void			cmd_list_destroy(t_cmd_list **cmd_list);
 t_error_code	cmd_list_add_cmd(t_cmd_list *lst, t_cmd *c);
 t_error_code	cmd_list_iter(t_cmd_list *l, t_dll_iter f, void *param);
+int				cmd_list_size(t_cmd_list *l);
 
 // get
 t_dll			*cmd_list_get_list(t_cmd_list *lst);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/21 13:51:57 by al7aro-g         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:47:30 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 typedef enum e_cmd_stt
 {
 	OK = 0,
-	CMD_NOT_FOUND,
 	CMD_IS_DIR,
 	PREM_DENIED,
 	CMD_EMPTY,
 	REDIRECT_ERROR,
+	CMD_NOT_FOUND = 127,
 }	t_cmd_stt;
 
 // t_cmd

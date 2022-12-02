@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/22 10:47:42 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/29 15:33:10 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,25 @@ t_error_code	executer_run_cmd(t_shell_op *sp, t_cmd *c)
 		return (SUCCESS);
 	pid = fork();
 	if (NEW_PROC == pid)
-		return (executer_child_logic(sp, c));
+		executer_child_logic(sp, c);
 	else if (ERROR == pid)
 		return (NEW_PROC_ERROR);
 	c->pid = pid;
 	return (SUCCESS);
 }
 
-t_error_code	executer_run_builtin(t_shell_op *sp, t_cmd *c)
+static t_bool	is_forks_in_cmd(t_shell_op *sp)
 {
-	t_builtin	f;
+	t_cmd_list	*lst;
 
-	if (OK != c->stt)
-		return (SUCCESS);
-	piper_set_stream_if_needed(c);
-	redirecter_set_stream_if_needed(c);
-	f = builtin_get_func(cmd_get_cmd(c));
-	if (!f)
-		return (NO_BUILTIN_ERROR);
-	return (f(sp, c));
+	lst = shell_op_get_cmd_list(sp);
+	if (1 == cmd_list_size(lst))
+		return (!is_builtin(cmd_get_cmd(lst->lst->value)));
+	return (TRUE);
 }
 
+// TODO make sure all builtins return "builtin_ret_val"
+// TODO fix printf("signal on child\n");  on signal PR
 void	wait_all_cmds(t_shell_op *sp)
 {
 	int		stt;
@@ -53,13 +51,21 @@ void	wait_all_cmds(t_shell_op *sp)
 	while (n)
 	{
 		c = n->value;
-		if (is_builtin(cmd_get_cmd(c)))
-			stt = c->builtin_ret_val;
-		else if (OK != c->stt)
-			stt = ERROR;
+		if (OK != c->stt)
+			sp->last_cmd_stt = c->stt;
 		else
+		{
 			waitpid(c->pid, &stt, 0);
-		sp->last_cmd_stt = stt;
+			if (WIFEXITED(stt))
+			{
+				if (is_builtin(cmd_get_cmd(c)))
+					sp->last_cmd_stt = c->builtin_ret_val;
+				else
+					sp->last_cmd_stt = WEXITSTATUS(stt);
+			}
+			else if (WIFSIGNALED(stt))
+				printf("signal on child\n");
+		}
 		n = cmd_list_get_next_cmd(n);
 	}
 }
@@ -71,12 +77,11 @@ t_error_code	executer_run_all_cmds(t_shell_op *sp)
 
 	err = SUCCESS;
 	n = cmd_list_get_list(shell_op_get_cmd_list(sp));
+	if (!is_forks_in_cmd(sp))
+		return (run_single_builtin(sp, n->value));
 	while (n && SUCCESS == err)
 	{
-		if (is_builtin(cmd_get_cmd(n->value)))
-			err = executer_run_builtin(sp, n->value);
-		else
-			err = executer_run_cmd(sp, n->value);
+		err = executer_run_cmd(sp, n->value);
 		n = cmd_list_get_next_cmd(n);
 	}
 	if (SUCCESS != err)
