@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_code.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 17:40:44 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/30 16:49:43 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef enum s_error_code
 	NO_INPUT,
 	SIGNAL_ERROR,
 	OPEN_ERROR,
+	END_OF_TRANSMISSION,
 	CLOSE_ERROR,
 }	t_error_code;
 

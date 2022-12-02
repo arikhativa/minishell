@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macro.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/20 17:53:35 by r3dc4t-g         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:49:49 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define EXEC_CMD_NOT_FOUND_STR	"command not found: "
 # define EXEC_PREM_ERR_STR		"permission denied: "
 # define EXEC_DIR_ERR_STR		": Is a directory"
+# define SIGQUIT_STR			"Quit: "
 # define PIPE_READ				0
 # define PIPE_WRITE				1
 # define PWD_VAR			"PWD"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_signal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 12:25:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/21 18:04:13 by al7aro-g         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:49:56 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ t_error_code	mini_signal_disable(void)
 	if (SIG_ERR == signal(SIGINT, SIG_IGN))
 		return (SIGNAL_ERROR);
 	if (SIG_ERR == signal(SIGQUIT, SIG_IGN))
+		return (SIGNAL_ERROR);
+	return (SUCCESS);
+}
+
+t_error_code	mini_signal_set_child(void)
+{
+	if (SIG_ERR == signal(SIGINT, SIG_DFL))
+		return (SIGNAL_ERROR);
+	if (SIG_ERR == signal(SIGQUIT, SIG_DFL))
 		return (SIGNAL_ERROR);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/29 15:33:10 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/11/29 18:43:12 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static t_bool	is_forks_in_cmd(t_shell_op *sp)
 }
 
 // TODO make sure all builtins return "builtin_ret_val"
-// TODO fix printf("signal on child\n");  on signal PR
 void	wait_all_cmds(t_shell_op *sp)
 {
 	int		stt;
@@ -64,7 +63,7 @@ void	wait_all_cmds(t_shell_op *sp)
 					sp->last_cmd_stt = WEXITSTATUS(stt);
 			}
 			else if (WIFSIGNALED(stt))
-				printf("signal on child\n");
+				hndl_child_signal_exit(&(sp->last_cmd_stt), stt);
 		}
 		n = cmd_list_get_next_cmd(n);
 	}
@@ -76,6 +75,7 @@ t_error_code	executer_run_all_cmds(t_shell_op *sp)
 	t_dll			*n;
 
 	err = SUCCESS;
+	mini_signal_disable();
 	n = cmd_list_get_list(shell_op_get_cmd_list(sp));
 	if (!is_forks_in_cmd(sp))
 		return (run_single_builtin(sp, n->value));
@@ -88,5 +88,6 @@ t_error_code	executer_run_all_cmds(t_shell_op *sp)
 		return (err);
 	piper_close_pipes(sp);
 	wait_all_cmds(sp);
+	mini_signal_interactive_mode();
 	return (err);
 }

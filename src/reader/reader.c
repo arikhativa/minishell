@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:12:35 by al7aro            #+#    #+#             */
-/*   Updated: 2022/11/20 16:35:50 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/30 16:50:14 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_error_code	reader_get_tab(t_shell_op *sp)
 
 	line = readline(MAIN_PROMPT);
 	if (!line)
-		return (ERROR);
+		return (END_OF_TRANSMISSION);
 	add_history(line);
 	err = close_opened_quote(&line);
 	if (SUCCESS != err)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_signal.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 12:26:18 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/17 15:06:15 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:49:51 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@
 
 t_error_code	mini_signal_interactive_mode(void);
 t_error_code	mini_signal_disable(void);
+t_error_code	mini_signal_set_child(void);
 
 #endif
