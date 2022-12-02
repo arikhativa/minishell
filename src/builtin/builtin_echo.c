@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: r3dc4t <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:39:25 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/11/18 23:48:59 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:09:11 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void	print_string(char **tab, t_bool nl, int fd)
 	while (*(tab + i))
 	{
 		ft_putstr_fd(*(tab + i++), fd);
-		ft_putstr_fd(" ", fd);
+		if (*(tab + i))
+			ft_putstr_fd(" ", fd);
 	}
 	if (nl)
 		ft_putstr_fd("\n", fd);
