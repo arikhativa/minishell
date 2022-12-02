@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unit_test.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/22 11:01:02 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/30 11:49:23 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	test_parser_open_pipe(void);
 void	test_parser_redirect_error(void);
 void	test_parser_token_check(void);
 void	test_parser_bad_first_tok(void);
+void	test_parser_pipe_limit(void);
 
 // commander
 void	test_commander(void);

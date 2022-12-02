@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   init_parser_tests.t.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/26 12:13:36 by yoav             ###   ########.fr       */
+/*   Updated: 2022/11/30 11:49:11 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unit_test.h"
 
 CU_TestInfo	g_parser_tests[] = {
+{
+	"test_parser_pipe_limit",
+	test_parser_pipe_limit,
+},
 {
 	"test_parser_redirect_error",
 	test_parser_redirect_error,
