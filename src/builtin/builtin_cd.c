@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: r3dc4t <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:34:33 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/11/20 17:30:35 by r3dc4t           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:58:07 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
-#include "env.h"
 
 static t_error_code	get_dir(t_shell_op *sp, char *new_dir)
 {

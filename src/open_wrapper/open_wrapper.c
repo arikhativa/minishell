@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   open_wrapper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 19:15:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/21 17:46:43 by al7aro           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:56:25 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "open_wrapper.h"
 
 t_error_code	open_wrapper(int *ret, char *path, int flags)

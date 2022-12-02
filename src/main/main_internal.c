@@ -6,13 +6,11 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/11/30 12:01:09 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:59:28 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expander.h"
 #include "main.h"
-#include "token_list.h"
 
 // TODO SYNTAX_ERROR create error_code handler -- NO printf
 t_error_code	handle_input(t_shell_op *sp, t_read_input read_func)

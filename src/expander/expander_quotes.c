@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander2.c                                        :+:      :+:    :+:   */
+/*   expander_quotes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: al7aro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 22:07:07 by al7aro            #+#    #+#             */
-/*   Updated: 2022/11/01 23:22:55 by r3dc4t-g         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:56:30 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expander.h"
-#include "token_list.h"
-#include <stddef.h>
 
 static char	*remove_pair_from_str(char *str, char *c1, char *c2)
 {

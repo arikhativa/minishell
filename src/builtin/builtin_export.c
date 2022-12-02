@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: r3dc4t <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:01:18 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/11/18 23:38:36 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:58:35 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
-#include "expander.h"
-#include "libft.h"
-#include "tab.h"
 
 static t_bool	key_is_valid(char *str)
 {

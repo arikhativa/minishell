@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_unset.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: r3dc4t <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:39:51 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/11/13 13:15:31 by al7aro           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:58:44 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
-#include "env.h"
 
 t_error_code	builtin_unset(t_shell_op *sp, t_cmd *c)
 {

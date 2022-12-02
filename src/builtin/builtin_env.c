@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: r3dc4t <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:40:07 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/11/20 17:31:14 by r3dc4t           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:58:24 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
-#include "tab.h"
 
 static void	print_string(char **str, int fd)
 {

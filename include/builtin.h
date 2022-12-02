@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:17:16 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 00:38:39 by r3dc4t           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:58:39 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include "shell_op.h"
 # include "error_code.h"
 # include "libft.h"
+# include "expander.h"
 # include "cmd.h"
+# include "tab.h"
+# include "env.h"
 
 # define BUILTIN_ECHO_STR	"echo"
 # define BUILTIN_CD_STR		"cd"

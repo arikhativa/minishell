@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: r3dc4t <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:01:33 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/11/02 00:01:36 by r3dc4t           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:58:14 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
-#include "libft.h"
 
 t_error_code	builtin_exit(t_shell_op *sp, t_cmd *c)
 {

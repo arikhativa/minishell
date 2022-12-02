@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 09:24:16 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/11/01 22:36:35 by r3dc4t-g         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:59:06 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "reader.h"
+# include "tab.h"
 # include "error_code.h"
 # include "shell_op.h"
 # include "libft.h"

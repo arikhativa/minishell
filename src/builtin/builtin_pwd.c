@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: r3dc4t <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:28:23 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/11/02 00:35:04 by r3dc4t           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:58:43 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
-#include "env.h"
-#include "tab.h"
 
 t_error_code	builtin_pwd(t_shell_op *sp, t_cmd *c)
 {
