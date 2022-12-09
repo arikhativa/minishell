@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/09 12:16:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 13:41:55 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define NEW_PROC				0
 # define C_FLAG_STR				"-c"
 # define EXPANDER_CHAR			'$'
+# define TILDE_CHAR				'~'
 # define EXPANDER_STRING		"$"
 # define QUESTION_MARK_CHAR		'?'
 # define R_BRACKET				')'
