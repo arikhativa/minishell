@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/01 11:15:19 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/08 16:57:15 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef enum s_error_code
 	OPEN_ERROR,
 	END_OF_TRANSMISSION,
 	CLOSE_ERROR,
+	EXPORT_INVALID_INPUT,
+	EXPORT_IGNORE_INPUT,
 }	t_error_code;
 
 t_error_code	error_code_print_internal_err(t_error_code err);

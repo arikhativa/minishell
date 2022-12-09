@@ -3,23 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:48:14 by al7aro            #+#    #+#             */
-/*   Updated: 2022/10/27 12:34:32 by yoav             ###   ########.fr       */
+/*   Updated: 2022/12/04 15:24:43 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 
-t_bool	is_key_valid(char *key)
+static t_bool	is_valid_char(char c)
+{
+	if (!c || SPACE_CHAR == c)
+		return (FALSE);
+	if (ft_isalnum(c) || UNDERSCORE_CHAR == c)
+		return (TRUE);
+	return (FALSE);
+}
+
+t_bool	env_is_key_valid(char *key)
 {
 	int	i;
 
 	i = 0;
 	while (*(key + i))
 	{
-		if (SPACE_CHAR == *(key + i))
+		if (!is_valid_char(*(key + i)))
 			return (FALSE);
 		i++;
 	}

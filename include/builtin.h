@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 14:17:16 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/08 14:51:19 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/08 17:04:59 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,11 @@ t_error_code	builtin_export(t_shell_op *sp, t_cmd *c);
 t_error_code	builtin_unset(t_shell_op *sp, t_cmd *c);
 t_error_code	builtin_env(t_shell_op *sp, t_cmd *c);
 t_error_code	builtin_exit(t_shell_op *sp, t_cmd *c);
+
+// export util
+void			print_key_and_value(char *s, int fd);
+t_bool			export_is_input_valid(char *s);
+t_bool			export_should_ignore_input(char *s);
+t_error_code	export_print_all(char **tab, int fd);
 
 #endif
