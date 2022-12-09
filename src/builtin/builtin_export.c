@@ -6,28 +6,11 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:01:18 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/12/01 10:58:35 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/04 15:24:01 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
-
-static t_bool	key_is_valid(char *str)
-{
-	while (*str)
-	{
-		if (!ft_isalnum(*str) && *str != '_')
-			return (FALSE);
-		str++;
-	}
-	return (TRUE);
-}
-
-static t_bool	value_is_valid(char *str)
-{
-	(void)str;
-	return (TRUE);
-}
 
 static t_error_code	get_key_value(char *str, char **key, char **value)
 {
@@ -43,7 +26,7 @@ static t_error_code	get_key_value(char *str, char **key, char **value)
 			break ;
 		}
 	}
-	if (!key_is_valid(*key) || !value_is_valid(*value))
+	if (!env_is_key_valid(*key))
 		return (ERROR);
 	return (SUCCESS);
 }
