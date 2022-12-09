@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/08 16:08:41 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 10:23:49 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_error_code	run_single_builtin(t_shell_op *sp, t_cmd *c)
 
 	if (OK != c->stt)
 	{
-		sp->last_cmd_stt = (unsigned char)c->stt;
+		sp->last_cmd_stt = c->stt;
 		return (SUCCESS);
 	}
 	redirecter_set_stream_if_needed(c);

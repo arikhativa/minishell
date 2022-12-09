@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/08 16:08:44 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 10:23:49 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	wait_all_cmds(t_shell_op *sp)
 	{
 		c = n->value;
 		if (OK != c->stt)
-			sp->last_cmd_stt = (unsigned char)c->stt;
+			sp->last_cmd_stt = c->stt;
 		else
 		{
 			waitpid(c->pid, &stt, 0);
@@ -60,7 +60,7 @@ void	wait_all_cmds(t_shell_op *sp)
 				if (is_builtin(cmd_get_cmd(c)))
 					sp->last_cmd_stt = c->builtin_ret_val;
 				else
-					sp->last_cmd_stt = (unsigned char)WEXITSTATUS(stt);
+					sp->last_cmd_stt = WEXITSTATUS(stt);
 			}
 			else if (WIFSIGNALED(stt))
 				hndl_child_signal_exit(&(sp->last_cmd_stt), stt);

@@ -6,22 +6,22 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/08 14:53:34 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 10:23:49 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
-void	hndl_child_signal_exit(unsigned char *ret, int sig)
+void	hndl_child_signal_exit(int *ret, int sig)
 {
 	if (SIGINT == sig)
 	{
-		*ret = (unsigned char)CMD_EXIT_SIG_INT;
+		*ret = CMD_EXIT_SIG_INT;
 		ft_putstr_fd("\n", STDOUT_FILENO);
 	}
 	else if (SIGQUIT == sig)
 	{
-		*ret = (unsigned char)CMD_EXIT_SIG_QUIT;
+		*ret = CMD_EXIT_SIG_QUIT;
 		ft_putstr_fd(SIGQUIT_STR, STDOUT_FILENO);
 		ft_putstr_fd("\n", STDOUT_FILENO);
 	}

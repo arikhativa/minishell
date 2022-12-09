@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:01:18 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/12/08 17:05:49 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 10:23:49 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@ static t_error_code	export_one(t_shell_op *sp, t_cmd *c, char *line)
 	char			*key;
 	char			*value;
 
-	c->builtin_ret_val = (unsigned char)SUCCESS;
+	c->builtin_ret_val = SUCCESS;
 	err = get_key_value(line, &key, &value);
 	if (EXPORT_IGNORE_INPUT == err)
 		return (SUCCESS);
 	if (EXPORT_INVALID_INPUT == err)
 	{
 		error_code_print(3, EXPORT_ERR_STR, line, EXPORT_INVALID_ARG);
-		c->builtin_ret_val = (unsigned char)BUILTIN_RET_VAL_ERROR;
+		c->builtin_ret_val = BUILTIN_RET_VAL_ERROR;
 		return (SUCCESS);
 	}
 	if (SUCCESS != err)
 	{
 		free(key);
 		free(value);
-		c->builtin_ret_val = (unsigned char)BUILTIN_RET_VAL_ERROR;
+		c->builtin_ret_val = BUILTIN_RET_VAL_ERROR;
 		return (err);
 	}
 	err = env_setvar(&sp->envp, key, value);
@@ -68,7 +68,7 @@ t_error_code	builtin_export(t_shell_op *sp, t_cmd *c)
 	size_t			i;
 
 	err = SUCCESS;
-	c->builtin_ret_val = (unsigned char)SUCCESS;
+	c->builtin_ret_val = SUCCESS;
 	if (1 == tab_count(c->argv))
 		return (export_print_all(sp->envp, c->out_stream));
 	i = 1;

@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:25:24 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/30 11:57:53 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 11:25:08 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static t_error_code	hndl_error(t_error_code err, t_dll *node, t_shell_op *sp)
 	if (SYNTAX_ERROR == err)
 	{
 		t = (t_token *)node->value;
-		error_code_print(3, PARSE_ERROR_STR, t->value, QUOTE_STR);
+		sp->last_cmd_stt = SYNTAX_ERROR_RET_VAL;
+		error_code_print(3, SYNTAX_ERROR_STR, t->value, QUOTE_STR);
 	}
 	if (SUCCESS == err && PIPE_LIMIT <= count_pipes(sp->token_list))
 	{

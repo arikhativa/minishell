@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:25:38 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/24 11:37:16 by yoav             ###   ########.fr       */
+/*   Updated: 2022/12/09 11:26:33 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include "error_code.h"
 # include "shell_op.h"
 # include "cmd_list.h"
-
-# define PARSE_ERROR_STR	"parse error near `"
 
 t_error_code	parser_check_tokens(t_shell_op *sp);
 t_error_code	is_token_valid(t_dll *node, int *skip);

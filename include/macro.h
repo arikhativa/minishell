@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/08 16:25:48 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 12:16:21 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@
 # define EXPORT_ERR_STR			"export: `"
 # define UNSET_ERR_STR			"unset: `"
 # define EXIT_ERR_STR			"exit: "
+# define SYNTAX_ERROR_STR		"syntax error near token `"
+# define SYNTAX_ERROR_RET_VAL	258
 # define EXIT_NUM_ERR_STR		": numeric argument required"
 # define EXIT_TOO_MANY_ARGS		"too many arguments"
 # define EXEC_DIR_ERR_STR		": Is a directory"

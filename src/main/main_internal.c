@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/08 14:49:05 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 10:25:07 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_error_code	handle_valid_input(t_shell_op *sp)
 t_error_code	internal_flow(char *cli_input, char **envp, \
 	t_read_input read_func)
 {
-	unsigned char	ret;
+	int				ret;
 	t_error_code	err;
 	t_shell_op		*sp;
 

@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:20:11 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/08 14:53:49 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/09 10:23:34 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void			executer_child_logic(t_shell_op *sp, t_cmd *c);
 t_error_code	executer_run_all_cmds(t_shell_op *sp);
 t_error_code	executer_run_builtin(t_shell_op *sp, t_cmd *c);
 t_error_code	run_single_builtin(t_shell_op *sp, t_cmd *c);
-void			hndl_child_signal_exit(unsigned char *ret, int sig);
+void			hndl_child_signal_exit(int *ret, int sig);
 
 #endif
