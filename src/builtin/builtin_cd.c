@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:34:33 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/12/02 12:30:30 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/08 10:47:38 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,6 @@ static t_error_code	get_dir(t_shell_op *sp, char *new_dir)
 t_error_code	builtin_cd(t_shell_op *sp, t_cmd *c)
 {
 	c->builtin_ret_val = 0;
-	if (2 < tab_count(c->argv))
-	{
-		error_code_print(2, CD_ERR_STR, CD_TOO_MANY_ARGS);
-		c->builtin_ret_val = BUILTIN_RET_VAL_ERROR;
-		return (SUCCESS);
-	}
 	if (1 == tab_count(c->argv))
 	{
 		if (SUCCESS != get_dir(sp, env_getvar(sp->envp, HOME_VAR)))
