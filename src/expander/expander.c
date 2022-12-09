@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:05:08 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/12/01 10:58:56 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/02 19:40:25 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,12 @@ static int	expander_get_var(t_shell_op *sp, char *str, char **ret)
 	return (0);
 }
 
-static	t_bool	inside_quote(t_bool flag, char c)
+static void	hndl_exp(char **exp, char **ret, char *tmp)
 {
-	if (c == SINGLE_QUOTE_CHAR)
-		return (!flag);
-	return (flag);
+	*exp = word_encloser(*exp);
+	*ret = ft_strjoin(tmp, *exp);
+	free(*exp);
+	free(tmp);
 }
 
 char	*expander_expand_var(t_shell_op *sp, char *str)
@@ -90,22 +91,22 @@ char	*expander_expand_var(t_shell_op *sp, char *str)
 	char	*exp;
 	char	*tmp;
 	int		i;
-	t_bool	f;
+	t_quote	q_stt;
 
-	f = TRUE;
+	ft_bzero(&q_stt, sizeof(t_quote));
 	i = -1;
 	ret = ft_strdup(EMPTY_STRING);
 	while (*(str + ++i) && (sp->envp))
 	{
-		f = inside_quote(f, *(str + i));
+		update_stt(&q_stt, *(str + i));
 		tmp = ret;
-		if (EXPANDER_CHAR == *(str + i) && f && !ready_to_expand(str, i - 1))
+		if (should_expand(str, i, q_stt.in) || is_valid_tilde(str, i, q_stt.in))
 		{
-			i += expander_get_var(sp, str + i, &exp);
-			exp = word_encloser(exp);
-			ret = ft_strjoin(tmp, exp);
-			free(exp);
-			free(tmp);
+			if (should_expand(str, i, q_stt.in))
+				i += expander_get_var(sp, str + i, &exp);
+			else
+				exp = env_getvar(sp->envp, HOME_VAR);
+			hndl_exp(&exp, &ret, tmp);
 		}
 		else
 			ret = str_append_char(&ret, *(str + i), 1);
