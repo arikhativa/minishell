@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/04 15:21:01 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:52:35 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 # define PIPE_CHAR				'|'
 # define RR_CHAR				'>'
 # define RL_CHAR				'<'
+# define SEMICOLON_CHAR			';'
 # define NEW_LINE_CHAR			'\n'
 # define NEW_LINE_STR			"\n"
 # define SINGLE_QUOTE_CHAR		'\''
 # define DOUBLE_QUOTE_CHAR		'\"'
 # define SPACE_CHAR				' '
 # define EQUAL_CHAR				'='
-# define UNDERSCORE_CHAR		'_'
 # define MINUS_CHAR				'-'
+# define PLUS_CHAR				'+'
 # define EQUAL_STR				"="
 # define COLON_CHAR				':'
 # define SLASH_CHAR				'/'
@@ -37,7 +38,6 @@
 # define NEW_PROC				0
 # define C_FLAG_STR				"-c"
 # define EXPANDER_CHAR			'$'
-# define TILDE_CHAR				'~'
 # define EXPANDER_STRING		"$"
 # define QUESTION_MARK_CHAR		'?'
 # define R_BRACKET				')'
@@ -46,11 +46,12 @@
 # define EXEC_CMD_NOT_FOUND_STR	"command not found: "
 # define PIPE_LIMIT_ERROR_STR	"pipe limit reached"
 # define EXEC_PREM_ERR_STR		"permission denied: "
-# define UNSET_INVALID_ERR_STR	"': not a valid identifier"
 # define CD_INVALID_PATH_STR	": No such file or directory"
 # define CD_TOO_MANY_ARGS		"too many arguments"
 # define CD_ERR_STR				"cd: "
-# define UNSET_ERR_STR			"unset: `"
+# define EXIT_ERR_STR			"exit: "
+# define EXIT_NUM_ERR_STR		": numeric argument required"
+# define EXIT_TOO_MANY_ARGS		"too many arguments"
 # define EXEC_DIR_ERR_STR		": Is a directory"
 # define SIGQUIT_STR			"Quit: "
 # define PIPE_READ				0

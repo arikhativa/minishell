@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 18:07:51 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/12/04 15:12:59 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/10/24 10:19:53 by yoav             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_error_code	env_setvar(char ***env, char *key, char *value)
 	char	i;
 
 	i = 0;
-	if (!env_is_key_valid(key))
+	if (!is_key_valid(key))
 		return (ERROR);
 	if (*env)
 	{

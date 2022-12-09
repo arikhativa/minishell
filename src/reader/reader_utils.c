@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
+/*   By: al7aro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 18:55:10 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/04 15:21:09 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/09/25 14:50:16 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_bool	reader_is_special(char *str)
 		return (i);
 	}
 	if (PIPE_CHAR == *str)
+		return (1);
+	if (SEMICOLON_CHAR == *str)
 		return (1);
 	return (0);
 }

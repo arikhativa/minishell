@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 22:07:07 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/03 09:16:49 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:56:30 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,10 @@ char	*expander_remove_line_quotes(char *str)
 				i = p2 - 1;
 			}
 		}
-		if (!p2)
+		if (!p2 || !i)
 			i++;
+		else if (!(*(str + i - 1)))
+			break ;
 	}
 	return (str);
 }

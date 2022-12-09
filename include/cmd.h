@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:46:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/30 16:49:41 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/08 14:48:21 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_cmd
 	char			**argv;
 	t_cmd_stt		stt;
 	pid_t			pid;
-	int				builtin_ret_val;
+	unsigned char	builtin_ret_val;
 	t_redirect_list	*redirect;
 	t_pipe_pair		*pp;
 	int				in_stream;

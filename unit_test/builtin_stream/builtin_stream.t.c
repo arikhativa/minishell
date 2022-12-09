@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:56:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/29 18:33:07 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/08 17:47:47 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	init_sp(t_shell_op **ret)
 
 	err = shell_op_create(&sp, g_envp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	input = util_create_tab(3, "exit", ">", TEST_FILE);
+	input = util_create_tab(4, "echo", "a", ">", TEST_FILE);
 	shell_op_set_input(sp, input);
 	err = laxer_create_token_list(sp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
@@ -43,6 +43,6 @@ void	test_builtin_out_stream(void)
 	init_sp(&sp);
 	err = executer_run_all_cmds(sp);
 	CU_ASSERT_EQUAL_FATAL(SUCCESS, err);
-	util_read_msg_from_read(TEST_FILE, "exit\n");
+	util_read_msg_from_read(TEST_FILE, "a\n");
 	shell_op_destroy(&sp);
 }

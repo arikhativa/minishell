@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_op.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/20 16:44:40 by yoav             ###   ########.fr       */
+/*   Updated: 2022/12/08 14:47:47 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_shell_op
 	t_cmd_list		*cmd_list;
 	t_bool			run;
 	t_bool			open_pipe;
-	int				last_cmd_stt;
+	unsigned char	last_cmd_stt;
 	t_pipe_list		*pipe_list;
 	char			*cli_input;
 }	t_shell_op;

@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander_utils.c                                   :+:      :+:    :+:   */
+/*   mini_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 20:26:56 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/02 11:53:18 by yrabby           ###   ########.fr       */
+/*   Created: 2022/12/08 14:41:40 by yrabby            #+#    #+#             */
+/*   Updated: 2022/12/08 15:01:05 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expander.h"
+#include "mini_util.h"
 
-t_bool	is_end_of_var_name(char c)
+static t_bool	valid_chars(char c)
 {
-	if (SPACE_CHAR == c
-		|| MINUS_CHAR == c
-		|| SLASH_CHAR == c
-		|| EQUAL_CHAR == c
-		|| SINGLE_QUOTE_CHAR == c
-		|| DOUBLE_QUOTE_CHAR == c
-		|| '\0' == c)
+	return (ft_isdigit(c) || PLUS_CHAR == c || MINUS_CHAR == c);
+}
+
+static t_bool	valid_sign(char *s, int i)
+{
+	if (ft_isdigit(s[i + 1]))
 		return (TRUE);
 	return (FALSE);
 }
 
-t_bool	ready_to_expand(char *str, int i)
+t_bool	util_is_valid_int(char *s)
 {
-	if (i < 0)
-		return (FALSE);
-	if (is_redirect(str + i))
-		return (TRUE);
-	return (FALSE);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (!valid_chars(s[i]))
+			return (FALSE);
+		if (PLUS_CHAR == s[i] || MINUS_CHAR == s[i])
+			if (!valid_sign(s, i))
+				return (FALSE);
+		++i;
+	}
+	return (TRUE);
 }
