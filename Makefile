@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/11/17 01:15:44 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/12/08 10:39:52 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,10 +55,12 @@ SCRIPT_DIR				= script
 TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
 
 #---------- FLAGS ----------
+READLINE_HEADER			= /Users/$(USER)/.brew/opt/readline/include
+READLINE_LIB			= /Users/$(USER)/.brew/opt/readline/lib
 CC 						= cc
-HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) $(READLINE_HEADER)
+HEAD_FLAG				= -I$(HEAD_DIR) -I$(LIBFT_HEAD_DIR) -I$(READLINE_HEADER)
 CFLAGS 					= -c -Wall -Wextra -Werror $(HEAD_FLAG)
-LDFLAGS 				= -L$(LIBFT_DIR) $(READLINE_LIB)
+LDFLAGS 				= -L$(LIBFT_DIR) -L$(READLINE_LIB)
 LDLIBS 					= -lpthread -lft -lreadline
 
 #---------- IMPLICT RULES ----------
@@ -69,7 +71,7 @@ $(addprefix $(TEST_DIR)/, %.t.o): $(addprefix $(TEST_DIR)/, %.t.c) $(TEST_HEAD)
 	@$(CC) $(CFLAGS) $(TEST_HEAD_FLAG) $< -o $@
 
 #---------- RULES ----------
-.PHONY: clean fclean re all check
+.PHONY: clean fclean re all check check/leaks check/norm
 
 all: $(OBJ_DIR) $(NAME)
 
