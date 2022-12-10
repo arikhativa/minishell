@@ -14,6 +14,8 @@
 
 t_error_code	builtin_pwd(t_shell_op *sp, t_cmd *c)
 {
+	char	*tmp;
+
 	(void)sp;
 	if (1 != tab_count(c->argv))
 	{
@@ -21,7 +23,9 @@ t_error_code	builtin_pwd(t_shell_op *sp, t_cmd *c)
 		return (SUCCESS);
 	}
 	c->builtin_ret_val = SUCCESS;
-	ft_putstr_fd(env_getvar(sp->envp, "PWD"), c->out_stream);
+	tmp = getcwd(NULL, 0);
+	ft_putstr_fd(tmp, c->out_stream);
+	free(tmp);
 	ft_putstr_fd("\n", c->out_stream);
 	return (SUCCESS);
 }
