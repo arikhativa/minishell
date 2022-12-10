@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/09 13:41:55 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/10 17:16:06 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define EQUAL_CHAR				'='
 # define UNDERSCORE_CHAR		'_'
 # define MINUS_CHAR				'-'
+# define N_CHAR					'n'
 # define PLUS_CHAR				'+'
 # define EQUAL_STR				"="
 # define COLON_CHAR				':'
