@@ -21,6 +21,7 @@
 # define SINGLE_QUOTE_CHAR		'\''
 # define DOUBLE_QUOTE_CHAR		'\"'
 # define DOUBLE_QUOTE_STR		"\""
+# define TAB_CHAR         '\t'
 # define SPACE_CHAR				' '
 # define EQUAL_CHAR				'='
 # define UNDERSCORE_CHAR		'_'

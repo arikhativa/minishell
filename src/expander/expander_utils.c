@@ -12,9 +12,15 @@
 
 #include "expander.h"
 
+static int	is_space(char c)
+{
+	return (TAB_CHAR == c || NEW_LINE_CHAR == c || SPACE_CHAR == c
+		|| '\v' == c || '\f' == c || '\r' == c);
+}
+
 t_bool	is_end_of_var_name(char c)
 {
-	if (SPACE_CHAR == c
+	if (is_space(c)
 		|| EXPANDER_CHAR == c
 		|| MINUS_CHAR == c
 		|| SLASH_CHAR == c
