@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:26:56 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/02 19:40:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/04 14:51:33 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_bool	is_end_of_var_name(char c)
 {
 	if (SPACE_CHAR == c
+		|| EXPANDER_CHAR == c
 		|| MINUS_CHAR == c
 		|| SLASH_CHAR == c
 		|| EQUAL_CHAR == c

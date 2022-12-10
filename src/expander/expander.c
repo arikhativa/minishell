@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:05:08 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/12/02 19:40:25 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/04 14:52:54 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	expander_get_var(t_shell_op *sp, char *str, char **ret)
 	int		i;
 	int		str_len;
 
-	i = -1;
+	i = 0;
 	str_len = ft_strlen(str);
 	if (QUESTION_MARK_CHAR == *(str + 1))
 	{
