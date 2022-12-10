@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:05:08 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/12/04 14:52:54 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/10 17:52:50 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,29 @@ static char	*word_encloser(char *str)
 	return (final_ret);
 }
 
-static int	expander_get_var(t_shell_op *sp, char *str, char **ret)
+static int	expander_get_var(t_shell_op *sp, char *str, char **ret, \
+	t_quote q_stt)
 {
 	int		i;
-	int		str_len;
+	int		is_dollar;
 
 	i = 0;
-	str_len = ft_strlen(str);
 	if (QUESTION_MARK_CHAR == *(str + 1))
 	{
 		*ret = ft_itoa(sp->last_cmd_stt);
 		return (1);
 	}
-	while (++i <= str_len)
+	while (++i <= (int)ft_strlen(str))
 	{
 		if (is_end_of_var_name(*(str + i)))
 		{
+			is_dollar = is_print_dollar(str, i, q_stt);
 			str = ft_substr(str, 1, i - 1);
 			*ret = env_getvar(sp->envp, str);
 			free(str);
 			if (!*ret)
 				*ret = EMPTY_STRING;
-			if (i == 1)
+			if (i == 1 && is_dollar)
 				*ret = EXPANDER_STRING;
 			return (i - 1);
 		}
@@ -103,7 +104,7 @@ char	*expander_expand_var(t_shell_op *sp, char *str)
 		if (should_expand(str, i, q_stt.in) || is_valid_tilde(str, i, q_stt.in))
 		{
 			if (should_expand(str, i, q_stt.in))
-				i += expander_get_var(sp, str + i, &exp);
+				i += expander_get_var(sp, str + i, &exp, q_stt);
 			else
 				exp = env_getvar(sp->envp, HOME_VAR);
 			hndl_exp(&exp, &ret, tmp);

@@ -6,21 +6,15 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:26:56 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/04 14:51:33 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/10 17:33:50 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expander.h"
 
-static int	is_space(char c)
-{
-	return (TAB_CHAR == c || NEW_LINE_CHAR == c || SPACE_CHAR == c
-		|| '\v' == c || '\f' == c || '\r' == c);
-}
-
 t_bool	is_end_of_var_name(char c)
 {
-	if (is_space(c)
+	if (expander_is_space(c)
 		|| EXPANDER_CHAR == c
 		|| MINUS_CHAR == c
 		|| SLASH_CHAR == c
