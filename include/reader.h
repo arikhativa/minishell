@@ -34,6 +34,7 @@ t_bool			reader_is_special(char *str);
 t_bool			reader_is_dquote(char c);
 t_bool			reader_is_squote(char c);
 t_bool			reader_is_space(char c);
+char			reader_is_del(char c, char del);
 char			*reader_get_quote_prompt(char c);
 
 #endif

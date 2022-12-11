@@ -35,7 +35,7 @@ static int	get_word(char *str)
 	else
 		i = -1;
 	del = SPACE_CHAR;
-	while (*(str + ++i) && *(str + i) != del)
+	while (*(str + ++i) && !reader_is_del(*(str + i), del))
 	{
 		if (reader_is_space(del) && reader_is_special(str + i))
 			return (i);
