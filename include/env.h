@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 12:51:06 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/10/23 15:35:33 by yoav             ###   ########.fr       */
+/*   Updated: 2022/12/11 11:03:51 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # define SHLVL_KEY	"SHLVL"
 
+void			env_set_pwd(char ***env);
 char			*env_getvar(char **env, char *key);
 void			env_unsetvar(char **env, char *key);
 t_error_code	env_initenv(char ***env, char **envp);

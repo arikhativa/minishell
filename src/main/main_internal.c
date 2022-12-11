@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/09 10:25:07 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/11 11:05:36 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_error_code	internal_flow(char *cli_input, char **envp, \
 		return (err);
 	sp->run = TRUE;
 	env_inc_shlvl(&(sp->envp));
+	env_set_pwd(&(sp->envp));
 	if (cli_input)
 		sp->cli_input = cli_input;
 	err = internal_loop(sp, read_func);
