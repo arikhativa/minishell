@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:48:14 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/11 11:03:34 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/11 11:10:30 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_error_code	env_inc_shlvl(char ***env)
 	lvl_str = env_getvar(*env, SHLVL_KEY);
 	lvl_int = ft_atoi(lvl_str);
 	if (0 > lvl_int || !lvl_str)
-		lvl_int = 0;
+		lvl_int = 1;
 	else
 		++lvl_int;
 	lvl_str = ft_itoa(lvl_int);
