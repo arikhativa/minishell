@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:05:08 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/12/10 17:52:50 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:47:03 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char	*expander_expand_var(t_shell_op *sp, char *str)
 			if (should_expand(str, i, q_stt.in))
 				i += expander_get_var(sp, str + i, &exp, q_stt);
 			else
-				exp = env_getvar(sp->envp, HOME_VAR);
+				exp = get_tilde(sp);
 			hndl_exp(&exp, &ret, tmp);
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 09:24:16 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/12/10 17:51:38 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:46:44 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void			update_stt(t_quote *stt, char c);
 t_bool			should_expand(char *str, int i, t_bool in);
 int				expander_is_space(char c);
 t_bool			is_print_dollar(char *s, int i, t_quote q_stt);
+char			*get_tilde(t_shell_op *sp);
 
 #endif
