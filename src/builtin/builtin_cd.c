@@ -6,11 +6,21 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:34:33 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/12/09 10:23:49 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/11 10:56:26 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
+
+static char	*get_pwd_var(t_shell_op *sp)
+{
+	char	*ret;
+
+	ret = env_getvar(sp->envp, PWD_VAR);
+	if (!ret)
+		ret = EMPTY_STRING;
+	return (ret);
+}
 
 static t_error_code	get_dir(t_shell_op *sp, char *new_dir)
 {
@@ -21,12 +31,12 @@ static t_error_code	get_dir(t_shell_op *sp, char *new_dir)
 	if (SUCCESS != err)
 		return (err);
 	tmp = getcwd(NULL, 0);
-	if (!ft_strcmp(tmp, env_getvar(sp->envp, PWD_VAR)))
+	if (!ft_strcmp(tmp, get_pwd_var(sp)))
 	{
 		free(tmp);
 		return (SUCCESS);
 	}
-	env_setvar(&sp->envp, OLDPWD_VAR, env_getvar(sp->envp, PWD_VAR));
+	env_setvar(&sp->envp, OLDPWD_VAR, get_pwd_var(sp));
 	env_setvar(&sp->envp, PWD_VAR, tmp);
 	free(tmp);
 	return (SUCCESS);
