@@ -21,6 +21,7 @@ t_bool	is_end_of_var_name(char c)
 		|| EQUAL_CHAR == c
 		|| SINGLE_QUOTE_CHAR == c
 		|| DOUBLE_QUOTE_CHAR == c
+		|| PIPE_CHAR == c
 		|| '\0' == c)
 		return (TRUE);
 	return (FALSE);
