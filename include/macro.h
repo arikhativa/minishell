@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 12:35:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/10 17:16:06 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/12 09:46:53 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define PLUS_CHAR				'+'
 # define EQUAL_STR				"="
 # define COLON_CHAR				':'
+# define DOT_CHAR				'.'
 # define SLASH_CHAR				'/'
 # define SLASH_STR				"/"
 # define QUOTE_STR				"'"

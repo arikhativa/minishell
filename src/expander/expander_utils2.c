@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:26:56 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/10 17:52:15 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/13 12:35:19 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 t_bool	is_print_dollar(char *s, int i, t_quote q_stt)
 {
+	char	c;
+
 	if (1 == i)
 	{
-		if (IN_QUOTE == q_stt.double_quote && DOUBLE_QUOTE_CHAR == s[1])
+		c = s[1];
+		if (IN_QUOTE == q_stt.double_quote && DOUBLE_QUOTE_CHAR == c)
 			return (TRUE);
-		if (!s[1] || expander_is_space(s[1]))
+		if (!ft_isalnum(c) && UNDERSCORE_CHAR != c && DOUBLE_QUOTE_CHAR != c \
+			&& SINGLE_QUOTE_CHAR != c)
 			return (TRUE);
 	}
 	return (FALSE);
