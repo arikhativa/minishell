@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 00:34:33 by r3dc4t            #+#    #+#             */
-/*   Updated: 2022/12/11 10:56:26 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/12 10:39:27 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,24 @@ static t_error_code	get_dir(t_shell_op *sp, char *new_dir)
 	return (SUCCESS);
 }
 
+static void	home_logic(t_shell_op *sp, t_cmd *c)
+{
+	char	*home;
+
+	home = env_getvar(sp->envp, HOME_VAR);
+	if (!home)
+	{
+		error_code_print(2, CD_ERR_STR, CD_HOME_ERR_STR);
+		c->builtin_ret_val = BUILTIN_RET_VAL_ERROR;
+		return ;
+	}
+	if (SUCCESS != get_dir(sp, home))
+	{
+		error_code_print(3, CD_ERR_STR, home, CD_INVALID_PATH_STR);
+		c->builtin_ret_val = BUILTIN_RET_VAL_ERROR;
+	}
+}
+
 t_error_code	builtin_cd(t_shell_op *sp, t_cmd *c)
 {
 	c->builtin_ret_val = 0;
@@ -53,8 +71,7 @@ t_error_code	builtin_cd(t_shell_op *sp, t_cmd *c)
 	}
 	if (1 == tab_count(c->argv))
 	{
-		if (SUCCESS != get_dir(sp, env_getvar(sp->envp, HOME_VAR)))
-			c->builtin_ret_val = BUILTIN_RET_VAL_ERROR;
+		home_logic(sp, c);
 		return (SUCCESS);
 	}
 	if (SUCCESS != get_dir(sp, *(c->argv + 1)))
