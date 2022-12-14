@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:56:02 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/30 11:49:23 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:29:59 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int		clean_suite(void);
 void	test_builtin_out_stream(void);
 
 // parser
-void	test_parser_open_pipe(void);
 void	test_parser_redirect_error(void);
 void	test_parser_token_check(void);
 void	test_parser_bad_first_tok(void);

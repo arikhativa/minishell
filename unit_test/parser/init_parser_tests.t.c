@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:22:13 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/30 11:49:11 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:29:58 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ CU_TestInfo	g_parser_tests[] = {
 {
 	"test_parser_redirect_error",
 	test_parser_redirect_error,
-},
-{
-	"test_parser_open_pipe",
-	test_parser_open_pipe,
 },
 {
 	"test_parser_token_check",

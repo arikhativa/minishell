@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 13:54:10 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/09 11:54:53 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:14:03 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_error_code	pipe_logic(t_dll *n, int *skip)
 
 	n = n->next;
 	if (!n)
-		return (SYNTAX_PIPE_STILL_OPEN);
+		return (SYNTAX_ERROR);
 	++(*skip);
 	t = (t_token *)(n->value);
 	if (PIPE == t->type)

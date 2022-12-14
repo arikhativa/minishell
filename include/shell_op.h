@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/14 14:53:01 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:13:16 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_shell_op
 	t_token_list	*token_list;
 	t_cmd_list		*cmd_list;
 	t_bool			run;
-	t_bool			open_pipe;
 	t_bool			clean_history;
 	int				last_cmd_stt;
 	t_pipe_list		*pipe_list;

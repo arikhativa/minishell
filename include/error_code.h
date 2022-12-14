@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/13 12:17:11 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:14:20 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef enum s_error_code
 	NO_BUILTIN_ERROR,
 	ALLOCATION_ERROR,
 	SYNTAX_ERROR,
-	SYNTAX_PIPE_STILL_OPEN,
 	NEW_PROC_ERROR,
 	END,
 	CONTINUE,

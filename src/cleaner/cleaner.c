@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:04:03 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/30 10:28:11 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:19:56 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	cleaner_round_clean(t_shell_op *sp)
 	}
 }
 
-void	cleaner_on_pipe_error(t_shell_op *sp)
+void	cleaner_on_parse_error(t_shell_op *sp)
 {
 	if (sp->input)
 	{

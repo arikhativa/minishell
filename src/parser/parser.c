@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 12:25:24 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/09 11:25:08 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:13:23 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ t_error_code	parser_check_tokens(t_shell_op *sp)
 	while (SUCCESS == err && node)
 	{
 		err = is_token_valid(node, &i);
-		if (SYNTAX_PIPE_STILL_OPEN == err)
-			sp->open_pipe = TRUE;
 		if (SUCCESS == err)
 			node = get_next_node(node, i);
 	}

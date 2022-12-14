@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/14 16:08:37 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:13:52 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static t_error_code	get_input_status(t_error_code err)
 		printf("exit\n");
 		return (END);
 	}
-	if ((PIPE_LIMIT_ERROR == err) || (SYNTAX_PIPE_STILL_OPEN == err) || \
-		(SYNTAX_ERROR == err) || (NO_INPUT == err))
+	if ((PIPE_LIMIT_ERROR == err) || (SYNTAX_ERROR == err) || \
+		(NO_INPUT == err))
 		return (CONTINUE);
 	if (EOF_SUCCESS == err)
 		return (END);

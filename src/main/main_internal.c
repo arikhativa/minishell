@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/14 16:09:52 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:19:56 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_error_code	handle_input(t_shell_op *sp, t_read_input read_func)
 		return (err);
 	err = parser_check_tokens(sp);
 	if (SUCCESS != err)
-		cleaner_on_pipe_error(sp);
+		cleaner_on_parse_error(sp);
 	return (err);
 }
 
