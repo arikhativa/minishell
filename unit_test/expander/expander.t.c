@@ -26,7 +26,7 @@ void	test_expander(void)
 	env_setvar(&sp.envp, "OLD_PWD", "~/Documents/");
 	env_setvar(&sp.envp, "K", "ALVARO LOPEZ");
 	str = expander_expand_var(&sp, "Name is $USER :D\n");
-	CU_ASSERT_STRING_EQUAL(str, "Name is al7arolopez :D\n");
+	CU_ASSERT_STRING_EQUAL(str, "Name is \"al7arolopez\" :D\n");
 	free(str);
 	str = expander_expand_var(&sp, "Your is $PATH :D $PWD $K o$Lo");
 	str = expander_remove_line_quotes(str);

@@ -31,21 +31,12 @@ static char	*str_append_char(char **str, char c, t_bool sufix)
 
 static char	*word_encloser(char *str)
 {
-	char	*first_part;
-	char	*last_part;
-	char	*final_ret;
+	char	*ret;
 
-	if (!ft_strchr(str, ' '))
-		return (ft_strdup(str));
-	first_part = ft_substr(str, 0, ft_strchr(str, ' ') - str);
-	first_part = str_append_char(&first_part, SPACE_CHAR, TRUE);
-	last_part = ft_substr(str, ft_strchr(str, ' ') - str + 1, ft_strlen(str));
-	last_part = str_append_char(&last_part, DOUBLE_QUOTE_CHAR, FALSE);
-	last_part = str_append_char(&last_part, DOUBLE_QUOTE_CHAR, TRUE);
-	final_ret = ft_strjoin(first_part, last_part);
-	free(first_part);
-	free(last_part);
-	return (final_ret);
+	ret = ft_strdup(str);
+	ret = str_append_char(&ret, DOUBLE_QUOTE_CHAR, FALSE);
+	ret = str_append_char(&ret, DOUBLE_QUOTE_CHAR, TRUE);
+	return (ret);
 }
 
 static int	expander_get_var(t_shell_op *sp, char *str, char **ret, \
