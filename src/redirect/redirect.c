@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:46:29 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/21 18:06:46 by al7aro           ###   ########.fr       */
+/*   Updated: 2022/12/13 09:58:39 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void	redirect_destroy(t_redirect **r)
 {
 	if (HEREDOC == (*r)->type)
 	{
-		unlink((*r)->path);
-		free((*r)->path);
+		if ((*r)->should_del_tmp)
+			unlink((*r)->path);
+		if ((*r)->should_free_path)
+			free((*r)->path);
 	}
 	if (ERROR != (*r)->fd)
 		close((*r)->fd);

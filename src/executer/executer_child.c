@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/09 10:23:49 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/12 15:19:39 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	builtin_logic(t_shell_op *sp, t_cmd *c)
 	err = executer_run_builtin(sp, c);
 	if (SUCCESS != err)
 		error_code_print_internal_err(err);
-	shell_op_destroy(&sp);
 	exit(err);
 }
 

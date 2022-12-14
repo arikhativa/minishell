@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mode_mngr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/20 17:09:59 by yoav             ###   ########.fr       */
+/*   Updated: 2022/12/13 12:17:15 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	mode_mngr_is_file(int argc)
 	return (1 < argc);
 }
 
-t_bool	mode_mngr_is_stdin(void)
+t_bool	mode_mngr_is_interactive(void)
 {
-	return (!isatty(STDIN_FILENO));
+	return (isatty(STDIN_FILENO));
 }

@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/12 14:54:58 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 14:53:01 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void			shell_op_destroy(t_shell_op **sp);
 void			shell_op_set_token_list(t_shell_op *sp, t_token_list *tok_lst);
 void			shell_op_set_input(t_shell_op *sp, char **input);
 t_cmd_list		*shell_op_get_cmd_list(t_shell_op *sp);
+t_shell_op		*shell_op_get_sp(t_shell_op *param);
 
 #endif

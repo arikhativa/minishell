@@ -6,11 +6,21 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:24:41 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/01 10:59:09 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/12 12:51:16 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc.h"
+
+static char	*heredoc_readline(char *eol)
+{
+	char	*ret;
+
+	ret = readline(HEREDOC_PROMPT);
+	if (!ret)
+		ret = ft_strdup(eol);
+	return (ret);
+}
 
 void	heredoc_line(char **line, char *eol)
 {
@@ -19,7 +29,7 @@ void	heredoc_line(char **line, char *eol)
 
 	if (!eol)
 		return ;
-	str = readline(HEREDOC_PROMPT);
+	str = heredoc_readline(eol);
 	*line = ft_strdup("");
 	while (ft_strcmp(str, eol))
 	{
@@ -30,7 +40,7 @@ void	heredoc_line(char **line, char *eol)
 		tmp = *line;
 		*line = ft_strjoin(*line, "\n");
 		free(tmp);
-		str = readline(HEREDOC_PROMPT);
+		str = heredoc_readline(eol);
 	}
 	free(str);
 }
@@ -61,17 +71,14 @@ char	*heredoc_get_temp_path(char *base_path)
 	return (path);
 }
 
-char	*heredoc_handle_heredoc(char *eol)
+void	heredoc_handle_heredoc(t_redirect *r)
 {
 	char	*line;
-	char	*tmp_path;
 	int		fd;
 
-	tmp_path = heredoc_get_temp_path("/tmp/hd_file");
-	heredoc_line(&line, eol);
-	fd = open(tmp_path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(r->path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	heredoc_line(&line, r->heredoc_eol);
 	write(fd, line, ft_strlen(line));
 	close(fd);
 	free(line);
-	return (tmp_path);
 }

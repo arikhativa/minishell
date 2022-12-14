@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:29:37 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/01 10:59:41 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/13 16:32:11 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,24 @@ static int	handle_redirect(t_dll *elem, void *param)
 	(void)param;
 	r = elem->value;
 	if (HEREDOC == r->type)
-		r->path = heredoc_handle_heredoc(r->path);
+	{
+		if (!mode_mngr_is_interactive())
+			return (HEREDOC_ERR_ON_INTERACTIVE_MODE);
+		r->heredoc_eol = r->path;
+		r->path = heredoc_get_temp_path(HEREDOC_TMP_PATH);
+		r->should_free_path = TRUE;
+		err = heredoc_run_child(r);
+		r->should_del_tmp = TRUE;
+		if (HEREDOC_SIGNAL_EXIT == err)
+			return (err);
+	}
 	err = open_file(r);
 	if (SUCCESS != err)
 		error_code_print(3, r->path, ": ", strerror(errno));
 	return (err);
 }
 
+// TODO check this OPEN_ERR
 static int	handle_cmd(t_dll *elem, void *param)
 {
 	t_error_code	err;
@@ -37,7 +48,6 @@ static int	handle_cmd(t_dll *elem, void *param)
 	err = dll_iterate(c->redirect->lst, handle_redirect, NULL);
 	if (OPEN_ERROR == err)
 	{
-		redirect_list_destroy(&(c->redirect));
 		c->stt = REDIRECT_ERROR;
 		err = SUCCESS;
 	}
@@ -51,7 +61,11 @@ t_error_code	redirecter_setup_files(t_shell_op *sp)
 	err = dll_iterate(cmd_list_get_list(shell_op_get_cmd_list(sp)), \
 		handle_cmd, NULL);
 	if (SUCCESS != err)
+	{
+		if (HEREDOC_ERR_ON_INTERACTIVE_MODE == err)
+			error_code_print(2, HEREDOC_ERR_STR, HEREDOC_INTER_ERR_STR);
 		return (err);
+	}
 	return (SUCCESS);
 }
 

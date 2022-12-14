@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirecter.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:30:20 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/22 10:41:14 by yoav             ###   ########.fr       */
+/*   Updated: 2022/12/13 12:12:38 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "shell_op.h"
 # include "redirect_util.h"
 # include "cmd.h"
+# include "mode_mngr.h"
 # include "heredoc.h"
 
 void			redirecter_init_redirect(t_cmd *c, char *symbol, char *path);

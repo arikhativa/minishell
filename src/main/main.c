@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/01 10:59:30 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/13 12:28:03 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,13 @@ int	main(int argc, char **argv, char **envp)
 	if (SUCCESS != err)
 		return (err);
 	if (mode_mngr_is_cli(argc, argv))
+	{
+		close(STDIN_FILENO);
 		return (internal_flow(argv[2], envp, reader_get_tab_from_cli));
+	}
 	if (mode_mngr_is_file(argc))
 		return (file_logic(argv, envp));
-	if (mode_mngr_is_stdin())
+	if (!mode_mngr_is_interactive())
 		return (internal_flow(NULL, envp, reader_get_tab_from_file));
 	err = mini_signal_interactive_mode();
 	if (SUCCESS != err)

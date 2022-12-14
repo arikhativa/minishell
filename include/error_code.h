@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:45:15 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/08 16:57:15 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/13 12:17:11 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef enum s_error_code
 	CONTINUE,
 	PIPE_LIMIT_ERROR,
 	EOF_SUCCESS,
+	HEREDOC_ERR_ON_INTERACTIVE_MODE,
+	HEREDOC_SIGNAL_EXIT,
 	NO_INPUT,
 	SIGNAL_ERROR,
 	OPEN_ERROR,

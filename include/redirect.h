@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:46:44 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/17 03:19:14 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/12/13 09:57:26 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ typedef struct s_redirect
 {
 	t_redirect_type	type;
 	char			*path;
+	char			*heredoc_eol;
 	int				fd;
+	t_bool			should_free_path;
+	t_bool			should_del_tmp;
 }	t_redirect;
 
 t_error_code	redirect_create(t_redirect **ret);

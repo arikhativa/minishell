@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/11/30 12:02:34 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/11 14:53:28 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,14 @@ t_error_code	internal_loop(t_shell_op *sp, t_read_input read_func)
 		if (END == err)
 			return (SUCCESS);
 		if (SUCCESS == err)
+		{
 			err = handle_valid_input(sp);
+			if (HEREDOC_SIGNAL_EXIT == err)
+			{
+				err = SUCCESS;
+				continue ;
+			}
+		}
 	}
 	return (err);
 }

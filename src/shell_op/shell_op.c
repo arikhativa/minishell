@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:52:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/12 14:53:16 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 14:53:05 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_error_code	shell_op_create(t_shell_op **ret, char **envp)
 		free(*ret);
 		return (err);
 	}
+	shell_op_get_sp(*ret);
 	return (SUCCESS);
 }
 
