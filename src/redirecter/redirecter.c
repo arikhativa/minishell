@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:29:37 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/13 16:32:11 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:10:48 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int	handle_redirect(t_dll *elem, void *param)
 	return (err);
 }
 
-// TODO check this OPEN_ERR
 static int	handle_cmd(t_dll *elem, void *param)
 {
 	t_error_code	err;

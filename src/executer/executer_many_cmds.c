@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/11 12:19:48 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:08:17 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	hndl_last_cmd(t_shell_op *sp, t_dll *n)
 	}
 }
 
-// TODO make sure all builtins return "builtin_ret_val"
 static void	wait_all_cmds(t_shell_op *sp)
 {
 	int		stt;

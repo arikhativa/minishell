@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/12 15:19:39 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:08:06 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ static void	builtin_logic(t_shell_op *sp, t_cmd *c)
 	exit(err);
 }
 
-// TODO do something with stt = execve() on err
-// TODO err print
 void	executer_child_logic(t_shell_op *sp, t_cmd *c)
 {
 	t_error_code	err;

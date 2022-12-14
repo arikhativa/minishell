@@ -6,13 +6,12 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/13 12:21:14 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:09:52 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-// TODO SYNTAX_ERROR create error_code handler -- NO printf
 t_error_code	handle_input(t_shell_op *sp, t_read_input read_func)
 {
 	t_error_code	err;
@@ -60,7 +59,6 @@ t_error_code	handle_valid_input(t_shell_op *sp)
 	return (SUCCESS);
 }
 
-// TODO reader should handle open pipe then FALSE it
 t_error_code	internal_flow(char *cli_input, char **envp, \
 	t_read_input read_func)
 {

@@ -6,14 +6,12 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/09 14:33:34 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:08:21 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executer.h"
 
-// TODO do something with stt = execve() on err
-// TODO err print
 t_error_code	executer_run_cmd(t_shell_op *sp, t_cmd *c)
 {
 	pid_t	pid;

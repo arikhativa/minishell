@@ -6,13 +6,12 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:50:39 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/11 14:53:28 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:08:37 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-// TODO think of the printf()
 static t_error_code	get_input_status(t_error_code err)
 {
 	if (END_OF_TRANSMISSION == err)

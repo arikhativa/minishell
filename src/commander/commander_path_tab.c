@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 09:45:24 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/13 19:48:20 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:07:58 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static t_error_code	add_slash_if_needed(char **tab)
 	return (SUCCESS);
 }
 
-// TODO add test on a bad PATH var
 t_error_code	get_path_tab(char ***ret, char **env)
 {
 	t_error_code	err;

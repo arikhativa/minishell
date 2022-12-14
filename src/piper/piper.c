@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   piper.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 15:34:51 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/02 12:18:59 by yoav             ###   ########.fr       */
+/*   Updated: 2022/12/14 16:10:37 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "piper.h"
 
-// TODO think about pipe list
 static int	init_pipes(t_dll *n, void *shell_op)
 {
 	int				p[2];

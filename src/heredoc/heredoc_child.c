@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:24:41 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/12 15:19:28 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/14 16:08:29 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	child_signal_exit(int sig)
 	}
 }
 
-// TODO del t_shell_op on child exit
 t_error_code	heredoc_run_child(t_redirect *r)
 {
 	int		stt;
