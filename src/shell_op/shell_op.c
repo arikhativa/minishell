@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_op.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:52:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/11/17 14:56:26 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:53:16 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	shell_op_destroy(t_shell_op **sp)
 		env_destroy(&((*sp)->envp));
 	if ((*sp)->pipe_list)
 		pipe_list_destroy(&((*sp)->pipe_list));
+	if ((*sp)->clean_history)
+		rl_clear_history();
 	ft_bzero(*sp, sizeof(t_shell_op));
 	free(*sp);
 	*sp = NULL;
