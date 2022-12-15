@@ -6,14 +6,11 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/12/14 16:31:37 by yrabby           ###   ########.fr        #
+#    Updated: 2022/12/15 15:10:15 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include makefile_util.mk
-
 NAME 					= minishell
-export ROOT_DIR			= $(CURDIR)
 
 #---------- HEAD ----------
 HEAD_DIR 				= include
@@ -159,25 +156,6 @@ LIBFT_DIR				= libft
 LIBFT_HEAD_DIR			= $(LIBFT_DIR)
 LIBFT					= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
-#---------- TEST ----------
-TEST_DIR				= unit_test
-TEST_HEAD_DIR			= $(addprefix $(TEST_DIR)/, include)
-TEST_HEAD_NMAE			= $(notdir $(wildcard $(TEST_HEAD_DIR)/*.h))
-TEST_HEAD				= $(addprefix $(TEST_HEAD_DIR)/, $(TEST_HEAD_NMAE))
-TEST_HEAD_FLAG			= -I$(TEST_HEAD_DIR)
-TEST_LDLIBS				= -lcunit $(LDLIBS)
-export TEST_EXEC		= test.out
-export TEST_RES			= unit_test_result.txt
-export VALGRIND_OUTPUT 	= valgrind_out.txt
-export NORMINETTE_OUTPUT	= norm_out.txt
-export NORMINETTE_RES	= norminette_result.txt
-TEST_SRC 				= $(wildcard $(TEST_DIR)/**/*.t.c)
-TEST_OBJ 				= $(TEST_SRC:.t.c=.t.o)
-
-#---------- SCRIPT ----------
-SCRIPT_DIR				= script
-TEST_SCRIPT				= $(addprefix $(SCRIPT_DIR)/, test.sh)
-
 #---------- FLAGS ----------
 READLINE_HEADER			= /Users/$(USER)/.brew/opt/readline/include
 READLINE_LIB			= /Users/$(USER)/.brew/opt/readline/lib
@@ -189,54 +167,30 @@ LDLIBS 					= -lpthread -lft -lreadline
 
 #---------- IMPLICT RULES ----------
 $(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.c) $(HEAD)
-	@$(CC) $(CFLAGS) $< -o $(@)
-
-$(addprefix $(TEST_DIR)/, %.t.o): $(addprefix $(TEST_DIR)/, %.t.c) $(TEST_HEAD)
-	@$(CC) $(CFLAGS) $(TEST_HEAD_FLAG) $< -o $@
+	$(CC) $(CFLAGS) $< -o $(@)
 
 #---------- RULES ----------
-.PHONY: clean fclean re all check check/leaks check/norm
+.PHONY: clean fclean re all
 
 all: $(OBJ_DIR) $(NAME)
 
 $(LIBFT):
-	@$(MAKE) -sC $(LIBFT_DIR)
+	$(MAKE) -sC $(LIBFT_DIR)
 
 $(OBJ_DIR):
-	@cp -a $(SRC_DIR) $(OBJ_DIR)
-	@$(RM) $(OBJ:.o=.c)
+	cp -a $(SRC_DIR) $(OBJ_DIR)
+	$(RM) $(OBJ:.o=.c)
 
 $(NAME): $(OBJ) $(LIBFT)
-	@echo "$(GREEN)Compilation was Successful!$(NC)"
-	@echo "$(YELLOW)Linking... $(NC)"
-	@$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $@
-	@echo "$(GREEN)$(NAME) READY!$(NC)"
+	$(CC) $(LDFLAGS) $(OBJ) $(LDLIBS) -o $@
 
-$(TEST_EXEC): $(OBJ_DIR) $(OBJ_NO_MAIN) $(TEST_OBJ) $(LIBFT)
-	@$(CC) $(LDFLAGS) $(OBJ_NO_MAIN) $(TEST_OBJ) $(TEST_LDLIBS) -o $(TEST_EXEC)
-
-check: $(TEST_EXEC)
-	@bash $(TEST_SCRIPT) unit_test
-
-check/leaks: $(TEST_EXEC)
-	@bash $(TEST_SCRIPT) memory
-
-check/norm:
-	@bash $(TEST_SCRIPT) norm
-	
 clean:
-	@$(MAKE) clean -sC $(LIBFT_DIR)
-	@$(RM) -rf $(OBJ_DIR)
-	@$(RM) $(VALGRIND_OUTPUT)
-	@$(RM) $(TEST_RES)
-	@$(RM) $(TEST_OBJ)
-	@echo "$(RED)Objects Removed!$(NC)"
+	$(MAKE) clean -sC $(LIBFT_DIR)
+	$(RM) -rf $(OBJ_DIR)
 
 fclean: clean
-	@$(MAKE) fclean -sC $(LIBFT_DIR)
-	@$(RM) $(TEST_EXEC)
-	@$(RM) $(NAME)
-	@echo "$(RED)$(NAME) Removed!$(NC)"
+	$(MAKE) fclean -sC $(LIBFT_DIR)
+	$(RM) $(NAME)
 
 re: fclean all
 
