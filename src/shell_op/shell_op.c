@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:52:42 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/14 14:53:05 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/15 13:25:23 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	shell_op_destroy(t_shell_op **sp)
 
 t_shell_op	*shell_op_get_sp(t_shell_op *param)
 {
-	static t_shell_op	*sp;
+	static t_shell_op	*sp = NULL;
 
 	if (param)
 		sp = param;
