@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 09:31:58 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/14 16:13:16 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/15 13:25:09 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_shell_op
 	int				last_cmd_stt;
 	t_pipe_list		*pipe_list;
 	char			*cli_input;
+	t_bool			is_interactive;
 }	t_shell_op;
 
 t_error_code	shell_op_create(t_shell_op **ret, char **envp);

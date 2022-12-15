@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 12:19:47 by yoav              #+#    #+#             */
-/*   Updated: 2022/12/13 12:17:15 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/15 13:25:41 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,10 @@ t_bool	mode_mngr_is_file(int argc)
 
 t_bool	mode_mngr_is_interactive(void)
 {
-	return (isatty(STDIN_FILENO));
+	t_shell_op	*sp;
+
+	sp = shell_op_get_sp(NULL);
+	if (!sp)
+		return (isatty(STDIN_FILENO));
+	return (sp->is_interactive);
 }

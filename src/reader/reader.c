@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:12:35 by al7aro            #+#    #+#             */
-/*   Updated: 2022/12/12 14:52:41 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/15 13:23:28 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_error_code	reader_get_tab(t_shell_op *sp)
 	char			*line;
 	char			*tmp;
 
+	sp->is_interactive = TRUE;
 	line = readline(MAIN_PROMPT);
 	if (!line)
 		return (END_OF_TRANSMISSION);
