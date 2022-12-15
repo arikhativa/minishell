@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 10:05:08 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/12/11 10:47:03 by yrabby           ###   ########.fr       */
+/*   Updated: 2022/12/15 13:11:33 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static char	*word_encloser(char *str)
 {
 	char	*ret;
 
+	if (!ft_strcmp(str, EMPTY_STRING))
+		return (ft_strdup(str));
 	ret = ft_strdup(str);
 	ret = str_append_char(&ret, DOUBLE_QUOTE_CHAR, FALSE);
 	ret = str_append_char(&ret, DOUBLE_QUOTE_CHAR, TRUE);
