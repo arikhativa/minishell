@@ -6,10 +6,10 @@ A mini verstion of a bash application.
 
 ## About
 
-Minishell is the second project of the Unix branch at 42.
+Minishell is a project as part of the 42 scholl.
 It's a minimum viable version of a real shell.
-The main goal is to have a good understanding of process creation and
-synchronisation using the C programmming language.
+The main goal is to have a good understanding of processess, file descriptors, signlas and generally start manageing a lage scale projects.
+All in by using the C programmming language and comparing to bash.
 
 ## Installation & Usage
 
