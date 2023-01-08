@@ -15,8 +15,8 @@ All in by using the C programmming language and comparing to bash.
 
 ### Requirements
 The only requirements are:
-- GNU make (v3.81)
-- GCC (v4.2.1)
+- GNU make
+- GCC
 
 Those versions are the ones used during development.
 
@@ -24,7 +24,7 @@ Those versions are the ones used during development.
 
 1. Download/Clone this repo
 
-        git clone https://github.com/r4meau/minishell
+        git clone https://github.com/arikhativa/minishell.git
 2. `cd` into the root directory and run `make`
 
         cd minishell
@@ -63,9 +63,19 @@ After building the source, run `./minishell` from the project root.
   - in, out, appand and heredoc
 - Multiple commands (with pipes only)
 
-
 - [Click here][1] for the full project instructions.
 
+### Github Actions
+
+Since this project took 3 mounths to develop, I created a CI that inforces a few checks before a PR could be doen.
+The CI is handled by github action (LIKE TO FILE).
+there are a few steps in the CI:
+ - cheking the norm
+ - compileing with the Unit-Tests main
+ - runing the tests
+ - checking there were no leaks
+ 
+ 
 Enjoy!
 
 [1]: https://github.com/R4meau/minishell/blob/master/minishell.en.pdf
