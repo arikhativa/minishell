@@ -51,25 +51,20 @@ The program can be used with these modes:
 - No memory leaks
 - Implement a series of builtins: `echo`, `cd`, `pwd`, `export`, `unset`, `env`, `exit`
 - Manage errors by printing a message to the standard error
-- Can only use these standard library functions:
-	- readline, rl_clear_history, rl_on_new_line, rl_replace_line, rl_redisplay, add_history
+- Can only use specific functions like (full list in the subject pdf below):
+	- readline, add_history
 	- printf, write
 	- malloc, free
 	- access, open, read, close
-	- fork, wait, waitpid, wait3, wait4
-	- signal, sigaction, sigemptyset, sigaddset, kill
+	- fork, wait
+	- signal, sigaction, kill
 	- exit
 	- getcwd, chdir
-	- stat, lstat, fstat
-	- unlink
+	- stat
 	- execve
 	- dup, dup2, pipe
 	- opendir, readdir, closedir
 	- strerror, perror
-	- isatty, ttyname, ttyslot
-	- ioctl
-	- getenv
-	- tcsetattr, tcgetattr, tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 - Must have a Makefile to build the program
 - Handle program interruption (Ctrl + D) and signals (SIGINT, SIGQUIT)
 - Use PATH var to look for binaries
