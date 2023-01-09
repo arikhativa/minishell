@@ -96,6 +96,6 @@ there are a few steps in the CI:
 Enjoy!
 
 [subject]: https://github.com/arikhativa/minishell/blob/main/.github/en.subject.pdf
-[demo]: https://github.com/arikhativa/minishell/blob/main/.github/animation.gif
+[demo]: https://github.com/arikhativa/minishell/blob/main/.github/Animation.gif
 [actions]: https://github.com/arikhativa/minishell/blob/main/.github/workflows/ci.yml
 [norm-repo]: https://github.com/42School/norminette
