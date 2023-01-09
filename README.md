@@ -81,15 +81,15 @@ The program can be used with these modes:
 	- heredoc (<<)
 - Handle pips
 
-- [Click here][subject] for the full project instructions.
+[full project instructions][subject]
 
 ### Github Actions
 
-Since this project took 3 mouths to develop, I created a CI that enforces a few checks before a PR could be done.
-The CI is handled by github action (LIKE TO FILE).
+Since this project took 3 months to develop, I created a CI that enforces a few checks before a PR could be done.
+The CI is handled by github action ([ci.yml][actions]).
 there are a few steps in the CI:
  - checking the norm
- - compiling with the Unit-Tests main
+ - compiling with the Unit-Tests
  - running the tests
  - checking there were no leaks
  
@@ -97,4 +97,5 @@ Enjoy!
 
 [subject]: https://github.com/arikhativa/minishell/blob/main/.github/en.subject.pdf
 [demo]: https://github.com/arikhativa/minishell/blob/main/.github/animation.gif
+[actions]: https://github.com/arikhativa/minishell/blob/main/.github/workflows/ci.yml
 [norm-repo]: https://github.com/42School/norminette
