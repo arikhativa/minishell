@@ -6,8 +6,10 @@ A mini version of a bash application.
 
 ## About
 
-Minishell is a project as part of the 42 scholl.
+Minishell is a project as part of the 42 school.
+
 It's a mini version of a real shell.
+
 The main goal is to have a good understanding of processes, file descriptors, signals and generally start managing a large scale projects.
 All by using the C programming language and comparing to bash.
 
