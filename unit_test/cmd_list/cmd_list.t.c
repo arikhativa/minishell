@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_list.t.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoav <yoav@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 15:56:36 by yoav              #+#    #+#             */
-/*   Updated: 2022/10/30 12:27:01 by yoav             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:16:53 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	internal_create_cmd_list(t_cmd_list **lst)
 	t_cmd			*c2;
 
 	err = cmd_list_create(lst);
-	CU_ASSERT_EQUAL_FATAL(err, SUCCESS);
+	CU_ASSERT_EQUAL_FATAL(err, ERROR);
 	internal_create_cmd(&c1, "word1");
 	internal_create_cmd(&c2, "word2");
 	err = cmd_list_add_cmd(*lst, c1);
