@@ -6,13 +6,13 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 14:04:03 by yoav              #+#    #+#             */
-/*   Updated: 2023/09/23 17:10:21 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/09/23 17:12:41 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cleaner.h"
 
-void cleaner_round_clean(t_shell_op *sp)
+void	cleaner_round_clean(t_shell_op *sp)
 {
 	if (sp->input)
 	{
@@ -24,7 +24,7 @@ void cleaner_round_clean(t_shell_op *sp)
 	}
 }
 
-void cleaner_on_parse_error(t_shell_op *sp)
+void	cleaner_on_parse_error(t_shell_op *sp)
 {
 	if (sp->input)
 	{
